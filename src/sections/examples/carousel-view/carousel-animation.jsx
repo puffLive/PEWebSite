@@ -1,19 +1,22 @@
-import { m } from 'framer-motion';
-import PropTypes from 'prop-types';
+import { m } from "framer-motion";
+import PropTypes from "prop-types";
 
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import CardContent from '@mui/material/CardContent';
-import { alpha, useTheme } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import CardContent from "@mui/material/CardContent";
+import { alpha, useTheme } from "@mui/material/styles";
 
-import { bgGradient } from 'src/theme/css';
+import { bgGradient } from "../../../../src/theme/css";
 
-import Image from 'src/components/image';
-import { varFade, MotionContainer } from 'src/components/animate';
-import Carousel, { useCarousel, CarouselArrowIndex } from 'src/components/carousel';
+import Image from "../../../../src/components/image";
+import { varFade, MotionContainer } from "../../../../src/components/animate";
+import Carousel, {
+  useCarousel,
+  CarouselArrowIndex,
+} from "../../../../src/components/carousel";
 
 // ----------------------------------------------------------------------
 
@@ -27,7 +30,11 @@ export default function CarouselAnimation({ data }) {
     <Card>
       <Carousel ref={carousel.carouselRef} {...carousel.carouselSettings}>
         {data.map((item, index) => (
-          <CarouselItem key={item.id} item={item} active={index === carousel.currentIndex} />
+          <CarouselItem
+            key={item.id}
+            item={item}
+            active={index === carousel.currentIndex}
+          />
         ))}
       </Carousel>
 
@@ -52,10 +59,11 @@ function CarouselItem({ item, active }) {
 
   const { coverUrl, title } = item;
 
-  const variants = theme.direction === 'rtl' ? varFade().inLeft : varFade().inRight;
+  const variants =
+    theme.direction === "rtl" ? varFade().inLeft : varFade().inRight;
 
   return (
-    <Paper sx={{ position: 'relative' }}>
+    <Paper sx={{ position: "relative" }}>
       <Image dir="ltr" alt={title} src={coverUrl} ratio="16/9" />
 
       <Box
@@ -63,9 +71,9 @@ function CarouselItem({ item, active }) {
           top: 0,
           width: 1,
           height: 1,
-          position: 'absolute',
+          position: "absolute",
           ...bgGradient({
-            direction: 'to top',
+            direction: "to top",
             startColor: `${theme.palette.grey[900]} 0%`,
             endColor: `${alpha(theme.palette.grey[900], 0)} 100%`,
           }),
@@ -80,9 +88,9 @@ function CarouselItem({ item, active }) {
           left: 0,
           bottom: 0,
           maxWidth: 720,
-          textAlign: 'left',
-          position: 'absolute',
-          color: 'common.white',
+          textAlign: "left",
+          position: "absolute",
+          color: "common.white",
         }}
       >
         <m.div variants={variants}>

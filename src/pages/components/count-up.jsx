@@ -1,6 +1,6 @@
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
-import CountUpPageView from 'src/sections/examples/count-up-view';
+import CountUpPageView from "../../../src/sections/examples/count-up-view";
 
 // ----------------------------------------------------------------------
 

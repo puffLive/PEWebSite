@@ -1,6 +1,6 @@
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
-import RegisterCoverView from 'src/sections/auth/register-cover-view';
+import RegisterCoverView from "../../../src/sections/auth/register-cover-view";
 
 // ----------------------------------------------------------------------
 

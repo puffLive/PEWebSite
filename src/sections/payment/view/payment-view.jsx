@@ -1,19 +1,19 @@
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Grid from '@mui/material/Unstable_Grid2';
-import Container from '@mui/material/Container';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Grid from "@mui/material/Unstable_Grid2";
+import Container from "@mui/material/Container";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 
-import { useResponsive } from 'src/hooks/use-responsive';
+import { useResponsive } from "../../../../src/hooks/use-responsive";
 
-import PaymentSummary from '../payment-summary';
-import PaymentMethods from '../payment-methods';
+import PaymentSummary from "../payment-summary";
+import PaymentMethods from "../payment-methods";
 
 // ----------------------------------------------------------------------
 
 export default function PaymentView() {
-  const mdUp = useResponsive('up', 'md');
+  const mdUp = useResponsive("up", "md");
 
   const renderBillingAddress = (
     <div>
@@ -31,7 +31,7 @@ export default function PaymentView() {
   return (
     <Container
       sx={{
-        overflow: 'hidden',
+        overflow: "hidden",
         minHeight: 1,
         pt: { xs: 13, md: 16 },
         pb: { xs: 10, md: 15 },
@@ -41,7 +41,10 @@ export default function PaymentView() {
         {`Let's Finish Powering You Up!`}
       </Typography>
 
-      <Typography align="center" sx={{ color: 'text.secondary', mb: { xs: 5, md: 8 } }}>
+      <Typography
+        align="center"
+        sx={{ color: "text.secondary", mb: { xs: 5, md: 8 } }}
+      >
         Professional plan is right for you.
       </Typography>
 
@@ -51,8 +54,8 @@ export default function PaymentView() {
             gap={5}
             display="grid"
             gridTemplateColumns={{
-              xs: 'repeat(1, 1fr)',
-              md: 'repeat(2, 1fr)',
+              xs: "repeat(1, 1fr)",
+              md: "repeat(2, 1fr)",
             }}
             sx={{
               p: { md: 5 },

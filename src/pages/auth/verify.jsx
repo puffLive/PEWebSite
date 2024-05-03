@@ -1,6 +1,6 @@
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
-import VerifyView from 'src/sections/auth/verify-view';
+import VerifyView from "../../../src/sections/auth/verify-view";
 
 // ----------------------------------------------------------------------
 

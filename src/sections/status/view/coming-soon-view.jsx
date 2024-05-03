@@ -1,24 +1,26 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import InputAdornment from '@mui/material/InputAdornment';
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import InputAdornment from "@mui/material/InputAdornment";
 
-import { useCountdown } from 'src/hooks/use-countdown';
+import { useCountdown } from "../../../../src/hooks/use-countdown";
 
-import { _socials } from 'src/_mock';
+import { _socials } from "../../../../src/_mock";
 
-import Image from 'src/components/image';
-import Iconify from 'src/components/iconify';
+import Image from "../../../../src/components/image";
+import Iconify from "../../../../src/components/iconify";
 
 // ----------------------------------------------------------------------
 
 export default function ComingSoonView() {
-  const { days, hours, minutes, seconds } = useCountdown(new Date('07/07/2024 21:30'));
+  const { days, hours, minutes, seconds } = useCountdown(
+    new Date("07/07/2024 21:30")
+  );
 
   return (
     <>
@@ -26,7 +28,7 @@ export default function ComingSoonView() {
         Coming Soon!
       </Typography>
 
-      <Typography sx={{ color: 'text.secondary' }}>
+      <Typography sx={{ color: "text.secondary" }}>
         We are currently working hard on this page!
       </Typography>
 
@@ -35,7 +37,7 @@ export default function ComingSoonView() {
         src="/assets/illustrations/illustration_comingsoon.svg"
         sx={{
           my: 3,
-          mx: 'auto',
+          mx: "auto",
           maxWidth: 320,
         }}
       />
@@ -44,7 +46,7 @@ export default function ComingSoonView() {
         direction="row"
         justifyContent="center"
         divider={<Box sx={{ mx: { xs: 1, sm: 2.5 } }}>:</Box>}
-        sx={{ typography: 'h2' }}
+        sx={{ typography: "h2" }}
       >
         <TimeBlock label="Days" value={days} />
 
@@ -62,7 +64,12 @@ export default function ComingSoonView() {
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
-              <Button variant="contained" size="large" color="inherit" sx={{ mr: -1.25 }}>
+              <Button
+                variant="contained"
+                size="large"
+                color="inherit"
+                sx={{ mr: -1.25 }}
+              >
                 Notify
               </Button>
             </InputAdornment>
@@ -88,7 +95,7 @@ function TimeBlock({ label, value }) {
   return (
     <div>
       <Box> {value} </Box>
-      <Box sx={{ color: 'text.secondary', typography: 'body1' }}>{label}</Box>
+      <Box sx={{ color: "text.secondary", typography: "body1" }}>{label}</Box>
     </div>
   );
 }

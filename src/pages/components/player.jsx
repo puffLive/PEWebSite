@@ -1,6 +1,6 @@
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
-import PlayerView from 'src/sections/examples/player-view';
+import PlayerView from "../../../src/sections/examples/player-view";
 
 // ----------------------------------------------------------------------
 

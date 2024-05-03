@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Switch from '@mui/material/Switch';
-import IconButton from '@mui/material/IconButton';
-import FormControlLabel from '@mui/material/FormControlLabel';
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Switch from "@mui/material/Switch";
+import IconButton from "@mui/material/IconButton";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
-import Iconify from 'src/components/iconify';
+import Iconify from "../../../../../src/components/iconify";
 
 // ----------------------------------------------------------------------
 
@@ -21,9 +21,9 @@ export default function Toolbar({
   return (
     <Paper
       sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
       }}
       {...other}
     >

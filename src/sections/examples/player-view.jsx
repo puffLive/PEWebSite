@@ -1,17 +1,17 @@
-import Fab from '@mui/material/Fab';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Container from '@mui/material/Container';
+import Fab from "@mui/material/Fab";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Container from "@mui/material/Container";
 
-import { paths } from 'src/routes/paths';
+import { paths } from "../../../src/routes/paths";
 
-import { useBoolean } from 'src/hooks/use-boolean';
+import { useBoolean } from "../../../src/hooks/use-boolean";
 
-import { _mock } from 'src/_mock';
+import { _mock } from "../../../src/_mock";
 
-import Iconify from 'src/components/iconify';
-import Player, { PlayerDialog } from 'src/components/player';
-import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
+import Iconify from "../../../src/components/iconify";
+import Player, { PlayerDialog } from "../../../src/components/player";
+import CustomBreadcrumbs from "../../../src/components/custom-breadcrumbs";
 
 // ----------------------------------------------------------------------
 
@@ -23,7 +23,8 @@ export default function PlayerView() {
       <Box
         sx={{
           py: 5,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800'),
+          bgcolor: (theme) =>
+            theme.palette.mode === "light" ? "grey.200" : "grey.800",
         }}
       >
         <Container>
@@ -31,12 +32,12 @@ export default function PlayerView() {
             heading="Player"
             links={[
               {
-                name: 'Components',
+                name: "Components",
                 href: paths.components.root,
               },
-              { name: 'Player' },
+              { name: "Player" },
             ]}
-            moreLink={['https://www.npmjs.com/package/react-player']}
+            moreLink={["https://www.npmjs.com/package/react-player"]}
           />
         </Container>
       </Box>
@@ -54,7 +55,11 @@ export default function PlayerView() {
         </Box>
       </Container>
 
-      <PlayerDialog open={videoOpen.value} onClose={videoOpen.onFalse} videoPath={_mock.video(0)} />
+      <PlayerDialog
+        open={videoOpen.value}
+        onClose={videoOpen.onFalse}
+        videoPath={_mock.video(0)}
+      />
     </>
   );
 }

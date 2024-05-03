@@ -1,6 +1,6 @@
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
-import ForgotPasswordView from 'src/sections/auth/forgot-password-view';
+import ForgotPasswordView from "../../../src/sections/auth/forgot-password-view";
 
 // ----------------------------------------------------------------------
 

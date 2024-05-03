@@ -1,15 +1,15 @@
-import PropTypes from 'prop-types';
-import { Controller, useFormContext } from 'react-hook-form';
+import PropTypes from "prop-types";
+import { Controller, useFormContext } from "react-hook-form";
 
-import Chip from '@mui/material/Chip';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
-import InputAdornment from '@mui/material/InputAdornment';
-import { filledInputClasses } from '@mui/material/FilledInput';
+import Chip from "@mui/material/Chip";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
+import InputAdornment from "@mui/material/InputAdornment";
+import { filledInputClasses } from "@mui/material/FilledInput";
 
-import { countries } from 'src/assets/data';
+import { countries } from "../../../src/assets/data";
 
-import Iconify from 'src/components/iconify';
+import Iconify from "../../../src/components/iconify";
 
 // ----------------------------------------------------------------------
 
@@ -31,14 +31,16 @@ export default function RHFAutocomplete({
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => {
-        if (type === 'country') {
+        if (type === "country") {
           return (
             <Autocomplete
               {...field}
               id={`autocomplete-${name}`}
               autoHighlight={!multiple}
               disableCloseOnSelect={multiple}
-              onChange={(event, newValue) => setValue(name, newValue, { shouldValidate: true })}
+              onChange={(event, newValue) =>
+                setValue(name, newValue, { shouldValidate: true })
+              }
               renderOption={(props, option) => {
                 const country = getCountry(option);
 
@@ -69,7 +71,7 @@ export default function RHFAutocomplete({
                   helperText: error ? error?.message : helperText,
                   inputProps: {
                     ...params.inputProps,
-                    autoComplete: 'new-password',
+                    autoComplete: "new-password",
                   },
                 };
 
@@ -87,7 +89,7 @@ export default function RHFAutocomplete({
                           position="start"
                           sx={{
                             ...(!country.code && {
-                              display: 'none',
+                              display: "none",
                             }),
                           }}
                         >
@@ -101,7 +103,7 @@ export default function RHFAutocomplete({
                     sx={{
                       ...(!hiddenLabel && {
                         [`& .${filledInputClasses.root}`]: {
-                          '& .component-iconify': {
+                          "& .component-iconify": {
                             mt: -2,
                           },
                         },
@@ -119,7 +121,11 @@ export default function RHFAutocomplete({
                       {...getTagProps({ index })}
                       key={country.label}
                       label={country.label}
-                      icon={<Iconify icon={`circle-flags:${country.code?.toLowerCase()}`} />}
+                      icon={
+                        <Iconify
+                          icon={`circle-flags:${country.code?.toLowerCase()}`}
+                        />
+                      }
                       size="small"
                       variant="soft"
                     />
@@ -135,7 +141,9 @@ export default function RHFAutocomplete({
           <Autocomplete
             {...field}
             id={`autocomplete-${name}`}
-            onChange={(event, newValue) => setValue(name, newValue, { shouldValidate: true })}
+            onChange={(event, newValue) =>
+              setValue(name, newValue, { shouldValidate: true })
+            }
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -145,7 +153,7 @@ export default function RHFAutocomplete({
                 helperText={error ? error?.message : helperText}
                 inputProps={{
                   ...params.inputProps,
-                  autoComplete: 'new-password',
+                  autoComplete: "new-password",
                 }}
               />
             )}

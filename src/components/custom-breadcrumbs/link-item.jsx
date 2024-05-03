@@ -1,23 +1,23 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
 
-import { RouterLink } from 'src/routes/components';
+import { RouterLink } from "../../../src/routes/components";
 
 // ----------------------------------------------------------------------
 
 export default function BreadcrumbsLink({ link, activeLast, disabled }) {
   const styles = {
-    typography: 'body2',
-    alignItems: 'center',
-    color: 'text.primary',
-    display: 'inline-flex',
+    typography: "body2",
+    alignItems: "center",
+    color: "text.primary",
+    display: "inline-flex",
     ...(disabled &&
       !activeLast && {
-        cursor: 'default',
-        pointerEvents: 'none',
-        color: 'text.disabled',
+        cursor: "default",
+        pointerEvents: "none",
+        color: "text.disabled",
       }),
   };
 
@@ -28,8 +28,8 @@ export default function BreadcrumbsLink({ link, activeLast, disabled }) {
           component="span"
           sx={{
             mr: 1,
-            display: 'inherit',
-            '& svg': { width: 20, height: 20 },
+            display: "inherit",
+            "& svg": { width: 20, height: 20 },
           }}
         >
           {link.icon}

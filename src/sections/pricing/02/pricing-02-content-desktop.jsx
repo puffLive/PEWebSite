@@ -1,19 +1,19 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 
-import Iconify from 'src/components/iconify';
+import Iconify from "../../../../src/components/iconify";
 
 // ----------------------------------------------------------------------
 
 export default function Pricing02ContentDesktop({ plan }) {
-  const startLicense = plan.license === 'Start';
+  const startLicense = plan.license === "Start";
 
-  const proLicense = plan.license === 'Pro';
+  const proLicense = plan.license === "Pro";
 
-  const businessLicense = plan.license === 'Business';
+  const businessLicense = plan.license === "Business";
 
   return (
     <Box>
@@ -24,19 +24,19 @@ export default function Pricing02ContentDesktop({ plan }) {
           justifyContent="center"
           sx={{
             height: 72,
-            color: 'text.secondary',
+            color: "text.secondary",
             borderBottom: (theme) => `solid 1px ${theme.palette.divider}`,
             ...(proLicense && {
-              bgcolor: 'background.neutral',
+              bgcolor: "background.neutral",
             }),
           }}
         >
           {option.disabled ? (
-            '-'
+            "-"
           ) : (
             <Iconify
               icon="carbon:checkmark"
-              sx={{ width: 24, height: 24, color: 'primary.main' }}
+              sx={{ width: 24, height: 24, color: "primary.main" }}
             />
           )}
         </Stack>
@@ -46,22 +46,22 @@ export default function Pricing02ContentDesktop({ plan }) {
         sx={{
           py: 5,
           ...(proLicense && {
-            bgcolor: 'background.neutral',
-            borderRadius: '0 0 16px 16px',
+            bgcolor: "background.neutral",
+            borderRadius: "0 0 16px 16px",
           }),
         }}
       >
         <Button
           size="large"
-          variant={proLicense ? 'contained' : 'outlined'}
+          variant={proLicense ? "contained" : "outlined"}
           color="inherit"
-          sx={{ mx: 'auto' }}
+          sx={{ mx: "auto" }}
         >
-          {startLicense && 'Start Free Trial'}
+          {startLicense && "Start Free Trial"}
 
-          {proLicense && 'Choose Pro'}
+          {proLicense && "Choose Pro"}
 
-          {businessLicense && 'Contact Sale'}
+          {businessLicense && "Contact Sale"}
         </Button>
       </Stack>
     </Box>

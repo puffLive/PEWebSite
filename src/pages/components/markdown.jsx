@@ -1,6 +1,6 @@
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
-import MarkdownView from 'src/sections/examples/markdown-view';
+import MarkdownView from "../../../src/sections/examples/markdown-view";
 
 // ----------------------------------------------------------------------
 

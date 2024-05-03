@@ -1,18 +1,18 @@
-import { m } from 'framer-motion';
-import PropTypes from 'prop-types';
+import { m } from "framer-motion";
+import PropTypes from "prop-types";
 
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
 
-import { _mock } from 'src/_mock';
+import { _mock } from "../../../../../src/_mock";
 
-import { MotionContainer } from 'src/components/animate';
+import { MotionContainer } from "../../../../../src/components/animate";
 
-import getVariant from '../get-variant';
+import getVariant from "../get-variant";
 
 // ----------------------------------------------------------------------
 
-const TEXT = 'Zone';
+const TEXT = "Zone";
 
 const IMG = [
   _mock.image.cover(2),
@@ -22,7 +22,12 @@ const IMG = [
   _mock.image.cover(8),
 ];
 
-export default function ContainerView({ isText, isMulti, selectVariant, ...other }) {
+export default function ContainerView({
+  isText,
+  isMulti,
+  selectVariant,
+  ...other
+}) {
   const items = isMulti ? IMG : IMG.slice(0, 1);
 
   return (
@@ -30,20 +35,20 @@ export default function ContainerView({ isText, isMulti, selectVariant, ...other
       sx={{
         p: 3,
         minHeight: 480,
-        display: 'flex',
-        overflow: 'hidden',
-        alignItems: 'center',
-        justifyContent: 'center',
-        bgcolor: 'background.neutral',
+        display: "flex",
+        overflow: "hidden",
+        alignItems: "center",
+        justifyContent: "center",
+        bgcolor: "background.neutral",
       }}
       {...other}
     >
       {isText ? (
         <MotionContainer
           component={m.h1}
-          sx={{ typography: 'h1', display: 'flex', overflow: 'hidden' }}
+          sx={{ typography: "h1", display: "flex", overflow: "hidden" }}
         >
-          {TEXT.split('').map((letter, index) => (
+          {TEXT.split("").map((letter, index) => (
             <m.span key={index} variants={getVariant(selectVariant)}>
               {letter}
             </m.span>
@@ -61,7 +66,7 @@ export default function ContainerView({ isText, isMulti, selectVariant, ...other
                 my: 2,
                 width: 480,
                 borderRadius: 1,
-                objectFit: 'cover',
+                objectFit: "cover",
                 height: isMulti ? 72 : 320,
                 boxShadow: (theme) => theme.customShadows.z8,
               }}

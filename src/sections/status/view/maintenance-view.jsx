@@ -1,12 +1,12 @@
-import { m } from 'framer-motion';
+import { m } from "framer-motion";
 
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
-import { RouterLink } from 'src/routes/components';
+import { RouterLink } from "../../../../src/routes/components";
 
-import Image from 'src/components/image';
-import { varBounce, MotionContainer } from 'src/components/animate';
+import Image from "../../../../src/components/image";
+import { varBounce, MotionContainer } from "../../../../src/components/animate";
 
 // ----------------------------------------------------------------------
 
@@ -20,7 +20,7 @@ export default function MaintenanceView() {
       </m.div>
 
       <m.div variants={varBounce().in}>
-        <Typography sx={{ color: 'text.secondary' }}>
+        <Typography sx={{ color: "text.secondary" }}>
           We are currently working hard on this page!
         </Typography>
       </m.div>
@@ -30,14 +30,20 @@ export default function MaintenanceView() {
           alt="maintenance"
           src="/assets/illustrations/illustration_maintenance.svg"
           sx={{
-            mx: 'auto',
+            mx: "auto",
             maxWidth: 320,
             my: { xs: 5, sm: 8 },
           }}
         />
       </m.div>
 
-      <Button component={RouterLink} href="/" size="large" color="inherit" variant="contained">
+      <Button
+        component={RouterLink}
+        href="/"
+        size="large"
+        color="inherit"
+        variant="contained"
+      >
         Go to Home
       </Button>
     </MotionContainer>

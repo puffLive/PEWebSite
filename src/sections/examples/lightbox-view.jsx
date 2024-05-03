@@ -1,44 +1,44 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback } from "react";
 
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import Stack from '@mui/material/Stack';
-import Paper from '@mui/material/Paper';
-import Switch from '@mui/material/Switch';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Unstable_Grid2';
-import FormLabel from '@mui/material/FormLabel';
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Stack from "@mui/material/Stack";
+import Paper from "@mui/material/Paper";
+import Switch from "@mui/material/Switch";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Unstable_Grid2";
+import FormLabel from "@mui/material/FormLabel";
+import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
-import { paths } from 'src/routes/paths';
+import { paths } from "../../../src/routes/paths";
 
-import { _mock } from 'src/_mock';
+import { _mock } from "../../../src/_mock";
 
-import Image from 'src/components/image';
-import Lightbox, { useLightbox } from 'src/components/lightbox';
-import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
+import Image from "../../../src/components/image";
+import Lightbox, { useLightbox } from "../../../src/components/lightbox";
+import CustomBreadcrumbs from "../../../src/components/custom-breadcrumbs";
 
 // ----------------------------------------------------------------------
 
 const images = [...Array(4)].map((_, index) => ({
   src: _mock.image.cover(index + 1),
-  title: 'Flamingo',
-  description: 'Vicko Mozara \n Veliki zali, Dubravica, Croatia',
+  title: "Flamingo",
+  description: "Vicko Mozara \n Veliki zali, Dubravica, Croatia",
 }));
 
 const slides = [
   ...images,
   {
-    type: 'video',
+    type: "video",
     width: 1280,
     height: 720,
     poster:
-      'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg',
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
     sources: [
       {
-        src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-        type: 'video/mp4',
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+        type: "video/mp4",
       },
     ],
   },
@@ -74,7 +74,8 @@ export default function LightboxView() {
       <Box
         sx={{
           py: 5,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800'),
+          bgcolor: (theme) =>
+            theme.palette.mode === "light" ? "grey.200" : "grey.800",
         }}
       >
         <Container>
@@ -82,12 +83,14 @@ export default function LightboxView() {
             heading="Lightbox"
             links={[
               {
-                name: 'Components',
+                name: "Components",
                 href: paths.components.root,
               },
-              { name: 'Lightbox' },
+              { name: "Lightbox" },
             ]}
-            moreLink={['https://www.npmjs.com/package/yet-another-react-lightbox']}
+            moreLink={[
+              "https://www.npmjs.com/package/yet-another-react-lightbox",
+            ]}
           />
         </Container>
       </Box>
@@ -100,13 +103,14 @@ export default function LightboxView() {
                 gap={1}
                 display="grid"
                 gridTemplateColumns={{
-                  xs: 'repeat(2, 1fr)',
-                  sm: 'repeat(3, 1fr)',
-                  md: 'repeat(4, 1fr)',
+                  xs: "repeat(2, 1fr)",
+                  sm: "repeat(3, 1fr)",
+                  md: "repeat(4, 1fr)",
                 }}
               >
                 {slides.map((slide) => {
-                  const thumbnail = slide.type === 'video' ? slide.poster : slide.src;
+                  const thumbnail =
+                    slide.type === "video" ? slide.poster : slide.src;
 
                   return (
                     <Image
@@ -117,7 +121,7 @@ export default function LightboxView() {
                       onClick={() => lightbox.onOpen(`${thumbnail}`)}
                       sx={{
                         borderRadius: 1,
-                        cursor: 'pointer',
+                        cursor: "pointer",
                       }}
                     />
                   );
@@ -126,10 +130,12 @@ export default function LightboxView() {
             </Grid>
 
             <Grid xs={12} md={3}>
-              <Paper sx={{ p: 3, bgcolor: 'background.neutral', borderRadius: 2 }}>
+              <Paper
+                sx={{ p: 3, bgcolor: "background.neutral", borderRadius: 2 }}
+              >
                 <FormControl component="fieldset" variant="standard">
                   <Stack spacing={2}>
-                    <FormLabel component="legend" sx={{ typography: 'body2' }}>
+                    <FormLabel component="legend" sx={{ typography: "body2" }}>
                       Controls
                     </FormLabel>
 

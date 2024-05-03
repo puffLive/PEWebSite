@@ -1,54 +1,56 @@
-import PropTypes from 'prop-types';
-import { useState, useCallback } from 'react';
+import PropTypes from "prop-types";
+import { useState, useCallback } from "react";
 
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Radio from '@mui/material/Radio';
-import Button from '@mui/material/Button';
-import { alpha } from '@mui/material/styles';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel, { formControlLabelClasses } from '@mui/material/FormControlLabel';
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Radio from "@mui/material/Radio";
+import Button from "@mui/material/Button";
+import { alpha } from "@mui/material/styles";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel, {
+  formControlLabelClasses,
+} from "@mui/material/FormControlLabel";
 
-import { useBoolean } from 'src/hooks/use-boolean';
+import { useBoolean } from "../../../src/hooks/use-boolean";
 
-import Iconify from 'src/components/iconify';
+import Iconify from "../../../src/components/iconify";
 
-import PaymentNewCardForm from './payment-new-card-form';
+import PaymentNewCardForm from "./payment-new-card-form";
 
 // ----------------------------------------------------------------------
 
 const PAYMENT_OPTIONS = [
   {
-    label: 'Paypal',
-    value: 'paypal',
+    label: "Paypal",
+    value: "paypal",
   },
   {
-    label: 'Credit / Debit',
-    value: 'creditcard',
+    label: "Credit / Debit",
+    value: "creditcard",
   },
 ];
 
 const CARD_OPTIONS = [
   {
-    value: 'visa1',
-    label: '**** **** **** 1212 - Jimmy Holland',
+    value: "visa1",
+    label: "**** **** **** 1212 - Jimmy Holland",
   },
   {
-    value: 'visa2',
-    label: '**** **** **** 2424 - Shawn Stokes',
+    value: "visa2",
+    label: "**** **** **** 2424 - Shawn Stokes",
   },
   {
-    value: 'mastercard',
-    label: '**** **** **** 4545 - Cole Armstrong',
+    value: "mastercard",
+    label: "**** **** **** 4545 - Cole Armstrong",
   },
 ];
 
 // ----------------------------------------------------------------------
 
 export default function PaymentMethods() {
-  const [method, setMethod] = useState('paypal');
+  const [method, setMethod] = useState("paypal");
 
   const formOpen = useBoolean();
 
@@ -68,7 +70,9 @@ export default function PaymentMethods() {
                 key={option.value}
                 option={option}
                 selected={method === option.value}
-                isCredit={option.value === 'creditcard' && method === 'creditcard'}
+                isCredit={
+                  option.value === "creditcard" && method === "creditcard"
+                }
                 onOpen={formOpen.onTrue}
               />
             ))}
@@ -88,12 +92,12 @@ function OptionItem({ option, onOpen, selected, isCredit }) {
 
   const renderLabel = (
     <Stack direction="row" alignItems="center">
-      <Box component="span" sx={{ typography: 'subtitle1', flexGrow: 1 }}>
+      <Box component="span" sx={{ typography: "subtitle1", flexGrow: 1 }}>
         {label}
       </Box>
 
       <Stack spacing={1} direction="row" alignItems="center">
-        {value === 'creditcard' ? (
+        {value === "creditcard" ? (
           <>
             <Iconify icon="logos:mastercard" width={24} />,
             <Iconify icon="logos:visa" width={24} />

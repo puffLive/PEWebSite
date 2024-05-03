@@ -1,27 +1,27 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import Card from '@mui/material/Card';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import Card from "@mui/material/Card";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
-import Label from 'src/components/label';
-import Image from 'src/components/image';
+import Label from "../../../../src/components/label";
+import Image from "../../../../src/components/image";
 
 // ----------------------------------------------------------------------
 
 export default function Pricing01Card({ plan }) {
-  const basicLicense = plan.license === 'Basic';
+  const basicLicense = plan.license === "Basic";
 
-  const starterLicense = plan.license === 'Starter';
+  const starterLicense = plan.license === "Starter";
 
-  const premiumLicense = plan.license === 'Premium';
+  const premiumLicense = plan.license === "Premium";
 
   return (
     <Card
       sx={{
         p: 5,
-        textAlign: 'center',
+        textAlign: "center",
         boxShadow: (theme) => theme.customShadows.z8,
         ...(starterLicense && {
           py: 8,
@@ -30,19 +30,28 @@ export default function Pricing01Card({ plan }) {
       }}
     >
       {starterLicense && (
-        <Label color="info" sx={{ position: 'absolute', top: 16, right: 16 }}>
+        <Label color="info" sx={{ position: "absolute", top: 16, right: 16 }}>
           POPULAR
         </Label>
       )}
 
       <Stack spacing={5} alignItems="center">
-        <Typography variant="overline" component="div" sx={{ color: 'text.secondary' }}>
+        <Typography
+          variant="overline"
+          component="div"
+          sx={{ color: "text.secondary" }}
+        >
           {plan.license}
         </Typography>
 
         <Image alt={plan.icon} src={plan.icon} sx={{ width: 80, height: 80 }} />
 
-        <Stack direction="row" alignItems="center" justifyContent="center" spacing={0.5}>
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="center"
+          spacing={0.5}
+        >
           {!basicLicense && (
             <Typography variant="h4" component="span">
               $
@@ -60,15 +69,15 @@ export default function Pricing01Card({ plan }) {
           )}
         </Stack>
 
-        <Stack spacing={1} sx={{ textAlign: 'center' }}>
+        <Stack spacing={1} sx={{ textAlign: "center" }}>
           {plan.options.map((option) => (
             <Typography
               key={option.title}
-              variant={option.disabled ? 'body2' : 'subtitle2'}
+              variant={option.disabled ? "body2" : "subtitle2"}
               sx={{
                 ...(option.disabled && {
-                  color: 'text.disabled',
-                  textDecoration: 'line-through',
+                  color: "text.disabled",
+                  textDecoration: "line-through",
                 }),
               }}
             >
@@ -81,12 +90,12 @@ export default function Pricing01Card({ plan }) {
           fullWidth
           disabled={basicLicense}
           size="large"
-          variant={basicLicense ? 'outlined' : 'contained'}
-          color={premiumLicense ? 'primary' : 'inherit'}
+          variant={basicLicense ? "outlined" : "contained"}
+          color={premiumLicense ? "primary" : "inherit"}
         >
-          {basicLicense && 'Current Plan'}
-          {starterLicense && 'Choose Starter'}
-          {premiumLicense && 'Choose Premium'}
+          {basicLicense && "Current Plan"}
+          {starterLicense && "Choose Starter"}
+          {premiumLicense && "Choose Premium"}
         </Button>
       </Stack>
     </Card>

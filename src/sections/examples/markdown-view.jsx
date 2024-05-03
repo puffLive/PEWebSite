@@ -1,12 +1,12 @@
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import Container from '@mui/material/Container';
-import CardContent from '@mui/material/CardContent';
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Container from "@mui/material/Container";
+import CardContent from "@mui/material/CardContent";
 
-import { paths } from 'src/routes/paths';
+import { paths } from "../../../src/routes/paths";
 
-import Markdown from 'src/components/markdown';
-import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
+import Markdown from "../../../src/components/markdown";
+import CustomBreadcrumbs from "../../../src/components/custom-breadcrumbs";
 
 // ----------------------------------------------------------------------
 
@@ -87,7 +87,8 @@ export default function MarkdownView() {
       <Box
         sx={{
           py: 5,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800'),
+          bgcolor: (theme) =>
+            theme.palette.mode === "light" ? "grey.200" : "grey.800",
         }}
       >
         <Container>
@@ -95,10 +96,10 @@ export default function MarkdownView() {
             heading="Markdown"
             links={[
               {
-                name: 'Components',
+                name: "Components",
                 href: paths.components.root,
               },
-              { name: 'Markdown' },
+              { name: "Markdown" },
             ]}
           />
         </Container>

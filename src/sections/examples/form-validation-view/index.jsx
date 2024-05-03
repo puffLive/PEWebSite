@@ -1,18 +1,18 @@
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Switch from '@mui/material/Switch';
-import Divider from '@mui/material/Divider';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import FormControlLabel from '@mui/material/FormControlLabel';
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Switch from "@mui/material/Switch";
+import Divider from "@mui/material/Divider";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
-import { paths } from 'src/routes/paths';
+import { paths } from "../../../../src/routes/paths";
 
-import { useBoolean } from 'src/hooks/use-boolean';
+import { useBoolean } from "../../../../src/hooks/use-boolean";
 
-import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
+import CustomBreadcrumbs from "../../../../src/components/custom-breadcrumbs";
 
-import ReactHookForm from './react-hook-form';
+import ReactHookForm from "./react-hook-form";
 
 // ----------------------------------------------------------------------
 
@@ -24,7 +24,8 @@ export default function FormValidationView() {
       <Box
         sx={{
           py: 5,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800'),
+          bgcolor: (theme) =>
+            theme.palette.mode === "light" ? "grey.200" : "grey.800",
         }}
       >
         <Container>
@@ -32,18 +33,25 @@ export default function FormValidationView() {
             heading="Form Validation"
             links={[
               {
-                name: 'Components',
+                name: "Components",
                 href: paths.components.root,
               },
-              { name: 'Form Validation' },
+              { name: "Form Validation" },
             ]}
-            moreLink={['https://react-hook-form.com/', 'https://github.com/jquense/yup']}
+            moreLink={[
+              "https://react-hook-form.com/",
+              "https://github.com/jquense/yup",
+            ]}
           />
         </Container>
       </Box>
 
       <Container sx={{ my: 10 }}>
-        <Stack direction="row" alignItems="center" justifyContent="space-between">
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
           <Typography variant="h4"> React Hook Form + Yup </Typography>
           <FormControlLabel
             control={<Switch checked={debug.value} onClick={debug.onToggle} />}

@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import Paper from '@mui/material/Paper';
-import IconButton from '@mui/material/IconButton';
+import Paper from "@mui/material/Paper";
+import IconButton from "@mui/material/IconButton";
 
-import Iconify from 'src/components/iconify';
+import Iconify from "../../../../../src/components/iconify";
 
 // ----------------------------------------------------------------------
 
@@ -11,9 +11,9 @@ export default function Toolbar({ onRefresh, ...other }) {
   return (
     <Paper
       sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "flex-end",
       }}
       {...other}
     >

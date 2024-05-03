@@ -1,6 +1,6 @@
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
-import NavigationBarView from 'src/sections/examples/navigation-bar-view';
+import NavigationBarView from "../../../src/sections/examples/navigation-bar-view";
 
 // ----------------------------------------------------------------------
 

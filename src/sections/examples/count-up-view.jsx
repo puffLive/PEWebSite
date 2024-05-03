@@ -1,22 +1,22 @@
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 
-import { paths } from 'src/routes/paths';
+import { paths } from "../../../src/routes/paths";
 
-import { fShortenNumber } from 'src/utils/format-number';
+import { fShortenNumber } from "../../../src/utils/format-number";
 
-import CountUp from 'src/components/count-up';
-import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
+import CountUp from "../../../src/components/count-up";
+import CustomBreadcrumbs from "../../../src/components/custom-breadcrumbs";
 
 // ----------------------------------------------------------------------
 
 const SUMMARY = [
-  { name: 'Jobs', number: 2230000 },
-  { name: 'Successful Hiring', number: 500000 },
-  { name: 'Partners', number: 250 },
-  { name: 'Employee', number: 1560 },
+  { name: "Jobs", number: 2230000 },
+  { name: "Successful Hiring", number: 500000 },
+  { name: "Partners", number: 250 },
+  { name: "Employee", number: 1560 },
 ];
 
 // ----------------------------------------------------------------------
@@ -27,7 +27,8 @@ export default function CountUpPageView() {
       <Box
         sx={{
           py: 5,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800'),
+          bgcolor: (theme) =>
+            theme.palette.mode === "light" ? "grey.200" : "grey.800",
         }}
       >
         <Container>
@@ -35,12 +36,12 @@ export default function CountUpPageView() {
             heading="CountUp"
             links={[
               {
-                name: 'Components',
+                name: "Components",
                 href: paths.components.root,
               },
-              { name: 'CountUp' },
+              { name: "CountUp" },
             ]}
-            moreLink={['https://www.npmjs.com/package/react-countup']}
+            moreLink={["https://www.npmjs.com/package/react-countup"]}
           />
         </Container>
       </Box>
@@ -56,12 +57,16 @@ export default function CountUpPageView() {
                   formattingFn={(newValue) => fShortenNumber(newValue)}
                 />
 
-                <Typography variant="h3" component="span" sx={{ verticalAlign: 'top', ml: 0.5 }}>
+                <Typography
+                  variant="h3"
+                  component="span"
+                  sx={{ verticalAlign: "top", ml: 0.5 }}
+                >
                   +
                 </Typography>
               </Typography>
 
-              <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
+              <Typography variant="subtitle2" sx={{ color: "text.secondary" }}>
                 {value.name}
               </Typography>
             </div>

@@ -1,6 +1,6 @@
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
-import IconsView from 'src/sections/examples/icons-view';
+import IconsView from "../../../src/sections/examples/icons-view";
 
 // ----------------------------------------------------------------------
 

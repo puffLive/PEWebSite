@@ -1,23 +1,23 @@
-import Stack from '@mui/material/Stack';
-import Tooltip from '@mui/material/Tooltip';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Unstable_Grid2';
-import Typography from '@mui/material/Typography';
+import Stack from "@mui/material/Stack";
+import Tooltip from "@mui/material/Tooltip";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Unstable_Grid2";
+import Typography from "@mui/material/Typography";
 
-import { useResponsive } from 'src/hooks/use-responsive';
+import { useResponsive } from "../../../../src/hooks/use-responsive";
 
-import { _pricing02 } from 'src/_mock';
+import { _pricing02 } from "../../../../src/_mock";
 
-import Iconify from 'src/components/iconify';
+import Iconify from "../../../../src/components/iconify";
 
-import PlanHeader from '../02/pricing-02-header';
-import PlanContentMobile from '../02/pricing-02-content-mobile';
-import PlanContentDesktop from '../02/pricing-02-content-desktop';
+import PlanHeader from "../02/pricing-02-header";
+import PlanContentMobile from "../02/pricing-02-content-mobile";
+import PlanContentDesktop from "../02/pricing-02-content-desktop";
 
 // ----------------------------------------------------------------------
 
 export default function Pricing02View() {
-  const mdUp = useResponsive('up', 'md');
+  const mdUp = useResponsive("up", "md");
 
   return (
     <Container
@@ -32,14 +32,17 @@ export default function Pricing02View() {
         <br /> community&apos;s size and needs
       </Typography>
 
-      <Typography align="center" sx={{ mb: { xs: 5, md: 8 }, color: 'text.secondary' }}>
+      <Typography
+        align="center"
+        sx={{ mb: { xs: 5, md: 8 }, color: "text.secondary" }}
+      >
         Choose your plan and make modern online conversation magic
       </Typography>
 
       <Grid container alignItems="flex-end">
         {mdUp && (
           <Grid xs={12} md={3} sx={{ pb: 5 }}>
-            <Typography variant="overline" sx={{ color: 'primary.main' }}>
+            <Typography variant="overline" sx={{ color: "primary.main" }}>
               Feature
             </Typography>
           </Grid>
@@ -86,7 +89,10 @@ export default function Pricing02View() {
 
                 <Tooltip title={option.tootip} placement="right" arrow>
                   <div>
-                    <Iconify icon="carbon:information" sx={{ color: 'text.secondary' }} />
+                    <Iconify
+                      icon="carbon:information"
+                      sx={{ color: "text.secondary" }}
+                    />
                   </div>
                 </Tooltip>
               </Stack>

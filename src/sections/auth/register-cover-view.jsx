@@ -1,24 +1,24 @@
-import * as Yup from 'yup';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-import Link from '@mui/material/Link';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import LoadingButton from '@mui/lab/LoadingButton';
-import InputAdornment from '@mui/material/InputAdornment';
+import Link from "@mui/material/Link";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import LoadingButton from "@mui/lab/LoadingButton";
+import InputAdornment from "@mui/material/InputAdornment";
 
-import { paths } from 'src/routes/paths';
-import { RouterLink } from 'src/routes/components';
+import { paths } from "../../../src/routes/paths";
+import { RouterLink } from "../../../src/routes/components";
 
-import { useBoolean } from 'src/hooks/use-boolean';
+import { useBoolean } from "../../../src/hooks/use-boolean";
 
-import Logo from 'src/components/logo';
-import Iconify from 'src/components/iconify';
-import FormProvider, { RHFTextField } from 'src/components/hook-form';
+import Logo from "../../../src/components/logo";
+import Iconify from "../../../src/components/iconify";
+import FormProvider, { RHFTextField } from "../../../src/components/hook-form";
 
 // ----------------------------------------------------------------------
 
@@ -27,23 +27,25 @@ export default function RegisterCoverView() {
 
   const RegisterSchema = Yup.object().shape({
     fullName: Yup.string()
-      .required('Full name is required')
-      .min(6, 'Mininum 6 characters')
-      .max(15, 'Maximum 15 characters'),
-    email: Yup.string().required('Email is required').email('That is not an email'),
+      .required("Full name is required")
+      .min(6, "Mininum 6 characters")
+      .max(15, "Maximum 15 characters"),
+    email: Yup.string()
+      .required("Email is required")
+      .email("That is not an email"),
     password: Yup.string()
-      .required('Password is required')
-      .min(6, 'Password should be of minimum 6 characters length'),
+      .required("Password is required")
+      .min(6, "Password should be of minimum 6 characters length"),
     confirmPassword: Yup.string()
-      .required('Confirm password is required')
-      .oneOf([Yup.ref('password')], "Password's not match"),
+      .required("Confirm password is required")
+      .oneOf([Yup.ref("password")], "Password's not match"),
   });
 
   const defaultValues = {
-    fullName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    fullName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   };
 
   const methods = useForm({
@@ -61,7 +63,7 @@ export default function RegisterCoverView() {
     try {
       await new Promise((resolve) => setTimeout(resolve, 500));
       reset();
-      console.log('DATA', data);
+      console.log("DATA", data);
     } catch (error) {
       console.error(error);
     }
@@ -72,16 +74,21 @@ export default function RegisterCoverView() {
       sx={{
         pb: 5,
         pt: { xs: 5, md: 10 },
-        textAlign: { xs: 'center', md: 'left' },
+        textAlign: { xs: "center", md: "left" },
       }}
     >
       <Typography variant="h3" paragraph>
         Get Started
       </Typography>
 
-      <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+      <Typography variant="body2" sx={{ color: "text.secondary" }}>
         {`Already have an account? `}
-        <Link component={RouterLink} href={paths.loginCover} variant="subtitle2" color="primary">
+        <Link
+          component={RouterLink}
+          href={paths.loginCover}
+          variant="subtitle2"
+          color="primary"
+        >
           Login
         </Link>
       </Typography>
@@ -95,11 +102,19 @@ export default function RegisterCoverView() {
       </Button>
 
       <Button fullWidth size="large" color="inherit" variant="outlined">
-        <Iconify icon="carbon:logo-facebook" width={24} sx={{ color: '#1877F2' }} />
+        <Iconify
+          icon="carbon:logo-facebook"
+          width={24}
+          sx={{ color: "#1877F2" }}
+        />
       </Button>
 
       <Button color="inherit" fullWidth variant="outlined" size="large">
-        <Iconify icon="carbon:logo-github" width={24} sx={{ color: 'text.primary' }} />
+        <Iconify
+          icon="carbon:logo-github"
+          width={24}
+          sx={{ color: "text.primary" }}
+        />
       </Button>
     </Stack>
   );
@@ -114,12 +129,16 @@ export default function RegisterCoverView() {
         <RHFTextField
           name="password"
           label="Password"
-          type={passwordShow.value ? 'text' : 'password'}
+          type={passwordShow.value ? "text" : "password"}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton onClick={passwordShow.onToggle} edge="end">
-                  <Iconify icon={passwordShow.value ? 'carbon:view' : 'carbon:view-off'} />
+                  <Iconify
+                    icon={
+                      passwordShow.value ? "carbon:view" : "carbon:view-off"
+                    }
+                  />
                 </IconButton>
               </InputAdornment>
             ),
@@ -129,12 +148,16 @@ export default function RegisterCoverView() {
         <RHFTextField
           name="confirmPassword"
           label="Confirm Password"
-          type={passwordShow.value ? 'text' : 'password'}
+          type={passwordShow.value ? "text" : "password"}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton onClick={passwordShow.onToggle} edge="end">
-                  <Iconify icon={passwordShow.value ? 'carbon:view' : 'carbon:view-off'} />
+                  <Iconify
+                    icon={
+                      passwordShow.value ? "carbon:view" : "carbon:view-off"
+                    }
+                  />
                 </IconButton>
               </InputAdornment>
             ),
@@ -152,7 +175,11 @@ export default function RegisterCoverView() {
           Register
         </LoadingButton>
 
-        <Typography variant="caption" align="center" sx={{ color: 'text.secondary', mt: 3 }}>
+        <Typography
+          variant="caption"
+          align="center"
+          sx={{ color: "text.secondary", mt: 3 }}
+        >
           {`I agree to `}
           <Link color="text.primary" href="#" underline="always">
             Terms of Service
@@ -175,7 +202,7 @@ export default function RegisterCoverView() {
       {renderSocials}
 
       <Divider sx={{ py: 3 }}>
-        <Typography variant="body2" sx={{ color: 'text.disabled' }}>
+        <Typography variant="body2" sx={{ color: "text.disabled" }}>
           OR
         </Typography>
       </Divider>

@@ -1,19 +1,33 @@
-import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
+import PropTypes from "prop-types";
+import { forwardRef } from "react";
 
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import { alpha, styled } from '@mui/material/styles';
-import ListItemButton from '@mui/material/ListItemButton';
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
+import { alpha, styled } from "@mui/material/styles";
+import ListItemButton from "@mui/material/ListItemButton";
 
-import { RouterLink } from 'src/routes/components';
+import { RouterLink } from "../../../../src/routes/components";
 
-import Iconify from '../../iconify';
+import Iconify from "../../iconify";
 
 // ----------------------------------------------------------------------
 
 const NavItem = forwardRef(
-  ({ title, path, icon, caption, depth, open, active, hasChild, externalLink, ...other }, ref) => {
+  (
+    {
+      title,
+      path,
+      icon,
+      caption,
+      depth,
+      open,
+      active,
+      hasChild,
+      externalLink,
+      ...other
+    },
+    ref
+  ) => {
     const renderContent = (
       <StyledNavItem
         ref={ref}
@@ -47,7 +61,11 @@ const NavItem = forwardRef(
           <Iconify
             width={16}
             className="arrow"
-            icon={open ? 'eva:arrow-ios-downward-fill' : 'eva:arrow-ios-forward-fill'}
+            icon={
+              open
+                ? "eva:arrow-ios-downward-fill"
+                : "eva:arrow-ios-forward-fill"
+            }
           />
         )}
       </StyledNavItem>
@@ -59,7 +77,13 @@ const NavItem = forwardRef(
 
     if (externalLink)
       return (
-        <Link href={path} target="_blank" rel="noopener" color="inherit" underline="none">
+        <Link
+          href={path}
+          target="_blank"
+          rel="noopener"
+          color="inherit"
+          underline="none"
+        >
           {renderContent}
         </Link>
       );
@@ -89,19 +113,19 @@ export default NavItem;
 // ----------------------------------------------------------------------
 
 const StyledNavItem = styled(ListItemButton, {
-  shouldForwardProp: (prop) => prop !== 'active',
+  shouldForwardProp: (prop) => prop !== "active",
 })(({ active, open, depth, hasChild, theme }) => {
   const subItem = depth !== 1;
 
   const opened = open && !active;
 
   const noWrapStyles = {
-    width: '100%',
-    maxWidth: '100%',
-    display: 'block',
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
+    width: "100%",
+    maxWidth: "100%",
+    display: "block",
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis",
   };
 
   const baseStyles = {
@@ -115,9 +139,9 @@ const StyledNavItem = styled(ListItemButton, {
     },
     textContainer: {
       minWidth: 0,
-      flex: '1 1 auto',
-      display: 'inline-flex',
-      flexDirection: 'column',
+      flex: "1 1 auto",
+      display: "inline-flex",
+      flexDirection: "column",
     },
     label: {
       ...noWrapStyles,
@@ -140,27 +164,27 @@ const StyledNavItem = styled(ListItemButton, {
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(hasChild ? 1 : 3),
       fontWeight: theme.typography.fontWeightMedium,
-      '& .icon': {
+      "& .icon": {
         ...baseStyles.icon,
         marginRight: theme.spacing(2),
       },
-      '& .text-container': {
+      "& .text-container": {
         ...baseStyles.textContainer,
       },
-      '& .label': {
+      "& .label": {
         ...baseStyles.label,
       },
-      '& .caption': {
+      "& .caption": {
         ...baseStyles.caption,
       },
-      '& .arrow': {
+      "& .arrow": {
         ...baseStyles.arrow,
       },
       ...(active && {
         color: theme.palette.primary.main,
         fontWeight: theme.typography.fontWeightSemiBold,
         backgroundColor: alpha(theme.palette.primary.main, 0.08),
-        '&:hover': {
+        "&:hover": {
           backgroundColor: alpha(theme.palette.primary.main, 0.16),
         },
       }),
@@ -176,31 +200,31 @@ const StyledNavItem = styled(ListItemButton, {
       minHeight: 32,
       color: theme.palette.text.secondary,
       padding: theme.spacing(1, hasChild ? 1 : 3, 1, Number(depth) * 2 - 1),
-      '&:before': {
+      "&:before": {
         content: '""',
         width: 1,
-        height: '100%',
-        position: 'absolute',
+        height: "100%",
+        position: "absolute",
         backgroundColor: theme.palette.divider,
         ...(active && {
           backgroundColor: theme.palette.text.primary,
         }),
       },
-      '& .icon': {
+      "& .icon": {
         ...baseStyles.icon,
         marginLeft: theme.spacing(2),
       },
-      '& .text-container': {
+      "& .text-container": {
         ...baseStyles.textContainer,
         marginLeft: theme.spacing(2),
       },
-      '& .label': {
+      "& .label": {
         ...baseStyles.label,
       },
-      '& .caption': {
+      "& .caption": {
         ...baseStyles.caption,
       },
-      '& .arrow': {
+      "& .arrow": {
         ...baseStyles.arrow,
       },
       ...(active && {

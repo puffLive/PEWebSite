@@ -1,6 +1,6 @@
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
-import ComingSoonView from 'src/sections/status/view/coming-soon-view';
+import ComingSoonView from "../../src/sections/status/view/coming-soon-view";
 
 // ----------------------------------------------------------------------
 

@@ -1,6 +1,6 @@
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
-import TextMaxLineView from 'src/sections/examples/text-max-line-view';
+import TextMaxLineView from "../../../src/sections/examples/text-max-line-view";
 
 // ----------------------------------------------------------------------
 
