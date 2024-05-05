@@ -26,8 +26,8 @@ const ROWS = [
     content: "Our team has over 20 years of experience in real estate",
   },
   {
-    label: "year in USA",
-    total: 5,
+    label: "years in USA",
+    total: 15,
     content:
       "Our team has been through the ups and downs learning to invest accross the boarder",
   },
