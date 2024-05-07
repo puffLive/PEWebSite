@@ -23,8 +23,12 @@ import { varHover, varTranHover } from "../../../../src/components/animate";
 
 // ----------------------------------------------------------------------
 
-export default function MarketingLandingCaseStudies({ caseStudies }) {
+export default function MarketingLandingCaseStudies({ events, socials }) {
   const mdUp = useResponsive("up", "md");
+
+  console.log("mdUp: ", mdUp);
+  console.log("Events ", events);
+  console.log("Socials", socials);
 
   return (
     <Container
@@ -41,10 +45,10 @@ export default function MarketingLandingCaseStudies({ caseStudies }) {
         }}
       >
         <Typography variant="overline" sx={{ color: "text.disabled" }}>
-          Our Work
+          Our Events
         </Typography>
 
-        <Typography variant="h2">Case Studies</Typography>
+        <Typography variant="h2">Connect with us</Typography>
       </Stack>
 
       <Grid
@@ -56,21 +60,25 @@ export default function MarketingLandingCaseStudies({ caseStudies }) {
         }}
       >
         <Grid xs={6} md={2}>
-          <SmallItem caseStudy={caseStudies[0]} />
+          {mdUp ? (
+            <SmallItem caseStudy={socials[0]} />
+          ) : (
+            <SmallItem caseStudy={events[0]} />
+          )}
         </Grid>
 
         {!mdUp && (
           <Grid xs={6} md={2}>
-            <SmallItem caseStudy={caseStudies[5]} />
+            <SmallItem caseStudy={events[1]} />
           </Grid>
         )}
 
         <Grid container xs={12} sm={12} md={8}>
           <Grid xs={6} md={9}>
             {mdUp ? (
-              <LargeItem caseStudy={caseStudies[1]} />
+              <LargeItem caseStudy={events[0]} />
             ) : (
-              <SmallItem caseStudy={caseStudies[1]} square />
+              <SmallItem caseStudy={socials[0]} square />
             )}
           </Grid>
 
@@ -79,31 +87,31 @@ export default function MarketingLandingCaseStudies({ caseStudies }) {
               justifyContent={{ md: "flex-end" }}
               sx={{ height: { md: 1 } }}
             >
-              <SmallItem caseStudy={caseStudies[2]} square />
+              <SmallItem caseStudy={socials[1]} square />
             </Stack>
           </Grid>
 
           <Grid xs={6} md={3}>
-            <SmallItem caseStudy={caseStudies[3]} square />
+            <SmallItem caseStudy={socials[2]} square />
           </Grid>
 
           <Grid xs={6} md={9}>
             {mdUp ? (
-              <LargeItem caseStudy={caseStudies[4]} />
+              <LargeItem caseStudy={events[1]} />
             ) : (
-              <SmallItem caseStudy={caseStudies[4]} square />
+              <SmallItem caseStudy={socials[3]} square />
             )}
           </Grid>
         </Grid>
 
         {mdUp && (
           <Grid xs={6} md={2}>
-            <SmallItem caseStudy={caseStudies[5]} />
+            <SmallItem caseStudy={socials[3]} />
           </Grid>
         )}
       </Grid>
 
-      <Stack alignItems={{ xs: "center", md: "flex-end" }}>
+      {/* <Stack alignItems={{ xs: "center", md: "flex-end" }}>
         <Button
           component={RouterLink}
           href={paths.marketing.caseStudies}
@@ -113,7 +121,7 @@ export default function MarketingLandingCaseStudies({ caseStudies }) {
         >
           View all
         </Button>
-      </Stack>
+      </Stack> */}
     </Container>
   );
 }
@@ -195,8 +203,11 @@ function SmallItem({ caseStudy, square }) {
 
   const mdUp = useResponsive("up", "md");
 
+  console.log("Path Casestudy: ", paths.marketing.caseStudy);
+  console.log("Path Casestudy: ", caseStudy.website);
+
   return (
-    <Link component={RouterLink} href={paths.marketing.caseStudy}>
+    <Link component={RouterLink} href={caseStudy.website} target="_blank">
       <Paper
         component={m.div}
         whileHover="hover"

@@ -16,19 +16,29 @@ import MarketingLandingFreeSEO from "../landing/marketing-landing-free-seo";
 import BlogMarketingLatestPosts from "../../blog/marketing/marketing-latest-posts";
 
 import { useMembers } from "../../../members/useMembers";
+import MarketingLandingCaseStudies from "../landing/marketing-landing-case-studies";
+
+import { Socials } from "../../../assets/data/EventsAndSocials/eventsandsocials";
+import { useEvents } from "../../../Events/useEvents";
 
 // ----------------------------------------------------------------------
 
 export default function MarketingLandingView() {
-  const { isLoading, members } = useMembers();
+  const { isLoading: membersIsLoading, members } = useMembers();
+  const { isLoading: eventsIsLoading, events } = useEvents();
 
   return (
     <>
-      {!isLoading && (
+      {!membersIsLoading & !eventsIsLoading && (
         <>
           <MarketingLandingHero />
 
           <MarketingLandingAbout />
+
+          <MarketingLandingCaseStudies
+            events={events}
+            socials={Socials.slice(-4)}
+          />
 
           <MarketingTeam members={members} />
 
