@@ -72,7 +72,7 @@ export default function MarketingLandingCaseStudies({ events, socials }) {
         <Grid container xs={12} sm={12} md={8}>
           <Grid xs={6} md={9}>
             {mdUp ? (
-              <LargeItem caseStudy={events[0]} />
+              <LargeItem caseStudy={events[1]} />
             ) : (
               <SmallItem caseStudy={socials[0]} square />
             )}
@@ -93,7 +93,7 @@ export default function MarketingLandingCaseStudies({ events, socials }) {
 
           <Grid xs={6} md={9}>
             {mdUp ? (
-              <LargeItem caseStudy={events[1]} />
+              <LargeItem caseStudy={events[0]} />
             ) : (
               <SmallItem caseStudy={socials[3]} square />
             )}
@@ -199,8 +199,18 @@ function SmallItem({ caseStudy, square }) {
 
   const mdUp = useResponsive("up", "md");
 
+  let targetValue, url;
+
+  if (caseStudy.hasOwnProperty("eventDate")) {
+    targetValue = "";
+    url = paths.marketing.caseStudy + `?eventId=${caseStudy.id}`;
+  } else {
+    targetValue = "_blank";
+    url = caseStudy.website;
+  }
+
   return (
-    <Link component={RouterLink} href={caseStudy.website} target="_blank">
+    <Link component={RouterLink} href={url} target={targetValue}>
       <Paper
         component={m.div}
         whileHover="hover"
