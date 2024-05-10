@@ -1,17 +1,17 @@
-import { _mock } from './_mock';
-import { _tags } from './assets';
+import { _mock } from "./_mock";
+import { _tags } from "./assets";
 
 // ----------------------------------------------------------------------
 
 const TITLE = [
-  'Bank of America',
-  'Technology Nixon',
-  'Turn Key Smart',
-  'Digital Shose',
-  'Action Car',
-  'The Zone UI',
-  'Minimal UI',
-  'Network Firefox',
+  "Bank of America",
+  "Technology Nixon",
+  "Turn Key Smart",
+  "Networking Mixer",
+  "Action Car",
+  "The Zone UI",
+  "Minimal UI",
+  "Network Firefox",
 ];
 
 const CONTENT = `
@@ -64,14 +64,14 @@ export const _caseStudies = TITLE.map((_, index) => {
     title: TITLE[index],
     category: _tags[index],
     createdAt: _mock.time(index),
-    website: 'https://example.com/',
+    website: "https://example.com/",
     description: _mock.description(index),
-    heroUrl: '/assets/images/marketing/marketing_post_hero.jpg',
+    heroUrl: "/assets/images/marketing/marketing_post_hero.jpg",
     coverUrl: `/assets/images/marketing/marketing_${index + 1}.jpg`,
     how_we_work:
-      'Nullam tincidunt adipiscing enim. Mauris sollicitudin fermentum libero. Pellentesque auctor neque nec urna. Sed fringi',
+      "Nullam tincidunt adipiscing enim. Mauris sollicitudin fermentum libero. Pellentesque auctor neque nec urna. Sed fringi",
     results:
-      'Nullam tincidunt adipiscing enim. Mauris sollicitudin fermentum libero. Pellentesque auctor neque nec urna. Sed fringi',
+      "Nullam tincidunt adipiscing enim. Mauris sollicitudin fermentum libero. Pellentesque auctor neque nec urna. Sed fringi",
     galleryImgs,
   };
 });

@@ -1,26 +1,29 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import Link from '@mui/material/Link';
-import Stack from '@mui/material/Stack';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+import Link from "@mui/material/Link";
+import Stack from "@mui/material/Stack";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 
-import { fDate } from 'src/utils/format-time';
+import { fDate } from "../../../../src/utils/format-time";
 
-import { _socials } from 'src/_mock';
+import { _socials } from "../../../../src/_mock";
 
-import Iconify from 'src/components/iconify';
+import Iconify from "../../../../src/components/iconify";
 
 // ----------------------------------------------------------------------
 
-export default function MarketingCaseStudyDetailsSummary({ caseStudy }) {
-  const { title, description, category, website, createdAt } = caseStudy;
+export default function MarketingCaseStudyDetailsSummary({ event }) {
+  const { title, description, category, website, eventDate } = event;
 
   return (
-    <Stack spacing={3} sx={{ p: 5, borderRadius: 2, bgcolor: 'background.neutral' }}>
+    <Stack
+      spacing={3}
+      sx={{ p: 5, borderRadius: 2, bgcolor: "background.neutral" }}
+    >
       <Stack spacing={2}>
-        <Typography variant="overline" sx={{ color: 'text.disabled' }}>
+        <Typography variant="overline" sx={{ color: "text.disabled" }}>
           summary
         </Typography>
 
@@ -29,18 +32,18 @@ export default function MarketingCaseStudyDetailsSummary({ caseStudy }) {
         <Typography variant="body2">{description}</Typography>
       </Stack>
 
-      <Divider sx={{ borderStyle: 'dashed' }} />
+      <Divider sx={{ borderStyle: "dashed" }} />
 
       <Stack spacing={1}>
-        <Typography variant="overline" sx={{ color: 'text.disabled' }}>
-          Website
+        <Typography variant="overline" sx={{ color: "text.disabled" }}>
+          Registar
         </Typography>
 
-        <Link variant="body2" color="inherit">
-          {website}
+        <Link variant="body2" color="inherit" href={website} target="_blank">
+          Link
         </Link>
 
-        <Typography variant="overline" sx={{ color: 'text.disabled', pt: 1 }}>
+        <Typography variant="overline" sx={{ color: "text.disabled", pt: 1 }}>
           Category
         </Typography>
 
@@ -48,26 +51,26 @@ export default function MarketingCaseStudyDetailsSummary({ caseStudy }) {
           {category}
         </Typography>
 
-        <Typography variant="overline" sx={{ color: 'text.disabled' }}>
+        <Typography variant="overline" sx={{ color: "text.disabled" }}>
           Date
         </Typography>
 
-        <Typography variant="body2">{fDate(createdAt)}</Typography>
+        <Typography variant="body2">{fDate(eventDate)}</Typography>
       </Stack>
 
-      <Divider sx={{ borderStyle: 'dashed' }} />
+      <Divider sx={{ borderStyle: "dashed" }} />
 
-      <Stack direction="row" alignItems="center" spacing={0.5}>
+      {/* <Stack direction="row" alignItems="center" spacing={0.5}>
         <Typography variant="subtitle2">Share:</Typography>
 
         <Stack direction="row">
           {_socials.map((social) => (
-            <IconButton key={social.value}>
+            <IconButton key={social.value} href={social.url} target="_blank">
               <Iconify icon={social.icon} sx={{ color: social.color }} />
             </IconButton>
           ))}
         </Stack>
-      </Stack>
+      </Stack> */}
     </Stack>
   );
 }
