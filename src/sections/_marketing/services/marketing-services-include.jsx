@@ -1,41 +1,47 @@
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 
-import SvgColor from 'src/components/svg-color';
+import SvgColor from "../../../../src/components/svg-color";
 
 // ----------------------------------------------------------------------
 
 const SERVICES = [
   {
-    title: 'Search Engine Optimization',
-    description: 'Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi. ',
-    icon: '/assets/icons/ic_statistics.svg',
+    title: "Search Engine Optimization",
+    description:
+      "Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi. ",
+    icon: "/assets/icons/ic_statistics.svg",
   },
   {
-    title: 'Social Media Strategy',
-    description: 'Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi. ',
-    icon: '/assets/icons/ic_social_media.svg',
+    title: "Social Media Strategy",
+    description:
+      "Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi. ",
+    icon: "/assets/icons/ic_social_media.svg",
   },
   {
-    title: 'Real Time and Data',
-    description: 'Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi. ',
-    icon: '/assets/icons/ic_real_time.svg',
+    title: "Real Time and Data",
+    description:
+      "Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi. ",
+    icon: "/assets/icons/ic_real_time.svg",
   },
   {
-    title: 'Online Media Management',
-    description: 'Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi. ',
-    icon: '/assets/icons/ic_checklist.svg',
+    title: "Online Media Management",
+    description:
+      "Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi. ",
+    icon: "/assets/icons/ic_checklist.svg",
   },
   {
-    title: 'Reporting & Analysis',
-    description: 'Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi. ',
-    icon: '/assets/icons/ic_report.svg',
+    title: "Reporting & Analysis",
+    description:
+      "Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi. ",
+    icon: "/assets/icons/ic_report.svg",
   },
   {
-    title: 'Penalty Recovery',
-    description: 'Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi. ',
-    icon: '/assets/icons/ic_file.svg',
+    title: "Penalty Recovery",
+    description:
+      "Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi. ",
+    icon: "/assets/icons/ic_file.svg",
   },
 ];
 
@@ -45,7 +51,7 @@ export default function MarketingServicesInclude() {
   return (
     <Container
       sx={{
-        textAlign: 'center',
+        textAlign: "center",
         pt: { xs: 5, md: 10 },
         pb: { xs: 10, md: 15 },
       }}
@@ -55,24 +61,25 @@ export default function MarketingServicesInclude() {
       <Typography
         sx={{
           mt: 3,
-          mx: 'auto',
+          mx: "auto",
           maxWidth: 480,
-          color: 'text.secondary',
+          color: "text.secondary",
           mb: { xs: 8, md: 10 },
         }}
       >
-        Nunc nonummy metus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis.
+        Nunc nonummy metus. Donec elit libero, sodales nec, volutpat a, suscipit
+        non, turpis.
       </Typography>
 
       <Box
         sx={{
           rowGap: 8,
           columnGap: 10,
-          display: 'grid',
+          display: "grid",
           gridTemplateColumns: {
-            xs: 'repeat(1, 1fr)',
-            sm: 'repeat(2, 1fr)',
-            md: 'repeat(3, 1fr)',
+            xs: "repeat(1, 1fr)",
+            sm: "repeat(2, 1fr)",
+            md: "repeat(3, 1fr)",
           },
         }}
       >
@@ -84,8 +91,8 @@ export default function MarketingServicesInclude() {
               sx={{
                 width: 64,
                 height: 64,
-                mx: 'auto',
-                bgcolor: 'primary.main',
+                mx: "auto",
+                bgcolor: "primary.main",
               }}
             />
 
@@ -93,7 +100,10 @@ export default function MarketingServicesInclude() {
               {value.title}
             </Typography>
 
-            <Typography sx={{ color: 'text.secondary' }}> {value.description} </Typography>
+            <Typography sx={{ color: "text.secondary" }}>
+              {" "}
+              {value.description}{" "}
+            </Typography>
           </div>
         ))}
       </Box>

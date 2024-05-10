@@ -1,56 +1,56 @@
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Timeline from '@mui/lab/Timeline';
-import TimelineDot from '@mui/lab/TimelineDot';
-import Container from '@mui/material/Container';
-import TimelineItem from '@mui/lab/TimelineItem';
-import Typography from '@mui/material/Typography';
-import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Timeline from "@mui/lab/Timeline";
+import TimelineDot from "@mui/lab/TimelineDot";
+import Container from "@mui/material/Container";
+import TimelineItem from "@mui/lab/TimelineItem";
+import Typography from "@mui/material/Typography";
+import TimelineContent from "@mui/lab/TimelineContent";
+import TimelineConnector from "@mui/lab/TimelineConnector";
+import TimelineSeparator from "@mui/lab/TimelineSeparator";
 
-import { useResponsive } from 'src/hooks/use-responsive';
+import { useResponsive } from "../../../../src/hooks/use-responsive";
 
 // ----------------------------------------------------------------------
 
 const TIMELINES = [
   {
-    year: '2021',
-    title: 'Customer Satisfaction',
+    year: "2021",
+    title: "Customer Satisfaction",
     description:
-      'Curabitur ullamcorper ultricies nisi. Praesent nonummy mi in odio. Donec mollis hendrerit risus.',
+      "Curabitur ullamcorper ultricies nisi. Praesent nonummy mi in odio. Donec mollis hendrerit risus.",
   },
   {
-    year: '2020',
-    title: 'Transparency',
+    year: "2020",
+    title: "Transparency",
     description:
-      'Curabitur ullamcorper ultricies nisi. Praesent nonummy mi in odio. Donec mollis hendrerit risus.',
+      "Curabitur ullamcorper ultricies nisi. Praesent nonummy mi in odio. Donec mollis hendrerit risus.",
   },
   {
-    year: '2019',
-    title: 'Reputation',
+    year: "2019",
+    title: "Reputation",
     description:
-      'Curabitur ullamcorper ultricies nisi. Praesent nonummy mi in odio. Donec mollis hendrerit risus.',
+      "Curabitur ullamcorper ultricies nisi. Praesent nonummy mi in odio. Donec mollis hendrerit risus.",
   },
   {
-    year: '2018',
-    title: 'Cooperation',
+    year: "2018",
+    title: "Cooperation",
     description:
-      'Curabitur ullamcorper ultricies nisi. Praesent nonummy mi in odio. Donec mollis hendrerit risus.',
+      "Curabitur ullamcorper ultricies nisi. Praesent nonummy mi in odio. Donec mollis hendrerit risus.",
   },
 ];
 
-const COLORS = ['primary', 'secondary', 'warning', 'success'];
+const COLORS = ["primary", "secondary", "warning", "success"];
 
 // ----------------------------------------------------------------------
 
 export default function MarketingAboutStory() {
-  const mdUp = useResponsive('up', 'md');
+  const mdUp = useResponsive("up", "md");
 
   return (
     <Box
       sx={{
-        bgcolor: 'background.neutral',
+        bgcolor: "background.neutral",
         py: { xs: 10, md: 15 },
       }}
     >
@@ -59,25 +59,26 @@ export default function MarketingAboutStory() {
           spacing={3}
           sx={{
             maxWidth: 480,
-            mx: 'auto',
-            textAlign: 'center',
+            mx: "auto",
+            textAlign: "center",
             mb: { xs: 8, md: 10 },
           }}
         >
           <Typography variant="h2">Our Story</Typography>
 
-          <Typography sx={{ color: 'text.secondary' }}>
-            Nunc nonummy metus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis.
+          <Typography sx={{ color: "text.secondary" }}>
+            Nunc nonummy metus. Donec elit libero, sodales nec, volutpat a,
+            suscipit non, turpis.
           </Typography>
         </Stack>
 
-        <Timeline position={mdUp ? 'alternate' : 'right'}>
+        <Timeline position={mdUp ? "alternate" : "right"}>
           {TIMELINES.map((value, index) => (
             <TimelineItem
               key={value.title}
               sx={{
-                '&:before': {
-                  ...(!mdUp && { display: 'none' }),
+                "&:before": {
+                  ...(!mdUp && { display: "none" }),
                 },
               }}
             >
@@ -87,7 +88,10 @@ export default function MarketingAboutStory() {
               </TimelineSeparator>
 
               <TimelineContent sx={{ pb: { xs: 3, md: 5 } }}>
-                <Typography variant="overline" sx={{ color: `${COLORS[index]}.main` }}>
+                <Typography
+                  variant="overline"
+                  sx={{ color: `${COLORS[index]}.main` }}
+                >
                   {value.year}
                 </Typography>
 
@@ -98,10 +102,10 @@ export default function MarketingAboutStory() {
                 <Typography
                   variant="body2"
                   sx={{
-                    color: 'text.secondary',
+                    color: "text.secondary",
                     maxWidth: { md: 360 },
                     ...(index % 2 && {
-                      ml: 'auto',
+                      ml: "auto",
                     }),
                   }}
                 >

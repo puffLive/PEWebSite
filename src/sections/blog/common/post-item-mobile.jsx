@@ -1,14 +1,14 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import Link from '@mui/material/Link';
-import Stack from '@mui/material/Stack';
+import Link from "@mui/material/Link";
+import Stack from "@mui/material/Stack";
 
-import { fDate } from 'src/utils/format-time';
+import { fDate } from "../../../../src/utils/format-time";
 
-import Image from 'src/components/image';
-import TextMaxLine from 'src/components/text-max-line';
+import Image from "../../../../src/components/image";
+import TextMaxLine from "../../../../src/components/text-max-line";
 
-import PostTimeBlock from './post-time-block';
+import PostTimeBlock from "./post-time-block";
 
 // ----------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ export default function PostItemMobile({ post, onSiderbar }) {
     <Stack
       spacing={2}
       direction="row"
-      alignItems={{ xs: 'flex-start', md: 'unset' }}
+      alignItems={{ xs: "flex-start", md: "unset" }}
       sx={{ width: 1 }}
     >
       <Image
@@ -33,10 +33,15 @@ export default function PostItemMobile({ post, onSiderbar }) {
 
       <Stack spacing={onSiderbar ? 0.5 : 1}>
         <Link color="inherit">
-          <TextMaxLine variant={onSiderbar ? 'subtitle2' : 'h6'}>{post.title}</TextMaxLine>
+          <TextMaxLine variant={onSiderbar ? "subtitle2" : "h6"}>
+            {post.title}
+          </TextMaxLine>
         </Link>
 
-        <PostTimeBlock createdAt={fDate(post.createdAt)} duration={post.duration} />
+        <PostTimeBlock
+          createdAt={fDate(post.createdAt)}
+          duration={post.duration}
+        />
       </Stack>
     </Stack>
   );

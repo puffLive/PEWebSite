@@ -1,13 +1,17 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import { alpha, useTheme } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import { alpha, useTheme } from "@mui/material/styles";
 
-import Image from 'src/components/image';
-import Carousel, { useCarousel, CarouselDots, CarouselArrows } from 'src/components/carousel';
+import Image from "../../../../src/components/image";
+import Carousel, {
+  useCarousel,
+  CarouselDots,
+  CarouselArrows,
+} from "../../../../src/components/carousel";
 
-import MarketingFeaturedPostItem from './marketing-featured-post-item';
+import MarketingFeaturedPostItem from "./marketing-featured-post-item";
 
 // ----------------------------------------------------------------------
 
@@ -29,13 +33,13 @@ export default function MarketingFeaturedPosts({ posts }) {
       sx={{
         py: 10,
         pt: { md: 15 },
-        position: 'relative',
-        '& .slick-list': {
+        position: "relative",
+        "& .slick-list": {
           borderRadius: 2,
         },
       }}
     >
-      <Container sx={{ position: 'relative', zIndex: 9 }}>
+      <Container sx={{ position: "relative", zIndex: 9 }}>
         <CarouselArrows
           onNext={carousel.onNext}
           onPrev={carousel.onPrev}
@@ -44,9 +48,9 @@ export default function MarketingFeaturedPosts({ posts }) {
               mt: -8,
               left: 2,
               opacity: 1,
-              color: 'common.white',
-              bgcolor: 'primary.main',
-              '&:hover': { bgcolor: 'primary.main' },
+              color: "common.white",
+              bgcolor: "primary.main",
+              "&:hover": { bgcolor: "primary.main" },
             },
           }}
           rightButtonProps={{
@@ -54,9 +58,9 @@ export default function MarketingFeaturedPosts({ posts }) {
               mt: -8,
               right: 2,
               opacity: 1,
-              color: 'common.white',
-              bgcolor: 'primary.main',
-              '&:hover': { bgcolor: 'primary.main' },
+              color: "common.white",
+              bgcolor: "primary.main",
+              "&:hover": { bgcolor: "primary.main" },
             },
           }}
         >
@@ -75,10 +79,11 @@ export default function MarketingFeaturedPosts({ posts }) {
               key={post.id}
               alt="post cover"
               src={post.coverUrl}
-              overlay={`linear-gradient(to bottom, ${alpha(theme.palette.common.black, 0)} 0%, ${
-                theme.palette.common.black
-              } 75%)`}
-              sx={{ position: 'absolute', top: 0, width: 1, height: 1 }}
+              overlay={`linear-gradient(to bottom, ${alpha(
+                theme.palette.common.black,
+                0
+              )} 0%, ${theme.palette.common.black} 75%)`}
+              sx={{ position: "absolute", top: 0, width: 1, height: 1 }}
             />
           )
       )}

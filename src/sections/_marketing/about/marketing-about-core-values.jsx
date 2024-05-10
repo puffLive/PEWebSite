@@ -1,31 +1,31 @@
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 
-import SvgColor from 'src/components/svg-color';
+import SvgColor from "../../../../src/components/svg-color";
 
 // ----------------------------------------------------------------------
 
 const CORE_VALUES = [
   {
-    title: 'Customer Satisfaction',
-    description: 'Aenean urna dictum adipiscing nec, cras quisque.',
-    icon: '/assets/icons/ic_agreement.svg',
+    title: "Customer Satisfaction",
+    description: "Aenean urna dictum adipiscing nec, cras quisque.",
+    icon: "/assets/icons/ic_agreement.svg",
   },
   {
-    title: 'Transparency',
-    description: 'Aenean urna dictum adipiscing nec, cras quisque.',
-    icon: '/assets/icons/ic_transparency.svg',
+    title: "Transparency",
+    description: "Aenean urna dictum adipiscing nec, cras quisque.",
+    icon: "/assets/icons/ic_transparency.svg",
   },
   {
-    title: 'Reputation',
-    description: 'Aenean urna dictum adipiscing nec, cras quisque.',
-    icon: '/assets/icons/ic_reputation.svg',
+    title: "Reputation",
+    description: "Aenean urna dictum adipiscing nec, cras quisque.",
+    icon: "/assets/icons/ic_reputation.svg",
   },
   {
-    title: 'Cooperation',
-    description: 'Aenean urna dictum adipiscing nec, cras quisque.',
-    icon: '/assets/icons/ic_popularity.svg',
+    title: "Cooperation",
+    description: "Aenean urna dictum adipiscing nec, cras quisque.",
+    icon: "/assets/icons/ic_popularity.svg",
   },
 ];
 
@@ -35,7 +35,7 @@ export default function MarketingAboutCoreValues() {
   return (
     <Container
       sx={{
-        textAlign: 'center',
+        textAlign: "center",
         pt: { xs: 5, md: 10 },
         pb: { xs: 5, md: 15 },
       }}
@@ -46,12 +46,12 @@ export default function MarketingAboutCoreValues() {
 
       <Box
         sx={{
-          display: 'grid',
+          display: "grid",
           gap: 8,
           gridTemplateColumns: {
-            xs: 'repeat(1, 1fr)',
-            sm: 'repeat(2, 1fr)',
-            md: 'repeat(4, 1fr)',
+            xs: "repeat(1, 1fr)",
+            sm: "repeat(2, 1fr)",
+            md: "repeat(4, 1fr)",
           },
         }}
       >
@@ -62,8 +62,8 @@ export default function MarketingAboutCoreValues() {
               sx={{
                 width: 64,
                 height: 64,
-                mx: 'auto',
-                color: 'primary.main',
+                mx: "auto",
+                color: "primary.main",
               }}
             />
 
@@ -71,7 +71,10 @@ export default function MarketingAboutCoreValues() {
               {value.title}
             </Typography>
 
-            <Typography sx={{ color: 'text.secondary' }}> {value.description} </Typography>
+            <Typography sx={{ color: "text.secondary" }}>
+              {" "}
+              {value.description}{" "}
+            </Typography>
           </Box>
         ))}
       </Box>

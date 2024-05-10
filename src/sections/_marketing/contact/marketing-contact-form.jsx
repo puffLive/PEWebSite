@@ -1,39 +1,46 @@
-import * as Yup from 'yup';
-import { useForm, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from "yup";
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import LoadingButton from '@mui/lab/LoadingButton';
-import FormHelperText from '@mui/material/FormHelperText';
-import ToggleButton, { toggleButtonClasses } from '@mui/material/ToggleButton';
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import LoadingButton from "@mui/lab/LoadingButton";
+import FormHelperText from "@mui/material/FormHelperText";
+import ToggleButton, { toggleButtonClasses } from "@mui/material/ToggleButton";
 
-import { fCurrency } from 'src/utils/format-number';
+import { fCurrency } from "../../../../src/utils/format-number";
 
-import { _tags } from 'src/_mock';
+import { _tags } from "../../../../src/_mock";
 
-import FormProvider, { RHFSlider, RHFTextField } from 'src/components/hook-form';
+import FormProvider, {
+  RHFSlider,
+  RHFTextField,
+} from "../../../../src/components/hook-form";
 
 // ----------------------------------------------------------------------
 
 export default function MarketingContactForm() {
   const MarketingContactSchema = Yup.object().shape({
-    services: Yup.array().required().min(1, 'Services field must have at least 1 items'),
-    email: Yup.string().required('Email is required').email('That is not an email'),
-    compnany: Yup.string().required('Compnany is required'),
-    website: Yup.string().required('Website is required'),
+    services: Yup.array()
+      .required()
+      .min(1, "Services field must have at least 1 items"),
+    email: Yup.string()
+      .required("Email is required")
+      .email("That is not an email"),
+    compnany: Yup.string().required("Compnany is required"),
+    website: Yup.string().required("Website is required"),
   });
 
   const defaultValues = {
     services: [],
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: '',
-    compnany: '',
-    website: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    compnany: "",
+    website: "",
     budget: [2000, 10000],
-    message: '',
+    message: "",
   };
 
   const methods = useForm({
@@ -52,7 +59,7 @@ export default function MarketingContactForm() {
     try {
       await new Promise((resolve) => setTimeout(resolve, 500));
       reset();
-      console.log('DATA', data);
+      console.log("DATA", data);
     } catch (error) {
       console.error(error);
     }
@@ -78,18 +85,22 @@ export default function MarketingContactForm() {
                     key={service}
                     color="standard"
                     selected={field.value.includes(service)}
-                    onChange={() => field.onChange(getSelected(field.value, service))}
+                    onChange={() =>
+                      field.onChange(getSelected(field.value, service))
+                    }
                     sx={{
                       py: 0.5,
                       px: 2,
-                      typography: 'body2',
+                      typography: "body2",
                       [`&.${toggleButtonClasses.selected}`]: {
-                        bgcolor: 'text.primary',
-                        borderColor: 'transparent',
+                        bgcolor: "text.primary",
+                        borderColor: "transparent",
                         color: (theme) =>
-                          theme.palette.mode === 'light' ? 'common.white' : 'grey.800',
-                        '&:hover': {
-                          bgcolor: 'text.primary',
+                          theme.palette.mode === "light"
+                            ? "common.white"
+                            : "grey.800",
+                        "&:hover": {
+                          bgcolor: "text.primary",
                         },
                       },
                     }}
@@ -110,7 +121,7 @@ export default function MarketingContactForm() {
 
         <Stack
           spacing={{ xs: 2.5, md: 2 }}
-          direction={{ xs: 'column', md: 'row' }}
+          direction={{ xs: "column", md: "row" }}
           sx={{ width: 1 }}
         >
           <RHFTextField name="firstName" label="First Name" />
@@ -121,7 +132,7 @@ export default function MarketingContactForm() {
         <RHFTextField name="phoneNumber" label="Phone number" />
 
         <Stack
-          direction={{ xs: 'column', md: 'row' }}
+          direction={{ xs: "column", md: "row" }}
           spacing={{ xs: 2.5, md: 2 }}
           sx={{ width: 1 }}
         >
@@ -131,7 +142,7 @@ export default function MarketingContactForm() {
         </Stack>
 
         <Stack spacing={5} sx={{ py: 2, width: 1 }}>
-          <Typography variant="overline" sx={{ color: 'text.disabled' }}>
+          <Typography variant="overline" sx={{ color: "text.disabled" }}>
             Your Budget
           </Typography>
 

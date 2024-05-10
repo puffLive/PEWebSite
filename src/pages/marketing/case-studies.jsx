@@ -1,6 +1,6 @@
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
-import MarketingCaseStudiesView from 'src/sections/_marketing/view/marketing-case-studies-view';
+import MarketingCaseStudiesView from "../../../src/sections/_marketing/view/marketing-case-studies-view";
 
 // ----------------------------------------------------------------------
 
