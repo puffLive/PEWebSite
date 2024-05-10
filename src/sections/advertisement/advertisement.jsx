@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { alpha, useTheme } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { alpha, useTheme } from "@mui/material/styles";
 
-import Image from 'src/components/image';
+import Image from "../../../src/components/image";
 
 // ----------------------------------------------------------------------
 
@@ -14,7 +14,10 @@ export default function Advertisement({ advertisement, sx, ...other }) {
   const theme = useTheme();
 
   return (
-    <Box sx={{ position: 'relative', borderRadius: 2, overflow: 'hidden', ...sx }} {...other}>
+    <Box
+      sx={{ position: "relative", borderRadius: 2, overflow: "hidden", ...sx }}
+      {...other}
+    >
       <Stack
         alignItems="center"
         sx={{
@@ -22,15 +25,18 @@ export default function Advertisement({ advertisement, sx, ...other }) {
           width: 1,
           bottom: 0,
           zIndex: 9,
-          textAlign: 'center',
-          position: 'absolute',
+          textAlign: "center",
+          position: "absolute",
         }}
       >
-        <Typography variant="h4" sx={{ color: 'primary.main' }}>
+        <Typography variant="h4" sx={{ color: "primary.main" }}>
           {advertisement.title}
         </Typography>
 
-        <Typography variant="body2" sx={{ mt: 1, mb: 3, color: 'common.white' }}>
+        <Typography
+          variant="body2"
+          sx={{ mt: 1, mb: 3, color: "common.white" }}
+        >
           {advertisement.description}
         </Typography>
 
@@ -43,9 +49,10 @@ export default function Advertisement({ advertisement, sx, ...other }) {
         alt="advertisement"
         src={advertisement.imageUrl}
         ratio="1/1"
-        overlay={`linear-gradient(to bottom, ${alpha(theme.palette.common.black, 0)} 0%, ${
-          theme.palette.common.black
-        } 100%)`}
+        overlay={`linear-gradient(to bottom, ${alpha(
+          theme.palette.common.black,
+          0
+        )} 0%, ${theme.palette.common.black} 100%)`}
       />
     </Box>
   );

@@ -1,11 +1,11 @@
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import { alpha } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import { alpha } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
 
-import { _socials } from 'src/_mock';
+import { _socials } from "../../../../src/_mock";
 
-import Iconify from 'src/components/iconify';
+import Iconify from "../../../../src/components/iconify";
 
 // ----------------------------------------------------------------------
 
@@ -28,7 +28,7 @@ export default function PostSocialsShare() {
               flexShrink: 0,
               color: social.color,
               borderColor: social.color,
-              '&:hover': {
+              "&:hover": {
                 borderColor: social.color,
                 bgcolor: alpha(social.color, 0.08),
               },

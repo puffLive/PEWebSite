@@ -1,15 +1,15 @@
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
 
-import { useResponsive } from 'src/hooks/use-responsive';
+import { useResponsive } from "../../../../src/hooks/use-responsive";
 
-import Iconify from 'src/components/iconify';
+import Iconify from "../../../../src/components/iconify";
 
 // ----------------------------------------------------------------------
 
 export default function PostSearchMobile() {
-  const mdDown = useResponsive('down', 'md');
+  const mdDown = useResponsive("down", "md");
 
   return (
     <>
@@ -22,7 +22,11 @@ export default function PostSearchMobile() {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <Iconify icon="carbon:search" width={24} sx={{ color: 'text.disabled' }} />
+                  <Iconify
+                    icon="carbon:search"
+                    width={24}
+                    sx={{ color: "text.disabled" }}
+                  />
                 </InputAdornment>
               ),
             }}
