@@ -34,7 +34,7 @@ function Logo({ single = false, sx }) {
         }}
       >
         <img
-          src="assets/logo/PE/PE-LOGO-64.png"
+          src="/assets/logo/PE/PE-LOGO-64.png"
           alt="Principle Evolution logo"
         />
       </Box>

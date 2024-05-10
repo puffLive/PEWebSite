@@ -1,16 +1,19 @@
-import { useEffect } from 'react';
-import { m } from 'framer-motion';
-import PropTypes from 'prop-types';
+import { useEffect } from "react";
+import { m } from "framer-motion";
+import PropTypes from "prop-types";
 
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import { useTheme } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import { useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
 
-import Image from 'src/components/image';
-import { varHover, varTranHover } from 'src/components/animate';
-import Lightbox, { useLightbox } from 'src/components/lightbox';
-import Carousel, { useCarousel, CarouselArrows } from 'src/components/carousel';
+import Image from "../../../../src/components/image";
+import { varHover, varTranHover } from "../../../../src/components/animate";
+import Lightbox, { useLightbox } from "../../../../src/components/lightbox";
+import Carousel, {
+  useCarousel,
+  CarouselArrows,
+} from "../../../../src/components/carousel";
 
 // ----------------------------------------------------------------------
 
@@ -47,9 +50,17 @@ export default function MarketingCaseStudyDetailsGallery({ images }) {
 
   return (
     <>
-      <Stack direction="row" justifyContent="space-between" sx={{ mt: 3, mb: 5 }}>
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        sx={{ mt: 3, mb: 5 }}
+      >
         <Typography variant="h4">Gallery</Typography>
-        <CarouselArrows spacing={2} onNext={carousel.onNext} onPrev={carousel.onPrev} />
+        <CarouselArrows
+          spacing={2}
+          onNext={carousel.onNext}
+          onPrev={carousel.onPrev}
+        />
       </Stack>
 
       <Carousel ref={carousel.carouselRef} {...carousel.carouselSettings}>
@@ -61,7 +72,9 @@ export default function MarketingCaseStudyDetailsGallery({ images }) {
             sx={{ px: 1 }}
             onClick={() => lightbox.onOpen(slide.src)}
           >
-            <Box sx={{ borderRadius: 2, overflow: 'hidden', cursor: 'pointer' }}>
+            <Box
+              sx={{ borderRadius: 2, overflow: "hidden", cursor: "pointer" }}
+            >
               <m.div variants={varHover(1.25)} transition={varTranHover()}>
                 <Image alt={slide.src} src={slide.src} ratio="4/3" />
               </m.div>

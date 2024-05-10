@@ -10,3 +10,19 @@ export async function getEvents() {
 
   return data;
 }
+
+export async function getEvent(id) {
+  const { data, error } = await supabase
+    .from("events")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    console.log("getEvent error");
+    console.error(error);
+    throw new Error("Event not found");
+  }
+
+  return data;
+}

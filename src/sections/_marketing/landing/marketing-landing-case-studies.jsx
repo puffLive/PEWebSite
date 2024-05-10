@@ -26,10 +26,6 @@ import { varHover, varTranHover } from "../../../../src/components/animate";
 export default function MarketingLandingCaseStudies({ events, socials }) {
   const mdUp = useResponsive("up", "md");
 
-  console.log("mdUp: ", mdUp);
-  console.log("Events ", events);
-  console.log("Socials", socials);
-
   return (
     <Container
       sx={{
@@ -175,7 +171,7 @@ function LargeItem({ caseStudy }) {
 
         <Button
           component={RouterLink}
-          href={paths.marketing.caseStudy}
+          href={paths.marketing.caseStudy + `?eventId=${caseStudy.id}`}
           size="small"
           color="inherit"
           endIcon={<Iconify icon="carbon:chevron-right" />}
@@ -202,9 +198,6 @@ function SmallItem({ caseStudy, square }) {
   const theme = useTheme();
 
   const mdUp = useResponsive("up", "md");
-
-  console.log("Path Casestudy: ", paths.marketing.caseStudy);
-  console.log("Path Casestudy: ", caseStudy.website);
 
   return (
     <Link component={RouterLink} href={caseStudy.website} target="_blank">
