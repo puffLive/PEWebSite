@@ -22,8 +22,6 @@ import { SplashScreen } from "../../../components/loading-screen";
 
 const _mockCaseStudy = _caseStudies[0];
 
-// console.log("Case Study: ", _mockCaseStudy);
-
 export default function MarketingCaseStudyView() {
   const { isLoading, event } = useEvent();
 
