@@ -50,7 +50,7 @@ export default function MarketingTeamItem({ member, ...other }) {
 
   const name = firstName + ` ` + lastName;
 
-  const role = founder ? "Frounder" : "Member";
+  const role = founder ? "Founder" : "Member";
 
   return (
     <Stack {...other}>

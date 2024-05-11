@@ -36,7 +36,7 @@ export default function MarketingCaseStudyDetailsSummary({ event }) {
 
       <Stack spacing={1}>
         <Typography variant="overline" sx={{ color: "text.disabled" }}>
-          Registar
+          Register
         </Typography>
 
         <Link variant="body2" color="inherit" href={website} target="_blank">
