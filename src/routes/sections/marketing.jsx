@@ -1,7 +1,8 @@
 import { lazy } from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 import MainLayout from "../../../src/layouts/main";
+import NotFoundPage from "../../pages/404";
 
 // // ----------------------------------------------------------------------
 
@@ -30,7 +31,14 @@ export const marketingRoutes = [
             <Outlet />
           </MainLayout>
         ),
-        children: [{ path: "case-study", element: <CaseStudyPage /> }],
+        children: [
+          { path: "case-study", element: <CaseStudyPage /> },
+          {
+            path: "404",
+            element: <NotFoundPage />,
+          },
+          { path: "*", element: <Navigate to="/404" replace /> },
+        ],
       },
     ],
   },
