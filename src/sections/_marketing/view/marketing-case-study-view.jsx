@@ -17,15 +17,17 @@ import MarketingCaseStudyDetailsGallery from "../details/marketing-case-study-de
 import MarketingCaseStudyDetailsSummary from "../details/marketing-case-study-details-summary";
 import { useEvent } from "../../../Events/useEvent";
 import { SplashScreen } from "../../../components/loading-screen";
+import NotFoundPage from "../../../pages/404";
 
 // ----------------------------------------------------------------------
 
-const _mockCaseStudy = _caseStudies[0];
+// const _mockCaseStudy = _caseStudies[0];
 
 export default function MarketingCaseStudyView() {
-  const { isLoading, event } = useEvent();
+  const { isLoading, event, error } = useEvent();
 
   if (isLoading) return <SplashScreen />;
+  if (error) return <NotFoundPage />;
 
   const gallaryImgs = event.galleryImgs.split(",");
 
