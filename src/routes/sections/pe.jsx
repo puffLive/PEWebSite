@@ -13,7 +13,7 @@ const CaseStudyPage = lazy(() => import("../../pages/pe/case-study"));
 
 export const Routes = [
   {
-    path: "marketing",
+    path: "/",
     children: [
       {
         element: (

@@ -110,7 +110,7 @@ export default function LandingCaseStudies({ events, socials }) {
       {/* <Stack alignItems={{ xs: "center", md: "flex-end" }}>
         <Button
           component={RouterLink}
-          href={paths.marketing.caseStudies}
+          href={paths.pe.pe.caseStudies}
           size="large"
           color="inherit"
           endIcon={<Iconify icon="carbon:chevron-right" />}
@@ -171,7 +171,7 @@ function LargeItem({ caseStudy }) {
 
         <Button
           component={RouterLink}
-          href={paths.marketing.caseStudy + `?eventId=${caseStudy.id}`}
+          href={paths.pe.caseStudy + `?eventId=${caseStudy.id}`}
           size="small"
           color="inherit"
           endIcon={<Iconify icon="carbon:chevron-right" />}
@@ -203,7 +203,7 @@ function SmallItem({ caseStudy, square }) {
 
   if (caseStudy.hasOwnProperty("eventDate")) {
     targetValue = "";
-    url = paths.marketing.caseStudy + `?eventId=${caseStudy.id}`;
+    url = paths.pe.caseStudy + `?eventId=${caseStudy.id}`;
   } else {
     targetValue = "_blank";
     url = caseStudy.website;
