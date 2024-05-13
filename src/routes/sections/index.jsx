@@ -5,7 +5,7 @@ import MainLayout from "../../../src/layouts/main";
 
 import { SplashScreen } from "../../../src/components/loading-screen";
 
-import { marketingRoutes } from "./marketing";
+import { Routes } from "./pe";
 import NotFoundPage from "../../pages/404";
 
 // ----------------------------------------------------------------------
@@ -32,7 +32,8 @@ export default function Router() {
           ),
           index: true,
         },
-        ...marketingRoutes,
+        ...Routes,
+
         {
           path: "404",
           element: <NotFoundPage />,
