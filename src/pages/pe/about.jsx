@@ -1,17 +1,17 @@
 import { Helmet } from "react-helmet-async";
 
-import LandingView from "../sections/_pe/view/landing-view";
+import AboutView from "../../sections/_marketing/view/about-view";
 
 // ----------------------------------------------------------------------
 
-export default function LandingPage() {
+export default function AboutPage() {
   return (
     <>
       <Helmet>
-        <title> Principle Evolution: Let&apos;s Grow!</title>
+        <title>About us</title>
       </Helmet>
 
-      <LandingView />
+      <AboutView />
     </>
   );
 }
