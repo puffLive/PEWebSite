@@ -171,7 +171,7 @@ function LargeItem({ caseStudy }) {
 
         <Button
           component={RouterLink}
-          href={paths.pe.caseStudy + `?eventId=${caseStudy.id}`}
+          to={`/case-study?eventId=${caseStudy.id}`}
           size="small"
           color="inherit"
           endIcon={<Iconify icon="carbon:chevron-right" />}
@@ -203,14 +203,14 @@ function SmallItem({ caseStudy, square }) {
 
   if (caseStudy.hasOwnProperty("eventDate")) {
     targetValue = "";
-    url = paths.pe.caseStudy + `?eventId=${caseStudy.id}`;
+    url = `/case-study?eventId=${caseStudy.id}`;
   } else {
     targetValue = "_blank";
     url = caseStudy.website;
   }
 
   return (
-    <Link component={RouterLink} href={url} target={targetValue}>
+    <Link component={RouterLink} to={url} target={targetValue}>
       <Paper
         component={m.div}
         whileHover="hover"
