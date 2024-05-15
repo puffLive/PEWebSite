@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 
 import LandingView from "../sections/_pe/view/landing-view";
+import { Outlet } from "react-router";
 
 // ----------------------------------------------------------------------
 
@@ -12,6 +13,7 @@ export default function LandingPage() {
       </Helmet>
 
       <LandingView />
+      {/* <Outlet /> */}
     </>
   );
 }

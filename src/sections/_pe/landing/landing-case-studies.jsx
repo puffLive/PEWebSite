@@ -10,6 +10,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { alpha, useTheme } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
 import { paths } from "../../../routes/paths";
 import { RouterLink } from "../../../routes/components";
@@ -129,6 +130,7 @@ LandingCaseStudies.propTypes = {
 // ----------------------------------------------------------------------
 
 function LargeItem({ caseStudy }) {
+  const navigate = useNavigate();
   return (
     <Paper
       sx={{
@@ -171,7 +173,9 @@ function LargeItem({ caseStudy }) {
 
         <Button
           component={RouterLink}
-          to={`/case-study?eventId=${caseStudy.id}`}
+          // onClick={() => navigate(`/events/:${caseStudy.id}`)}
+          // href={() => navigate(`/events/:${caseStudy.id}`)}
+          to={`/events/${caseStudy.id}`}
           size="small"
           color="inherit"
           endIcon={<Iconify icon="carbon:chevron-right" />}
@@ -195,6 +199,7 @@ LargeItem.propTypes = {
 // ----------------------------------------------------------------------
 
 function SmallItem({ caseStudy, square }) {
+  const navigate = useNavigate();
   const theme = useTheme();
 
   const mdUp = useResponsive("up", "md");
