@@ -208,7 +208,7 @@ function SmallItem({ caseStudy, square }) {
 
   if (caseStudy.hasOwnProperty("eventDate")) {
     targetValue = "";
-    url = `/case-study?eventId=${caseStudy.id}`;
+    url = `/events/${caseStudy.id}`;
   } else {
     targetValue = "_blank";
     url = caseStudy.website;
