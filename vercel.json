@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/events/(.*)",
-      "destination": "https://principleevolution.com/events/.*"
+      "source": "/(.*)",
+      "destination": "/"
     }
   ]
 }
