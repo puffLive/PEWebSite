@@ -7,7 +7,7 @@ import NotFoundPage from "../../pages/404";
 // // ----------------------------------------------------------------------
 
 const LandingPage = lazy(() => import("../../pages/pe/landing"));
-const CaseStudyPage = lazy(() => import("../../pages/pe/case-study"));
+const CaseStudyPage = lazy(() => import("../../pages/pe/event"));
 
 // ----------------------------------------------------------------------
 

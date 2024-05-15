@@ -1,11 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { getEvent } from "../services/apiEvents";
-import { useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export function useEvent() {
-  const [searchParams] = useSearchParams();
-
-  const eventId = searchParams.get("eventId");
+  const { eventId } = useParams();
 
   const {
     isLoading,

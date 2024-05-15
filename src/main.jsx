@@ -1,19 +1,25 @@
+import React from "react";
 import { Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { ErrorBoundary } from "react-error-boundary";
+import NotFoundPage from "./pages/404.jsx";
 
 import App from "./App.jsx";
-// import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <HelmetProvider>
-    <BrowserRouter>
-      <Suspense>
-        <App />
-      </Suspense>
-    </BrowserRouter>
-  </HelmetProvider>
+  <React.StrictMode>
+    <ErrorBoundary
+      FallbackComponent={NotFoundPage}
+      onReset={() => window.location.replace("/")}
+    >
+      <HelmetProvider>
+        <Suspense>
+          <App />
+        </Suspense>
+      </HelmetProvider>
+    </ErrorBoundary>
+  </React.StrictMode>
 );
