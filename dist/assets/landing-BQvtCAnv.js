@@ -1,1 +1,0 @@
-import{j as i,H as r}from"./index-CIKix-VC.js";import{L as t}from"./landing-view-NrxD3QmE.js";import"./apiEvents-Bjd8xSx6.js";import"./TextField-DTRPdCi9.js";import"./AccordionDetails-Bq7Kj8Yg.js";function a(){return i.jsxs(i.Fragment,{children:[i.jsx(r,{children:i.jsx("title",{children:" Principle Evolution: Let's Grow!"})}),i.jsx(t,{})]})}export{a as default};
