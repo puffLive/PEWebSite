@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/events/(.*)",
-      "destination": "https://principleevolution.com/events/.*"
+      "destination": "https://principleevolution.com/events/(.*)"
     }
   ]
 }
