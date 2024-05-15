@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/events/.*",
+      "source": "/events/(.*)",
       "destination": "https://principleevolution.com/events/"
     }
   ]
