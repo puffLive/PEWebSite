@@ -51,13 +51,13 @@ export default function Header({ headerOnDark }) {
             display: { xs: "none", md: "flex" },
           }}
         >
-          {/* <NavDesktop data={navConfig} /> */}
+          <NavDesktop data={navConfig} />
         </Stack>
 
         <Box sx={{ flexGrow: { xs: 1, md: "unset" } }} />
       </>
 
-      {/* {!mdUp && <NavMobile data={navConfig} />} */}
+      {!mdUp && <NavMobile data={navConfig} />}
     </>
   );
 

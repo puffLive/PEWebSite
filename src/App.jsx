@@ -64,6 +64,8 @@ export default function App() {
               <Routes>
                 <Route path="/" element={<MainLayout />}>
                   <Route index element={<LandingPage />} />
+                  {/* <Link to={{ pathname: "/intro", hash: "#intro" }}>Vitawind Introduction</Link> */}
+
                   <Route path="events" element={<EventsPage />} />
                   <Route path="events/:eventId" element={<EventPage />} />
                   <Route

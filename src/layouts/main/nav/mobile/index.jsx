@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import PropTypes from "prop-types";
 
+import { HashLink } from "react-router-hash-link";
+
 import List from "@mui/material/List";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
@@ -54,20 +56,26 @@ export default function NavMobile({ data }) {
 
           <List component="nav" disablePadding>
             {data.map((list) => (
-              <NavList key={list.title} data={list} />
+              <NavList
+                key={list.title}
+                data={list}
+                onClick={mobileOpen.onFalse}
+              />
             ))}
           </List>
 
           <Stack spacing={1.5} sx={{ p: 3 }}>
             <Button
+              component={HashLink}
               fullWidth
               variant="contained"
               color="inherit"
-              href={paths.zoneStore}
-              target="_blank"
+              to="#join"
               rel="noopener"
+              onClick={mobileOpen.onFalse}
+              smooth
             >
-              Buy Now
+              Join Community
             </Button>
           </Stack>
         </Scrollbar>

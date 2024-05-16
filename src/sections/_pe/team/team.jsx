@@ -70,6 +70,7 @@ export default function MarketingTeam({ members }) {
         position: "relative",
         py: { xs: 10, md: 20 },
       }}
+      id="team"
     >
       <Container
         sx={{

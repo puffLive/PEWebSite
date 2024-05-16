@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import Stack from '@mui/material/Stack';
+import Stack from "@mui/material/Stack";
 
-import NavList from './nav-list';
+import NavList from "./nav-list";
 
 // ----------------------------------------------------------------------
 

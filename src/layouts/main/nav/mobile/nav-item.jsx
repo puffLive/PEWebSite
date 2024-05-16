@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import { forwardRef } from "react";
 
+import { HashLink } from "react-router-hash-link";
+
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import { alpha, styled } from "@mui/material/styles";
@@ -9,11 +11,16 @@ import ListItemButton from "@mui/material/ListItemButton";
 import { RouterLink } from "../../../../../src/routes/components";
 
 import Iconify from "../../../../../src/components/iconify";
+import { useBoolean } from "../../../../hooks/use-boolean";
 
 // ----------------------------------------------------------------------
 
 const NavItem = forwardRef(
-  ({ title, path, open, active, hasChild, externalLink, ...other }, ref) => {
+  (
+    { title, path, open, active, hasChild, externalLink, onClick, ...other },
+    ref
+  ) => {
+    const mobileOpen = useBoolean;
     const renderContent = (
       <StyledNavItem ref={ref} active={active} {...other}>
         <Box component="span" sx={{ flexGrow: 1 }}>
@@ -37,6 +44,22 @@ const NavItem = forwardRef(
     if (externalLink) {
       return (
         <Link href={path} target="_blank" rel="noopener" underline="none">
+          {renderContent}
+        </Link>
+      );
+    }
+
+    if (path.includes("#")) {
+      console.log(`mobileOpen: `, mobileOpen);
+      return (
+        <Link
+          component={HashLink}
+          to={path}
+          // href={path}
+          underline="none"
+          onClick={onClick}
+          smooth
+        >
           {renderContent}
         </Link>
       );

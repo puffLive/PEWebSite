@@ -7,6 +7,8 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { alpha, useTheme } from "@mui/material/styles";
 
+import { HashLink } from "react-router-hash-link";
+
 import { useResponsive } from "../../../hooks/use-responsive";
 
 import { bgGradient } from "../../../theme/css";
@@ -71,10 +73,12 @@ export default function LandingHero() {
               }}
             >
               <Button
+                component={HashLink}
                 variant="contained"
                 color="inherit"
                 size="large"
-                href="#join"
+                to="#join"
+                smooth
               >
                 Join the community
               </Button>

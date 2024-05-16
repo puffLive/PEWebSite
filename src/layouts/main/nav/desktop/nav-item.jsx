@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import { forwardRef } from "react";
 
+import { HashLink } from "react-router-hash-link";
+
 import Link from "@mui/material/Link";
 import { styled } from "@mui/material/styles";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -8,6 +10,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import { RouterLink } from "../../../../../src/routes/components";
 
 import Iconify from "../../../../../src/components/iconify";
+import { useNavigate } from "react-router";
 
 // ----------------------------------------------------------------------
 
@@ -16,6 +19,8 @@ const NavItem = forwardRef(
     { title, path, open, active, subItem, hasChild, externalLink, ...other },
     ref
   ) => {
+    const navigate = useNavigate();
+
     const renderContent = (
       <StyledNavItem
         disableRipple
@@ -47,6 +52,14 @@ const NavItem = forwardRef(
           color="inherit"
           underline="none"
         >
+          {renderContent}
+        </Link>
+      );
+    }
+
+    if (path.includes("#")) {
+      return (
+        <Link component={HashLink} to={path} color="inherit" underline="none">
           {renderContent}
         </Link>
       );
