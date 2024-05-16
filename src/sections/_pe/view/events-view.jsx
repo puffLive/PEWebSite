@@ -32,8 +32,8 @@ export default function EventsView() {
           <Typography variant="h2">Events</Typography>
 
           <Typography sx={{ color: "text.secondary" }}>
-            Nullam tincidunt adipiscing enim.
-            <br /> Mauris sollicitudin fermentum libero.
+            These are the times we get to connect and start
+            <br /> building real relationships. See you soon.
           </Typography>
         </Stack>
 
