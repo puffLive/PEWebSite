@@ -109,7 +109,7 @@ export default function LandingCaseStudies({ events, socials }) {
         )}
       </Grid>
 
-      {/* <Stack alignItems={{ xs: "center", md: "flex-end" }}>
+      <Stack alignItems={{ xs: "center", md: "flex-end" }}>
         <Button
           component={RouterLink}
           to={`/events`}
@@ -119,7 +119,7 @@ export default function LandingCaseStudies({ events, socials }) {
         >
           View all
         </Button>
-      </Stack> */}
+      </Stack>
     </Container>
   );
 }
@@ -174,8 +174,6 @@ function LargeItem({ caseStudy }) {
 
         <Button
           component={RouterLink}
-          // onClick={() => navigate(`/events/:${caseStudy.id}`)}
-          // href={() => navigate(`/events/:${caseStudy.id}`)}
           to={`/events/${caseStudy.id}`}
           size="small"
           color="inherit"

@@ -50,7 +50,6 @@ const NavItem = forwardRef(
     }
 
     if (path.includes("#")) {
-      console.log(`mobileOpen: `, mobileOpen);
       return (
         <Link
           component={HashLink}
