@@ -59,7 +59,13 @@ const NavItem = forwardRef(
 
     if (path.includes("#")) {
       return (
-        <Link component={HashLink} to={path} color="inherit" underline="none">
+        <Link
+          component={HashLink}
+          to={path}
+          color="inherit"
+          underline="none"
+          smooth
+        >
           {renderContent}
         </Link>
       );
