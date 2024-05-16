@@ -34,6 +34,7 @@ export default function LandingCaseStudies({ events, socials }) {
         pt: { xs: 5, md: 10 },
         pb: 10,
       }}
+      id="connect"
     >
       <Stack
         spacing={3}
@@ -111,7 +112,7 @@ export default function LandingCaseStudies({ events, socials }) {
       {/* <Stack alignItems={{ xs: "center", md: "flex-end" }}>
         <Button
           component={RouterLink}
-          href={paths.pe.pe.caseStudies}
+          to={`/events`}
           size="large"
           color="inherit"
           endIcon={<Iconify icon="carbon:chevron-right" />}

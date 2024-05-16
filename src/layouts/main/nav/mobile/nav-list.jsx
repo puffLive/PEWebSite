@@ -12,7 +12,7 @@ import NavItem from "./nav-item";
 
 // ----------------------------------------------------------------------
 
-export default function NavList({ data }) {
+export default function NavList({ data, onClick }) {
   const active = useActiveLink(data.path, !!data.children);
 
   const menuOpen = useBoolean();
@@ -21,7 +21,8 @@ export default function NavList({ data }) {
     <>
       <NavItem
         open={menuOpen.value}
-        onClick={menuOpen.onToggle}
+        // onClick={menuOpen.onToggle}
+        onClick={onClick}
         //
         title={data.title}
         path={data.path}
