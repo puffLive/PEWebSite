@@ -10,22 +10,22 @@ import EventItem from "./event-item";
 
 // ----------------------------------------------------------------------
 
-export default function EventList({ events }) {
-  const [tab, setTab] = useState("All");
+export default function EventsList({ events }) {
+  // const [tab, setTab] = useState("All");
 
-  const getCategories = events.map((project) => project.category);
+  // const getCategories = events.map((project) => project.category);
 
-  const categories = ["All", ...Array.from(new Set(getCategories))];
+  // const categories = ["All", ...Array.from(new Set(getCategories))];
 
-  const filtered = applyFilter(events, tab);
+  // const filtered = applyFilter(events, tab);
 
-  const handleChangeTab = useCallback((event, newValue) => {
-    setTab(newValue);
-  }, []);
+  // const handleChangeTab = useCallback((event, newValue) => {
+  //   setTab(newValue);
+  // }, []);
 
   return (
     <>
-      <Tabs
+      {/* <Tabs
         value={tab}
         scrollButtons="auto"
         variant="scrollable"
@@ -35,7 +35,7 @@ export default function EventList({ events }) {
         {categories.map((category) => (
           <Tab key={category} value={category} label={category} />
         ))}
-      </Tabs>
+      </Tabs> */}
 
       <Box
         sx={{
@@ -50,12 +50,15 @@ export default function EventList({ events }) {
           },
         }}
       >
-        {filtered.map((project) => (
-          <CaseStudyItem key={project.id} project={project} />
+        {/* {filtered.map((event) => (
+          <EventItem key={event.id} event={event} />
+        ))} */}
+        {events.map((event) => (
+          <EventItem key={event.id} event={event} />
         ))}
       </Box>
 
-      <Pagination
+      {/* <Pagination
         count={10}
         color="primary"
         sx={{
@@ -64,12 +67,12 @@ export default function EventList({ events }) {
             justifyContent: "center",
           },
         }}
-      />
+      /> */}
     </>
   );
 }
 
-EventList.propTypes = {
+EventsList.propTypes = {
   caseStudies: PropTypes.array,
 };
 

@@ -12,8 +12,8 @@ import TextMaxLine from "../../../components/text-max-line";
 
 // ----------------------------------------------------------------------
 
-export default function CaseStudyItem({ project }) {
-  const { title, coverUrl, category } = project;
+export default function CaseStudyItem({ event }) {
+  const { title, coverUrl, category } = event;
 
   return (
     <div>
@@ -24,11 +24,7 @@ export default function CaseStudyItem({ project }) {
           {category}
         </Typography>
 
-        <Link
-          component={RouterLink}
-          href={paths.marketing.caseStudy}
-          color="inherit"
-        >
+        <Link component={RouterLink} to={`/events/${event.id}`} color="inherit">
           <TextMaxLine variant="h5" line={1}>
             {title}
           </TextMaxLine>
@@ -39,7 +35,7 @@ export default function CaseStudyItem({ project }) {
 }
 
 CaseStudyItem.propTypes = {
-  project: PropTypes.shape({
+  event: PropTypes.shape({
     category: PropTypes.string,
     coverUrl: PropTypes.string,
     title: PropTypes.string,
