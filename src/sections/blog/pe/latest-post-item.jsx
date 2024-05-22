@@ -18,7 +18,7 @@ import PostTimeBlock from "../common/post-time-block";
 
 // ----------------------------------------------------------------------
 
-export default function MarketingLatestPostItem({ post }) {
+export default function LatestPostItem({ post }) {
   const theme = useTheme();
 
   return (
@@ -64,7 +64,7 @@ export default function MarketingLatestPostItem({ post }) {
 
           <Link
             component={RouterLink}
-            href={paths.marketing.post}
+            to={`/blog/${post.id}`}
             variant="h4"
             color="inherit"
             underline="none"
@@ -82,12 +82,12 @@ export default function MarketingLatestPostItem({ post }) {
   );
 }
 
-MarketingLatestPostItem.propTypes = {
+LatestPostItem.propTypes = {
   post: PropTypes.shape({
     title: PropTypes.string,
     coverUrl: PropTypes.string,
     duration: PropTypes.string,
-    createdAt: PropTypes.instanceOf(Date),
+    createdAt: PropTypes.string,
     author: PropTypes.shape({
       avatarUrl: PropTypes.string,
       name: PropTypes.string,

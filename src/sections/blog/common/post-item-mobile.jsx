@@ -10,6 +10,8 @@ import TextMaxLine from "../../../../src/components/text-max-line";
 
 import PostTimeBlock from "./post-time-block";
 
+import { RouterLink } from "../../../routes/components";
+
 // ----------------------------------------------------------------------
 
 export default function PostItemMobile({ post, onSiderbar }) {
@@ -32,7 +34,7 @@ export default function PostItemMobile({ post, onSiderbar }) {
       />
 
       <Stack spacing={onSiderbar ? 0.5 : 1}>
-        <Link color="inherit">
+        <Link color="inherit" component={RouterLink} to={`${post.id}`}>
           <TextMaxLine variant={onSiderbar ? "subtitle2" : "h6"}>
             {post.title}
           </TextMaxLine>
@@ -53,6 +55,6 @@ PostItemMobile.propTypes = {
     title: PropTypes.string,
     coverUrl: PropTypes.string,
     duration: PropTypes.string,
-    createdAt: PropTypes.instanceOf(Date),
+    createdAt: PropTypes.string,
   }),
 };

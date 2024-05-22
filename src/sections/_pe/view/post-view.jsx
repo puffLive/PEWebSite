@@ -24,27 +24,33 @@ import CustomBreadcrumbs from "../../../components/custom-breadcrumbs";
 
 import PostTags from "../../blog/common/post-tags";
 import PostAuthor from "../../blog/common/post-author";
-import MarketingNewsletter from "../newsletter";
+import Newsletter from "../newsletter";
 import PostSocialsShare from "../../blog/common/post-socials-share";
-import MarketingLandingFreeSEO from "../landing/landing-free-seo";
-import BlogMarketingLatestPosts from "../../blog/marketing/marketing-latest-posts";
+import LandingFreeSEO from "../landing/landing-free-seo";
+import BlogLatestPosts from "../../blog/pe/latest-posts";
+import { useBlogPost } from "../../../Blog/useBlogPost";
+import { useBlogPosts } from "../../../Blog/useBlogPosts";
+import { SplashScreen } from "../../../components/loading-screen";
 
 // ----------------------------------------------------------------------
 
-export default function MarketingPostView() {
-  const {
-    title,
-    description,
-    duration,
-    createdAt,
-    author,
-    favorited,
-    heroUrl,
-    tags,
-    content,
-  } = _marketingPosts[0];
+export default function PostView() {
+  const { isLoading: blogIsLoading, blogPost } = useBlogPost();
+  const { isLoading: blogsIsLoading, blogPosts } = useBlogPosts();
 
-  const [favorite, setFavorite] = useState(favorited);
+  // const {
+  //   title,
+  //   description,
+  //   duration,
+  //   createdAt,
+  //   author,
+  //   favorited,
+  //   heroUrl,
+  //   tags,
+  //   content,
+  // } = _marketingPosts[0];
+
+  const [favorite, setFavorite] = useState(false);
 
   const [open, setOpen] = useState(null);
 
@@ -60,6 +66,23 @@ export default function MarketingPostView() {
     setFavorite(event.target.checked);
   }, []);
 
+  if (blogIsLoading || blogsIsLoading) return <SplashScreen />;
+
+  console.log(`Posts - Post-view: `, blogPost);
+
+  const {
+    title,
+    description,
+    duration,
+    createdAt,
+    author,
+    favorited,
+    heroUrl,
+    content,
+  } = blogPost;
+
+  const tags = blogPost.tags.split(",");
+
   return (
     <>
       <Image alt="hero" src={heroUrl} ratio="21/9" />
@@ -69,7 +92,7 @@ export default function MarketingPostView() {
           sx={{ my: 3 }}
           links={[
             { name: "Home", href: "/" },
-            { name: "Blog", href: paths.marketing.posts },
+            { name: "Blog", href: paths.pe.posts },
             { name: title },
           ]}
         />
@@ -149,11 +172,11 @@ export default function MarketingPostView() {
 
       <Divider />
 
-      <BlogMarketingLatestPosts posts={_marketingPosts.slice(0, 4)} />
+      <BlogLatestPosts posts={blogPosts} />
 
-      <MarketingLandingFreeSEO />
+      <LandingFreeSEO />
 
-      <MarketingNewsletter />
+      <Newsletter />
 
       <Popover
         open={!!open}

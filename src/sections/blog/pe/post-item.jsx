@@ -16,11 +16,16 @@ import TextMaxLine from "../../../components/text-max-line";
 import { varHover, varTranHover } from "../../../components/animate";
 
 import PostTimeBlock from "../common/post-time-block";
+import { useLocation } from "react-router";
 
 // ----------------------------------------------------------------------
 
 export default function PostItem({ post }) {
   const theme = useTheme();
+
+  const { pathname } = useLocation();
+
+  console.log(`Pathname - PostItem: `, pathname);
 
   return (
     <Stack
@@ -61,7 +66,8 @@ export default function PostItem({ post }) {
 
           <Link
             component={RouterLink}
-            href={paths.marketing.post}
+            // to={`blog/${post.id}`}
+            to={pathname === "/blog" ? `${post.id}` : `blog/${post.id}`}
             sx={{ color: "common.white" }}
           >
             <TextMaxLine variant="h4">{post.title}</TextMaxLine>
@@ -82,7 +88,7 @@ PostItem.propTypes = {
     title: PropTypes.string,
     coverUrl: PropTypes.string,
     duration: PropTypes.string,
-    createdAt: PropTypes.instanceOf(Date),
+    createdAt: PropTypes.string,
     author: PropTypes.shape({
       avatarUrl: PropTypes.string,
       name: PropTypes.string,

@@ -3,7 +3,7 @@ import { format, getTime, formatDistanceToNow } from "date-fns";
 // ----------------------------------------------------------------------
 
 export function fDate(date, newFormat) {
-  const fm = newFormat || "MMMM do, yyyy";
+  const fm = newFormat || "MMMM dd, yyyy";
 
   return date ? format(new Date(date), fm) : "";
 }

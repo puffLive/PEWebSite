@@ -11,11 +11,11 @@ import Carousel, {
   CarouselArrows,
 } from "../../../components/carousel";
 
-import MarketingFeaturedPostItem from "./marketing-featured-post-item";
+import FeaturedPostItem from "./featured-post-item";
 
 // ----------------------------------------------------------------------
 
-export default function MarketingFeaturedPosts({ posts }) {
+export default function FeaturedPosts({ posts }) {
   const theme = useTheme();
 
   const carousel = useCarousel({
@@ -66,7 +66,7 @@ export default function MarketingFeaturedPosts({ posts }) {
         >
           <Carousel ref={carousel.carouselRef} {...carousel.carouselSettings}>
             {posts.map((post) => (
-              <MarketingFeaturedPostItem key={post.id} post={post} />
+              <FeaturedPostItem key={post.id} post={post} />
             ))}
           </Carousel>
         </CarouselArrows>
@@ -91,6 +91,6 @@ export default function MarketingFeaturedPosts({ posts }) {
   );
 }
 
-MarketingFeaturedPosts.propTypes = {
+FeaturedPosts.propTypes = {
   posts: PropTypes.array,
 };

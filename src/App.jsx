@@ -29,6 +29,8 @@ import LandingPage from "./pages/pe/landing";
 
 import { Suspense, lazy } from "react";
 import { SplashScreen } from "./components/loading-screen";
+import PostsView from "./sections/_pe/view/posts-view";
+import PostView from "./sections/_pe/view/post-view";
 
 // ----------------------------------------------------------------------
 
@@ -64,10 +66,10 @@ export default function App() {
               <Routes>
                 <Route path="/" element={<MainLayout />}>
                   <Route index element={<LandingPage />} />
-                  {/* <Link to={{ pathname: "/intro", hash: "#intro" }}>Vitawind Introduction</Link> */}
-
                   <Route path="events" element={<EventsPage />} />
                   <Route path="events/:eventId" element={<EventPage />} />
+                  <Route path="blog" element={<PostsView />} />
+                  <Route path="blog/:blogId" element={<PostView />} />
                   <Route
                     path="ClevelandTour"
                     element={<Navigate replace to={`/events/${1}`} />}

@@ -16,7 +16,7 @@ import PostTimeBlock from "../common/post-time-block";
 
 // ----------------------------------------------------------------------
 
-export default function MarketingFeaturedPostItem({ post }) {
+export default function FeaturedPostItem({ post }) {
   return (
     <Stack
       direction={{
@@ -47,7 +47,7 @@ export default function MarketingFeaturedPostItem({ post }) {
 
           <Link
             component={RouterLink}
-            href={paths.marketing.post}
+            to={`${post.id}`}
             color="inherit"
             variant="h3"
           >
@@ -76,13 +76,13 @@ export default function MarketingFeaturedPostItem({ post }) {
   );
 }
 
-MarketingFeaturedPostItem.propTypes = {
+FeaturedPostItem.propTypes = {
   post: PropTypes.shape({
     title: PropTypes.string,
     coverUrl: PropTypes.string,
     duration: PropTypes.string,
     description: PropTypes.string,
-    createdAt: PropTypes.instanceOf(Date),
+    createdAt: PropTypes.string,
     author: PropTypes.shape({
       avatarUrl: PropTypes.string,
       name: PropTypes.string,
