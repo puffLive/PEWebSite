@@ -39,13 +39,13 @@ export default function PostAuthor({ author }) {
             </Typography>
           </Stack>
 
-          <Stack direction="row">
+          {/* <Stack direction="row">
             {_socials.map((social) => (
               <IconButton key={social.value}>
                 <Iconify icon={social.icon} sx={{ color: social.color }} />
               </IconButton>
             ))}
-          </Stack>
+          </Stack> */}
         </Stack>
 
         <Typography variant="body2" sx={{ color: "text.secondary" }}>

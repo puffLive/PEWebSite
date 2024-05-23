@@ -139,7 +139,7 @@ export default function PostView() {
               </Stack>
 
               <Stack direction="row" alignItems="center">
-                <IconButton
+                {/* <IconButton
                   onClick={handleOpen}
                   color={open ? "primary" : "default"}
                 >
@@ -152,7 +152,7 @@ export default function PostView() {
                   onChange={handleChangeFavorite}
                   icon={<Iconify icon="carbon:favorite" />}
                   checkedIcon={<Iconify icon="carbon:favorite-filled" />}
-                />
+                /> */}
               </Stack>
             </Stack>
 
@@ -162,7 +162,7 @@ export default function PostView() {
 
             {tags.length && <PostTags tags={tags} />}
 
-            <PostSocialsShare />
+            {/* <PostSocialsShare /> */}
 
             <Divider sx={{ mt: 8 }} />
 
