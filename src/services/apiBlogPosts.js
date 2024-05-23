@@ -30,7 +30,7 @@ export async function getBlogPosts() {
 export async function getBlogPost(id) {
   const { data, error } = await supabase
     .from("blog-posts")
-    .select("*")
+    .select(`*, author("name", "role", "about", "quotes", "avatarUrl")`)
     .eq("id", id)
     .single();
 
@@ -42,3 +42,5 @@ export async function getBlogPost(id) {
 
   return data;
 }
+
+//name, role, about, quotes, avatarUr

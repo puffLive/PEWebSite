@@ -67,8 +67,9 @@ export default function PostView() {
   }, []);
 
   if (blogIsLoading || blogsIsLoading) return <SplashScreen />;
+  // if (!blogIsLoading) setFavorite(blogPost.favorited);
 
-  console.log(`Posts - Post-view: `, blogPost);
+  console.log(`Author: ${blogPost.author}`);
 
   const {
     title,
@@ -176,7 +177,7 @@ export default function PostView() {
 
       <LandingFreeSEO />
 
-      <Newsletter />
+      {/* <Newsletter /> */}
 
       <Popover
         open={!!open}

@@ -25,7 +25,7 @@ export default function PostsView() {
 
       {/* <BlogFeaturedPosts posts={_marketingPosts.slice(0, 5)} /> */}
 
-      <BlogFeaturedPosts posts={blogPosts} />
+      <BlogFeaturedPosts posts={blogPosts.slice(0, 5)} />
 
       <Container
         sx={{
@@ -43,11 +43,11 @@ export default function PostsView() {
               categories={_categories}
               recentPosts={{ list: blogPosts }}
               advertisement={{
-                title: "Advertisement",
+                title: "Start your US credit history today!",
                 description:
-                  "Duis leo. Donec orci lectus, aliquam ut, faucibus non",
-                imageUrl: _mock.image.marketing(9),
-                path: "",
+                  "Apply to CapitalOne to begin building your credit history in the US.",
+                imageUrl: "ads/CapitalOneLogo.png",
+                path: "https://i.capitalone.com/J0NtiNn7u",
               }}
             />
           </Grid>

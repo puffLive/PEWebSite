@@ -35,13 +35,18 @@ export default function Advertisement({ advertisement, sx, ...other }) {
 
         <Typography
           variant="body2"
-          sx={{ mt: 1, mb: 3, color: "common.white" }}
+          sx={{ mt: 10, mb: 3, color: "common.white" }}
         >
           {advertisement.description}
         </Typography>
 
-        <Button href={advertisement.path} variant="contained" color="primary">
-          Go Now
+        <Button
+          href={advertisement.path}
+          variant="contained"
+          color="primary"
+          target="_blank"
+        >
+          Start now
         </Button>
       </Stack>
 

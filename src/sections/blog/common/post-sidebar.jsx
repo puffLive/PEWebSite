@@ -115,7 +115,7 @@ export default function PostSidebar({
     <>
       {mdUp && renderAuthor}
 
-      {mdUp && (
+      {/* {mdUp && (
         <TextField
           fullWidth
           hiddenLabel
@@ -132,7 +132,7 @@ export default function PostSidebar({
             ),
           }}
         />
-      )}
+      )} */}
 
       <Stack
         spacing={5}
@@ -143,11 +143,11 @@ export default function PostSidebar({
         }}
         {...other}
       >
-        {renderCategories}
+        {/* {renderCategories} */}
 
         {renderRecentPosts}
 
-        {renderPopularTags}
+        {/* {renderPopularTags} */}
 
         {advertisement && <Advertisement advertisement={advertisement} />}
       </Stack>
