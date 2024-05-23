@@ -4,20 +4,28 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { _tags, _mock, _categories, _marketingPosts } from "../../../_mock";
 
 import PostSidebar from "../../blog/common/post-sidebar";
-import MarketingNewsletter from "../newsletter";
+import Newsletter from "../newsletter";
 import PostSearchMobile from "../../blog/common/post-search-mobile";
-import BlogMarketingPosts from "../../blog/marketing/marketing-posts";
-import MarketingLandingFreeSEO from "../landing/marketing-landing-free-seo";
-import BlogMarketingFeaturedPosts from "../../blog/marketing/marketing-featured-posts";
+import BlogPosts from "../../blog/pe/posts";
+import LandingFreeSEO from "../landing/landing-free-seo";
+import BlogFeaturedPosts from "../../blog/pe/featured-posts";
+import { useBlogPosts } from "../../../Blog/useBlogPosts";
+import { SplashScreen } from "../../../components/loading-screen";
 
 // ----------------------------------------------------------------------
 
-export default function MarketingPostsView() {
+export default function PostsView() {
+  const { isLoading: isBlogsLoading, blogPosts } = useBlogPosts();
+
+  if (isBlogsLoading) return <SplashScreen />;
+
   return (
     <>
-      <PostSearchMobile />
+      {/* <PostSearchMobile /> */}
 
-      <BlogMarketingFeaturedPosts posts={_marketingPosts.slice(0, 5)} />
+      {/* <BlogFeaturedPosts posts={_marketingPosts.slice(0, 5)} /> */}
+
+      <BlogFeaturedPosts posts={blogPosts.slice(0, 5)} />
 
       <Container
         sx={{
@@ -26,28 +34,26 @@ export default function MarketingPostsView() {
       >
         <Grid container columnSpacing={{ xs: 0, md: 8 }}>
           <Grid xs={12} md={8}>
-            <BlogMarketingPosts posts={_marketingPosts} />
+            <BlogPosts posts={blogPosts} />
           </Grid>
 
           <Grid xs={12} md={4}>
             <PostSidebar
               popularTags={_tags}
               categories={_categories}
-              recentPosts={{ list: _marketingPosts.slice(-4) }}
+              recentPosts={{ list: blogPosts }}
               advertisement={{
-                title: "Advertisement",
+                title: "Start your US credit history today!",
                 description:
-                  "Duis leo. Donec orci lectus, aliquam ut, faucibus non",
-                imageUrl: _mock.image.marketing(9),
-                path: "",
+                  "Apply to CapitalOne to begin building your credit history in the US.",
+                imageUrl: "ads/CapitalOneLogo.png",
+                path: "https://i.capitalone.com/J0NtiNn7u",
               }}
             />
           </Grid>
         </Grid>
       </Container>
-      <MarketingLandingFreeSEO />
-
-      <MarketingNewsletter />
+      <LandingFreeSEO />
     </>
   );
 }

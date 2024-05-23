@@ -68,6 +68,7 @@ export default function LandingFreeSEO() {
         }),
         overflow: "hidden",
         py: { xs: 10, md: 15 },
+        mt: 10,
       }}
       id="join"
     >

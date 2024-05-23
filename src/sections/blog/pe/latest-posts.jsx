@@ -25,8 +25,9 @@ import LatestPostItem from "./latest-post-item";
 
 export default function LatestPosts({ posts }) {
   const theme = useTheme();
-
   const mdUp = useResponsive("up", "md");
+
+  console.log("Posts: latest-posts ", posts);
 
   const carousel = useCarousel({
     slidesToShow: 3,
@@ -47,7 +48,7 @@ export default function LatestPosts({ posts }) {
   const viewAllBtn = (
     <Button
       component={RouterLink}
-      href={paths.marketing.posts}
+      href={paths.pe.posts}
       color="inherit"
       endIcon={<Iconify icon="carbon:chevron-right" />}
     >

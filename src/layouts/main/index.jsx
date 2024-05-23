@@ -6,6 +6,7 @@ import Header from "./header";
 import Footer from "./footer";
 import { HEADER } from "../config-layout";
 import { Outlet } from "react-router-dom";
+import { useScrollToTop } from "../../hooks/use-scroll-to-top";
 
 // ----------------------------------------------------------------------
 
@@ -16,6 +17,8 @@ export default function MainLayout({
   sx,
   ...other
 }) {
+  useScrollToTop();
+
   return (
     <Box
       sx={{
