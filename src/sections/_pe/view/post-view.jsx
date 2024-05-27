@@ -69,8 +69,6 @@ export default function PostView() {
   if (blogIsLoading || blogsIsLoading) return <SplashScreen />;
   // if (!blogIsLoading) setFavorite(blogPost.favorited);
 
-  console.log(`Author: ${blogPost.author}`);
-
   const {
     title,
     description,
@@ -162,7 +160,7 @@ export default function PostView() {
 
             {tags.length && <PostTags tags={tags} />}
 
-            {/* <PostSocialsShare /> */}
+            <PostSocialsShare />
 
             <Divider sx={{ mt: 8 }} />
 

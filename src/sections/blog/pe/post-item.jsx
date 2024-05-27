@@ -25,8 +25,6 @@ export default function PostItem({ post }) {
 
   const { pathname } = useLocation();
 
-  console.log(`Pathname - PostItem: `, pathname);
-
   return (
     <Stack
       component={m.div}

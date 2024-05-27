@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import { _socials } from "../../../../src/_mock";
 
 import Iconify from "../../../../src/components/iconify";
+import { RouterLink } from "../../../routes/components";
 
 // ----------------------------------------------------------------------
 
@@ -23,6 +24,8 @@ export default function PostSocialsShare() {
             size="small"
             variant="outlined"
             startIcon={<Iconify icon={social.icon} />}
+            href={social.url + window.location.pathname}
+            target="_blank"
             sx={{
               m: 0.5,
               flexShrink: 0,

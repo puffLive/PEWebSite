@@ -8,7 +8,7 @@ export default function EventsPage() {
   return (
     <>
       <Helmet>
-        <title>Case Studies</title>
+        <title>Principle Evolution: Events</title>
       </Helmet>
 
       <EventsView />
