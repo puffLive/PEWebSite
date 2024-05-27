@@ -2,35 +2,22 @@ import "../src/global.css";
 
 // ----------------------------------------------------------------------
 
-import Router from "../src/routes/sections";
-import { useScrollToTop } from "../src/hooks/use-scroll-to-top";
-
 import ThemeProvider from "../src/theme";
-// import { LocalizationProvider } from "../src/locales";
 
 import ProgressBar from "../src/components/progress-bar";
 import { MotionLazy } from "../src/components/animate/motion-lazy";
-import { SettingsDrawer, SettingsProvider } from "../src/components/settings";
+import { SettingsProvider } from "../src/components/settings";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-  Outlet,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import NotFoundPage from "./pages/404";
 import EventsPage from "./pages/pe/events";
 import EventPage from "./pages/pe/event";
 import MainLayout from "../src/layouts/main";
 import LandingPage from "./pages/pe/landing";
 
-import { Suspense, lazy } from "react";
-import { SplashScreen } from "./components/loading-screen";
-import PostsView from "./sections/_pe/view/posts-view";
-import PostView from "./sections/_pe/view/post-view";
+import { lazy } from "react";
 import PostsPage from "./pages/pe/posts";
 import PostPage from "./pages/pe/post";
 
