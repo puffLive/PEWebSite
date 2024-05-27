@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 import Box from "@mui/material/Box";
+import { Analytics } from "@vercel/analytics/react";
 
 import Header from "./header";
 import Footer from "./footer";
@@ -20,32 +21,33 @@ export default function MainLayout({
   useScrollToTop();
 
   return (
-    <Box
-      sx={{
-        height: 1,
-        display: "flex",
-        flexDirection: "column",
-        ...sx,
-      }}
-      {...other}
-    >
-      <Header headerOnDark={headerOnDark} />
+    <>
+      <Analytics />
+      <Box
+        sx={{
+          height: 1,
+          display: "flex",
+          flexDirection: "column",
+          ...sx,
+        }}
+        {...other}
+      >
+        <Header headerOnDark={headerOnDark} />
 
-      <Box component="main" sx={{ flexGrow: 1 }}>
-        {!(disabledSpacing || headerOnDark) && (
-          <Box
-            sx={{
-              height: { xs: HEADER.H_MOBILE, md: HEADER.H_DESKTOP },
-            }}
-          />
-        )}
+        <Box component="main" sx={{ flexGrow: 1 }}>
+          {!(disabledSpacing || headerOnDark) && (
+            <Box
+              sx={{
+                height: { xs: HEADER.H_MOBILE, md: HEADER.H_DESKTOP },
+              }}
+            />
+          )}
+          <Outlet />
+        </Box>
 
-        {/* {children} */}
-        <Outlet />
+        <Footer />
       </Box>
-
-      <Footer />
-    </Box>
+    </>
   );
 }
 
