@@ -10,8 +10,6 @@ export async function getBlogPosts() {
     throw new Error("Blog posts could not be loaded");
   }
 
-  console.log(`Data - getBlogPosts: `, data);
-
   return data;
 }
 

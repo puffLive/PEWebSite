@@ -11,8 +11,5 @@ export function useBlogPosts() {
     queryFn: getBlogPosts,
   });
 
-  console.log(`Blog Posts - useBlogPosts: `, blogPosts);
-  console.log("Error - useBlogPosts: ", error);
-
   return { isLoading, error, blogPosts };
 }

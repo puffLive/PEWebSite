@@ -7,8 +7,6 @@ import { usePathname } from "../../src/routes/hooks";
 export function useScrollToTop() {
   const pathname = usePathname();
 
-  console.log(`Pathname - useScrollToTop: `, pathname);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);

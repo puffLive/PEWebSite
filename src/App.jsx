@@ -31,6 +31,8 @@ import { Suspense, lazy } from "react";
 import { SplashScreen } from "./components/loading-screen";
 import PostsView from "./sections/_pe/view/posts-view";
 import PostView from "./sections/_pe/view/post-view";
+import PostsPage from "./pages/pe/posts";
+import PostPage from "./pages/pe/post";
 
 // ----------------------------------------------------------------------
 
@@ -68,8 +70,8 @@ export default function App() {
                   <Route index element={<LandingPage />} />
                   <Route path="events" element={<EventsPage />} />
                   <Route path="events/:eventId" element={<EventPage />} />
-                  <Route path="blog" element={<PostsView />} />
-                  <Route path="blog/:blogId" element={<PostView />} />
+                  <Route path="blog" element={<PostsPage />} />
+                  <Route path="blog/:blogId" element={<PostPage />} />
                   <Route
                     path="ClevelandTour"
                     element={<Navigate replace to={`/events/${1}`} />}

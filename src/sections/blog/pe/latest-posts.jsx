@@ -27,8 +27,6 @@ export default function LatestPosts({ posts }) {
   const theme = useTheme();
   const mdUp = useResponsive("up", "md");
 
-  console.log("Posts: latest-posts ", posts);
-
   const carousel = useCarousel({
     slidesToShow: 3,
     slidesToScroll: 1,

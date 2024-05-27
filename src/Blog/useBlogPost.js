@@ -5,8 +5,6 @@ import { useParams } from "react-router-dom";
 export function useBlogPost() {
   const { blogId } = useParams();
 
-  console.log("Blog Post id - useBlogPost: ", blogId);
-
   const {
     isLoading,
     data: blogPost,
