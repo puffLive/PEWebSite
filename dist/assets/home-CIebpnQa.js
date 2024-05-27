@@ -1,1 +1,0 @@
-import{j as e,H as n,L as i}from"./index-CI0HcOr8.js";function r(){return e.jsxs(e.Fragment,{children:[e.jsx(n,{children:e.jsx("title",{children:" Principle Evolution: Let's Grow!"})}),e.jsx(i,{})]})}export{r as default};

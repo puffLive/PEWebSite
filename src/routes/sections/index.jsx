@@ -11,7 +11,6 @@ import NotFoundPage from "../../pages/404";
 // ----------------------------------------------------------------------
 
 const IndexPage = lazy(() => import("../../../src/pages/home"));
-const SupportPage = lazy(() => import("../../../src/pages/support"));
 
 // ----------------------------------------------------------------------
 
