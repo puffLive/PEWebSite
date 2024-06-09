@@ -31,24 +31,13 @@ import BlogLatestPosts from "../../blog/pe/latest-posts";
 import { useBlogPost } from "../../../Blog/useBlogPost";
 import { useBlogPosts } from "../../../Blog/useBlogPosts";
 import { SplashScreen } from "../../../components/loading-screen";
+import CaseStudyDetailsGallery from "../details/case-study-details-gallery";
 
 // ----------------------------------------------------------------------
 
 export default function PostView() {
   const { isLoading: blogIsLoading, blogPost } = useBlogPost();
   const { isLoading: blogsIsLoading, blogPosts } = useBlogPosts();
-
-  // const {
-  //   title,
-  //   description,
-  //   duration,
-  //   createdAt,
-  //   author,
-  //   favorited,
-  //   heroUrl,
-  //   tags,
-  //   content,
-  // } = _marketingPosts[0];
 
   const [favorite, setFavorite] = useState(false);
 
@@ -67,7 +56,6 @@ export default function PostView() {
   }, []);
 
   if (blogIsLoading || blogsIsLoading) return <SplashScreen />;
-  // if (!blogIsLoading) setFavorite(blogPost.favorited);
 
   const {
     title,
@@ -78,9 +66,12 @@ export default function PostView() {
     favorited,
     heroUrl,
     content,
+    images,
   } = blogPost;
 
   const tags = blogPost.tags.split(",");
+
+  const gallaryImgs = images.split(",");
 
   return (
     <>
@@ -121,6 +112,7 @@ export default function PostView() {
             </Stack>
 
             <Divider />
+
             <Stack
               direction="row"
               justifyContent="space-between"
@@ -161,6 +153,20 @@ export default function PostView() {
             {tags.length && <PostTags tags={tags} />}
 
             <PostSocialsShare />
+
+            {/* This is where I would like to add the carousel for blogs */}
+            {gallaryImgs && (
+              <Grid
+                container
+                spacing={{ xs: 5, md: 8 }}
+                direction={{ md: "row-reverse" }}
+              >
+                <Grid xs={12} md={8}>
+                  <Markdown content={content} />
+                  <CaseStudyDetailsGallery images={gallaryImgs} />
+                </Grid>
+              </Grid>
+            )}
 
             <Divider sx={{ mt: 8 }} />
 
