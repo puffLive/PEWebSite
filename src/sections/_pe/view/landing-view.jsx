@@ -45,8 +45,6 @@ export default function LandingView() {
           <LatestPosts posts={blogPosts} />
 
           <LandingFreeSEO />
-
-          {/* <Newsletter /> */}
         </>
       )}
     </>

@@ -4,7 +4,6 @@ import "../src/global.css";
 
 import ThemeProvider from "../src/theme";
 
-import ProgressBar from "../src/components/progress-bar";
 import { MotionLazy } from "../src/components/animate/motion-lazy";
 import { SettingsProvider } from "../src/components/settings";
 
@@ -26,8 +25,8 @@ import PostPage from "./pages/pe/post";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      // staleTime: 60 * 1000,
-      staleTime: 0,
+      staleTime: 60 * 1000,
+      // staleTime: 0,
     },
   },
 });
@@ -35,8 +34,6 @@ const queryClient = new QueryClient({
 const IndexPage = lazy(() => import("../src/pages/home"));
 
 export default function App() {
-  // useScrollToTop();
-
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initalIsOpen={false} />
@@ -50,8 +47,6 @@ export default function App() {
         <ThemeProvider>
           <BrowserRouter>
             <MotionLazy>
-              {/* <ProgressBar /> */}
-              {/* <Router /> OLD PATH ROUTER */}
               <Routes>
                 <Route path="/" element={<MainLayout />}>
                   <Route index element={<LandingPage />} />

@@ -4,12 +4,10 @@ import Stack from "@mui/material/Stack";
 import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
 import Popover from "@mui/material/Popover";
-import Checkbox from "@mui/material/Checkbox";
 import MenuItem from "@mui/material/MenuItem";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Unstable_Grid2";
 import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
 
 import { paths } from "../../../routes/paths";
 
@@ -24,7 +22,6 @@ import CustomBreadcrumbs from "../../../components/custom-breadcrumbs";
 
 import PostTags from "../../blog/common/post-tags";
 import PostAuthor from "../../blog/common/post-author";
-import Newsletter from "../newsletter";
 import PostSocialsShare from "../../blog/common/post-socials-share";
 import LandingFreeSEO from "../landing/landing-free-seo";
 import BlogLatestPosts from "../../blog/pe/latest-posts";
@@ -71,7 +68,9 @@ export default function PostView() {
 
   const tags = blogPost.tags.split(",");
 
-  const gallaryImgs = images.split(",");
+  let gallaryImgs;
+
+  if (images) gallaryImgs = images.split(",");
 
   return (
     <>
@@ -128,22 +127,7 @@ export default function PostView() {
                 </Typography>
               </Stack>
 
-              <Stack direction="row" alignItems="center">
-                {/* <IconButton
-                  onClick={handleOpen}
-                  color={open ? "primary" : "default"}
-                >
-                  <Iconify icon="carbon:share" />
-                </IconButton>
-
-                <Checkbox
-                  color="error"
-                  checked={favorite}
-                  onChange={handleChangeFavorite}
-                  icon={<Iconify icon="carbon:favorite" />}
-                  checkedIcon={<Iconify icon="carbon:favorite-filled" />}
-                /> */}
-              </Stack>
+              <Stack direction="row" alignItems="center"></Stack>
             </Stack>
 
             <Divider sx={{ mb: 6 }} />
@@ -154,17 +138,9 @@ export default function PostView() {
 
             <PostSocialsShare />
 
-            {/* This is where I would like to add the carousel for blogs */}
             {gallaryImgs && (
-              <Grid
-                container
-                spacing={{ xs: 5, md: 8 }}
-                direction={{ md: "row-reverse" }}
-              >
-                <Grid xs={12} md={8}>
-                  <Markdown content={content} />
-                  <CaseStudyDetailsGallery images={gallaryImgs} />
-                </Grid>
+              <Grid xs={12} md={8}>
+                <CaseStudyDetailsGallery images={gallaryImgs} />
               </Grid>
             )}
 
@@ -180,8 +156,6 @@ export default function PostView() {
       <BlogLatestPosts posts={blogPosts} />
 
       <LandingFreeSEO />
-
-      {/* <Newsletter /> */}
 
       <Popover
         open={!!open}
