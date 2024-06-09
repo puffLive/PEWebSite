@@ -1,18 +1,11 @@
 import Grid from "@mui/material/Unstable_Grid2";
 import Container from "@mui/material/Container";
 
-import { paths } from "../../../routes/paths";
-
 import { _caseStudies, _testimonials } from "../../../_mock";
 
 import Image from "../../../components/image";
 import Markdown from "../../../components/markdown";
-import CustomBreadcrumbs from "../../../components/custom-breadcrumbs";
 
-import Newsletter from "../newsletter";
-import Testimonial from "../testimonial/testimonial";
-import LandingFreeSEO from "../landing/landing-free-seo";
-import CaseStudyListSimilar from "../list/event-list-similar";
 import CaseStudyDetailsGallery from "../details/case-study-details-gallery";
 import CaseStudyDetailsSummary from "../details/case-study-details-summary";
 import { useEvent } from "../../../Events/useEvent";
@@ -20,8 +13,6 @@ import { SplashScreen } from "../../../components/loading-screen";
 import NotFoundPage from "../../../pages/404";
 
 // ----------------------------------------------------------------------
-
-// const _mockCaseStudy = _caseStudies[0];
 
 export default function EventView() {
   const { isLoading, event, error } = useEvent();
@@ -63,13 +54,7 @@ export default function EventView() {
         </Grid>
       </Container>
 
-      {/* <Testimonial testimonials={_testimonials} /> */}
-
-      {/* <CaseStudyListSimilar caseStudies={_caseStudies.slice(0, 3)} /> */}
-
       {/* <LandingFreeSEO /> */}
-
-      {/* <Newsletter /> */}
     </>
   );
 }

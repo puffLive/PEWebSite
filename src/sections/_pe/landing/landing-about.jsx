@@ -79,12 +79,12 @@ export default function LandingAbout() {
 
           <Typography sx={{ color: "text.secondary" }}>
             We are a group of friends that decided to take the unbeaten path
-            towards weath and proserity for our friend, and our community. We
-            came together to support each other on this journey, and without the
-            support we would not have been able to accomplish what we&apos;ve
-            accomplished so far. Now we are makeing time to build a community of
-            like minded individuals to accomplish something bigger than any of
-            our wildest dreams.
+            towards weath and proserity for our families, and our community. We
+            came together to support each other on this journey, and without
+            this support we would not have been able to accomplish what
+            we&apos;ve accomplished so far. Now we are makeing time to build a
+            community of like minded individuals to accomplish something our
+            ancestors would be proud of.
           </Typography>
 
           {/* <Button

@@ -17,7 +17,7 @@ import Carousel, {
 
 // ----------------------------------------------------------------------
 
-export default function MarketingCaseStudyDetailsGallery({ images }) {
+export default function CaseStudyDetailsGallery({ images }) {
   const theme = useTheme();
 
   const slides = images.map((slide) => ({
@@ -94,6 +94,6 @@ export default function MarketingCaseStudyDetailsGallery({ images }) {
   );
 }
 
-MarketingCaseStudyDetailsGallery.propTypes = {
+CaseStudyDetailsGallery.propTypes = {
   images: PropTypes.array,
 };
