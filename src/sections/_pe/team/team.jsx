@@ -23,7 +23,7 @@ import TeamItem from "./team-item";
 
 // ----------------------------------------------------------------------
 
-export default function MarketingTeam({ members }) {
+export default function Team({ members }) {
   const theme = useTheme();
 
   const mdUp = useResponsive("up", "md");
@@ -133,7 +133,7 @@ export default function MarketingTeam({ members }) {
         <Carousel ref={carousel.carouselRef} {...carousel.carouselSettings}>
           {members.map((member) => (
             <Box
-              key={member.id}
+              key={member._id}
               sx={{
                 ml: "-1px",
                 pl: { xs: 2, md: 4 },
@@ -150,6 +150,6 @@ export default function MarketingTeam({ members }) {
   );
 }
 
-MarketingTeam.propTypes = {
+Team.propTypes = {
   members: PropTypes.array,
 };

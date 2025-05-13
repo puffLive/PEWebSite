@@ -39,16 +39,16 @@ const StyledOverlay = styled("div")(({ theme }) => ({
 
 export default function MarketingTeamItem({ member, ...other }) {
   const {
-    firstName,
-    lastName,
+    first_name,
+    last_name,
     founder,
-    image: photo,
+    photo,
     facebook,
     instagram,
     linkedin,
   } = member;
 
-  const name = firstName + ` ` + lastName;
+  const name = first_name + ` ` + last_name;
 
   const role = founder ? "Founder" : "Member";
 
@@ -104,7 +104,8 @@ export default function MarketingTeamItem({ member, ...other }) {
 
 MarketingTeamItem.propTypes = {
   member: PropTypes.shape({
-    name: PropTypes.string,
+    first_name: PropTypes.string,
+    last_name: PropTypes.string,
     photo: PropTypes.string,
     role: PropTypes.string,
   }),

@@ -22,7 +22,7 @@ import PostItemMobile from "./post-item-mobile";
 // ----------------------------------------------------------------------
 
 export default function PostSidebar({
-  author,
+  member,
   categories,
   popularTags,
   recentPosts,
@@ -32,18 +32,18 @@ export default function PostSidebar({
 }) {
   const mdUp = useResponsive("up", "md");
 
-  const renderAuthor = author && (
+  const renderAuthor = member && (
     <Stack spacing={2} direction="row" sx={{ mb: { md: 5 } }}>
-      <Avatar src={author.avatarUrl} sx={{ width: 64, height: 64 }} />
+      <Avatar src={member.avatar} sx={{ width: 64, height: 64 }} />
 
       <Stack>
-        <Typography variant="h5">{author.name}</Typography>
+        <Typography variant="h5">{member.first_name}</Typography>
 
         <Typography
           variant="body2"
           sx={{ mt: 0.5, mb: 2, color: "text.secondary" }}
         >
-          {author.role}
+          {member.role}
         </Typography>
 
         <Stack direction="row">

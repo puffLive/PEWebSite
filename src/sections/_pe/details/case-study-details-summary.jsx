@@ -15,7 +15,7 @@ import Iconify from "../../../components/iconify";
 // ----------------------------------------------------------------------
 
 export default function CaseStudyDetailsSummary({ event }) {
-  const { title, description, category, website, eventDate } = event;
+  const { title, description, tags, url, date } = event;
 
   return (
     <Stack
@@ -35,42 +35,34 @@ export default function CaseStudyDetailsSummary({ event }) {
       <Divider sx={{ borderStyle: "dashed" }} />
 
       <Stack spacing={1}>
-        <Typography variant="overline" sx={{ color: "text.disabled" }}>
-          Register
-        </Typography>
+        {url && (
+          <>
+            <Typography variant="overline" sx={{ color: "text.disabled" }}>
+              Register
+            </Typography>
 
-        <Link variant="body2" color="inherit" href={website} target="_blank">
-          Link
-        </Link>
+            <Link variant="body2" color="inherit" href={url} target="_blank">
+              Link
+            </Link>
+          </>
+        )}
 
         <Typography variant="overline" sx={{ color: "text.disabled", pt: 1 }}>
           Category
         </Typography>
 
         <Typography variant="body2" sx={{ pb: 1 }}>
-          {category}
+          {tags[0]}
         </Typography>
 
         <Typography variant="overline" sx={{ color: "text.disabled" }}>
           Date
         </Typography>
 
-        <Typography variant="body2">{fDate(eventDate)}</Typography>
+        <Typography variant="body2">{fDate(date)}</Typography>
       </Stack>
 
       <Divider sx={{ borderStyle: "dashed" }} />
-
-      {/* <Stack direction="row" alignItems="center" spacing={0.5}>
-        <Typography variant="subtitle2">Share:</Typography>
-
-        <Stack direction="row">
-          {_socials.map((social) => (
-            <IconButton key={social.value} href={social.url} target="_blank">
-              <Iconify icon={social.icon} sx={{ color: social.color }} />
-            </IconButton>
-          ))}
-        </Stack>
-      </Stack> */}
     </Stack>
   );
 }
@@ -78,8 +70,8 @@ export default function CaseStudyDetailsSummary({ event }) {
 CaseStudyDetailsSummary.propTypes = {
   caseStudy: PropTypes.shape({
     title: PropTypes.string,
-    website: PropTypes.string,
-    category: PropTypes.string,
+    url: PropTypes.string,
+    tags: PropTypes.string,
     description: PropTypes.string,
     createdAt: PropTypes.instanceOf(Date),
   }),

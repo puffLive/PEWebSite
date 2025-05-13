@@ -13,11 +13,16 @@ import TextMaxLine from "../../../components/text-max-line";
 // ----------------------------------------------------------------------
 
 export default function CaseStudyItem({ event }) {
-  const { title, coverUrl, category } = event;
+  const { title, imageCover, category } = event;
 
   return (
     <div>
-      <Image src={coverUrl} alt={title} ratio="1/1" sx={{ borderRadius: 2 }} />
+      <Image
+        src={imageCover}
+        alt={title}
+        ratio="1/1"
+        sx={{ borderRadius: 2 }}
+      />
 
       <Stack spacing={1} sx={{ pt: 2.5, px: 2.5 }}>
         <Typography variant="overline" sx={{ color: "text.disabled" }}>
@@ -37,7 +42,7 @@ export default function CaseStudyItem({ event }) {
 CaseStudyItem.propTypes = {
   event: PropTypes.shape({
     category: PropTypes.string,
-    coverUrl: PropTypes.string,
+    imageCover: PropTypes.string,
     title: PropTypes.string,
   }),
 };

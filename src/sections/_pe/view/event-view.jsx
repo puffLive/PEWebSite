@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Unstable_Grid2";
 import Container from "@mui/material/Container";
 
-import { _caseStudies, _testimonials } from "../../../_mock";
+// import { _caseStudies, _testimonials } from "../../../_mock";
 
 import Image from "../../../components/image";
 import Markdown from "../../../components/markdown";
@@ -20,7 +20,7 @@ export default function EventView() {
   if (isLoading) return <SplashScreen />;
   if (error) return <NotFoundPage />;
 
-  const gallaryImgs = event.galleryImgs.split(",");
+  // const gallaryImgs = event.galleryImgs.split(",");
 
   return (
     <>
@@ -33,7 +33,7 @@ export default function EventView() {
       >
         <Image
           alt="hero"
-          src={event.heroUrl}
+          src={event.imageCover}
           ratio="16/9"
           sx={{ borderRadius: 2, mb: 4 }}
         />
@@ -49,12 +49,12 @@ export default function EventView() {
 
           <Grid xs={12} md={8}>
             <Markdown content={event.content} />
-            <CaseStudyDetailsGallery images={gallaryImgs} />
+            {event.images.length > 0 && (
+              <CaseStudyDetailsGallery images={event.images} />
+            )}
           </Grid>
         </Grid>
       </Container>
-
-      {/* <LandingFreeSEO /> */}
     </>
   );
 }

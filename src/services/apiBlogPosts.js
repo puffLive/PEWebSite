@@ -1,44 +1,27 @@
-import supabase from "./supabase";
+import axios from "axios";
+
+import { PE_API_BASE_URL } from "../config/config";
 
 export async function getBlogPosts() {
-  const { data, error } = await supabase
-    .from("blog-posts")
-    .select(`*, author("name", "avatarUrl")`);
-
-  if (error) {
+  try {
+    return await axios.get(`${PE_API_BASE_URL}api/v1/blogposts`).then((res) => {
+      return res.data.data.data;
+    });
+  } catch (error) {
     console.log("getBlogPosts error: ", error);
     throw new Error("Blog posts could not be loaded");
   }
-
-  return data;
 }
 
-// Former code
-// export async function getBlogPosts() {
-//   const { data, error } = await supabase.from("blog-posts").select("*");
-
-//   if (error) {
-//     console.log(error);
-//     throw new Error("Blog posts could not be loaded");
-//   }
-
-//   return data;
-// }
-
-export async function getBlogPost(id) {
-  const { data, error } = await supabase
-    .from("blog-posts")
-    .select(`*, author("name", "role", "about", "quotes", "avatarUrl")`)
-    .eq("id", id)
-    .single();
-
-  if (error) {
+export async function getBlogPost(slug) {
+  try {
+    const response = await axios.get(
+      `${PE_API_BASE_URL}api/v1/blogposts/${slug}`
+    );
+    return response.data.data.data;
+  } catch (error) {
     console.log("getBlogPost error");
     console.error(error);
     throw new Error("Blog post not found");
   }
-
-  return data;
 }
-
-//name, role, about, quotes, avatarUr
