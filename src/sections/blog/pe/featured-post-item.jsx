@@ -90,6 +90,7 @@ FeaturedPostItem.propTypes = {
     author: PropTypes.shape({
       avatar: PropTypes.string,
       first_name: PropTypes.string,
+      last_name: PropTypes.string,
     }),
   }),
 };
