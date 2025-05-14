@@ -71,7 +71,7 @@ export default function FeaturedPostItem({ post }) {
           {post.member ? (
             <>
               <Avatar src={post.member.avatar} sx={{ mr: 1 }} />
-              {post.member.first_name}
+              {post.member.first_name} {post.member.last_name}
             </>
           ) : null}
         </Stack>

@@ -12,7 +12,9 @@ import Iconify from "../../../components/iconify";
 // ----------------------------------------------------------------------
 
 export default function PostMember({ member }) {
-  const { first_name, role, about, quotes, avatar } = member;
+  const { first_name, last_name, founder, quote, avatar } = member;
+
+  console.log("member", member);
 
   return (
     <Stack
@@ -32,10 +34,14 @@ export default function PostMember({ member }) {
           justifyContent={{ md: "space-between" }}
         >
           <Stack spacing={0.5}>
-            <Typography variant="h5">{first_name}</Typography>
+            <Typography variant="h5">
+              {first_name} {last_name}
+            </Typography>
 
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
-              {role}
+              {founder
+                ? "A founder of Principle Evolution"
+                : "A member of Principle Evolution"}
             </Typography>
           </Stack>
 
@@ -48,12 +54,8 @@ export default function PostMember({ member }) {
           </Stack> */}
         </Stack>
 
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          {about}
-        </Typography>
-
         <Typography variant="caption" sx={{ color: "text.disabled" }}>
-          {quotes}
+          {quote}
         </Typography>
       </Stack>
     </Stack>

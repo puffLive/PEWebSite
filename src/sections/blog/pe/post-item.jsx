@@ -76,7 +76,7 @@ export default function PostItem({ post }) {
           {post.member ? (
             <>
               <Avatar src={post.member.avatar} sx={{ mr: 1 }} />
-              {post.member.first_name}
+              {post.member.first_name} {post.member.last_name}
             </>
           ) : null}
         </Stack>
@@ -94,6 +94,7 @@ PostItem.propTypes = {
     author: PropTypes.shape({
       avatar: PropTypes.string,
       first_name: PropTypes.string,
+      last_name: PropTypes.string,
     }),
   }),
 };

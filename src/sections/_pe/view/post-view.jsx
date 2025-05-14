@@ -64,11 +64,8 @@ export default function PostView() {
     imageCover,
     content,
     images,
+    tags,
   } = blogPost;
-
-  let tags;
-
-  if (blogPost.tags.length > 0) tags = blogPost.tags.split(",");
 
   return (
     <>
@@ -119,7 +116,9 @@ export default function PostView() {
               <Avatar src={member.avatar} sx={{ width: 48, height: 48 }} />
 
               <Stack spacing={0.5} flexGrow={1}>
-                <Typography variant="subtitle2">{member.first_name}</Typography>
+                <Typography variant="subtitle2">
+                  {member.first_name} {member.last_name}
+                </Typography>
                 <Typography variant="caption" sx={{ color: "text.secondary" }}>
                   {fDate(createdAt, "dd/MM/yyyy p")}
                 </Typography>
@@ -132,11 +131,11 @@ export default function PostView() {
 
             <Markdown content={content} firstLetter />
 
-            {tags && <PostTags tags={tags} />}
+            {tags.length > 0 && <PostTags tags={tags} />}
 
             <PostSocialsShare />
 
-            {images && (
+            {images.length > 0 && (
               <Grid xs={12} md={8}>
                 <CaseStudyDetailsGallery images={images} />
               </Grid>
