@@ -26,7 +26,7 @@ export default function FeaturedPostItem({ post }) {
       sx={{ bgcolor: "background.default", borderRadius: 2 }}
     >
       <Image
-        src={post.coverUrl}
+        src={post.imageCover}
         alt={post.title}
         sx={{ flexGrow: 1, height: { md: 560 } }}
       />
@@ -47,7 +47,7 @@ export default function FeaturedPostItem({ post }) {
 
           <Link
             component={RouterLink}
-            to={`${post.id}`}
+            to={`${post.slug}`}
             color="inherit"
             variant="h3"
           >
@@ -68,8 +68,12 @@ export default function FeaturedPostItem({ post }) {
           alignItems="center"
           sx={{ pt: 2, typography: "body2" }}
         >
-          <Avatar src={post.author.avatarUrl} sx={{ mr: 1 }} />
-          {post.author.name}
+          {post.member ? (
+            <>
+              <Avatar src={post.member.avatar} sx={{ mr: 1 }} />
+              {post.member.first_name} {post.member.last_name}
+            </>
+          ) : null}
         </Stack>
       </Stack>
     </Stack>
@@ -79,13 +83,14 @@ export default function FeaturedPostItem({ post }) {
 FeaturedPostItem.propTypes = {
   post: PropTypes.shape({
     title: PropTypes.string,
-    coverUrl: PropTypes.string,
+    imageCover: PropTypes.string,
     duration: PropTypes.string,
     description: PropTypes.string,
     createdAt: PropTypes.string,
     author: PropTypes.shape({
-      avatarUrl: PropTypes.string,
-      name: PropTypes.string,
+      avatar: PropTypes.string,
+      first_name: PropTypes.string,
+      last_name: PropTypes.string,
     }),
   }),
 };

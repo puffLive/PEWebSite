@@ -35,7 +35,7 @@ export default function PostItem({ post }) {
     >
       <m.div variants={varHover(1.25)} transition={varTranHover()}>
         <Image
-          src={post.coverUrl}
+          src={post.imageCover}
           alt={post.title}
           ratio="3/4"
           overlay={`linear-gradient(to top, ${alpha(
@@ -65,7 +65,7 @@ export default function PostItem({ post }) {
           <Link
             component={RouterLink}
             // to={`blog/${post.id}`}
-            to={pathname === "/blog" ? `${post.id}` : `blog/${post.id}`}
+            to={pathname === "/blog" ? `${post.slug}` : `blog/${post.slug}`}
             sx={{ color: "common.white" }}
           >
             <TextMaxLine variant="h4">{post.title}</TextMaxLine>
@@ -73,8 +73,12 @@ export default function PostItem({ post }) {
         </Stack>
 
         <Stack direction="row" alignItems="center" sx={{ typography: "body2" }}>
-          <Avatar src={post.author.avatarUrl} sx={{ mr: 1 }} />
-          {post.author.name}
+          {post.member ? (
+            <>
+              <Avatar src={post.member.avatar} sx={{ mr: 1 }} />
+              {post.member.first_name} {post.member.last_name}
+            </>
+          ) : null}
         </Stack>
       </Stack>
     </Stack>
@@ -84,12 +88,13 @@ export default function PostItem({ post }) {
 PostItem.propTypes = {
   post: PropTypes.shape({
     title: PropTypes.string,
-    coverUrl: PropTypes.string,
+    imageCover: PropTypes.string,
     duration: PropTypes.string,
     createdAt: PropTypes.string,
     author: PropTypes.shape({
-      avatarUrl: PropTypes.string,
-      name: PropTypes.string,
+      avatar: PropTypes.string,
+      first_name: PropTypes.string,
+      last_name: PropTypes.string,
     }),
   }),
 };

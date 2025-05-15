@@ -78,7 +78,7 @@ export default function FeaturedPosts({ posts }) {
             <Image
               key={post.id}
               alt="post cover"
-              src={post.coverUrl}
+              src={post.imageCover}
               overlay={`linear-gradient(to bottom, ${alpha(
                 theme.palette.common.black,
                 0

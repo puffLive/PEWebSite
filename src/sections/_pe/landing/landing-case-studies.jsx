@@ -59,24 +59,24 @@ export default function LandingCaseStudies({ events, socials }) {
       >
         <Grid xs={6} md={2}>
           {mdUp ? (
-            <SmallItem caseStudy={socials[0]} />
+            <SmallItem event={socials[0]} />
           ) : (
-            <SmallItem caseStudy={events[0]} />
+            <SmallItem event={events[0]} />
           )}
         </Grid>
 
         {!mdUp && (
           <Grid xs={6} md={2}>
-            <SmallItem caseStudy={events[1]} />
+            <SmallItem event={events[1]} />
           </Grid>
         )}
 
         <Grid container xs={12} sm={12} md={8}>
           <Grid xs={6} md={9}>
             {mdUp ? (
-              <LargeItem caseStudy={events[1]} />
+              <LargeItem event={events[1]} />
             ) : (
-              <SmallItem caseStudy={socials[0]} square />
+              <SmallItem event={socials[0]} square />
             )}
           </Grid>
 
@@ -85,26 +85,26 @@ export default function LandingCaseStudies({ events, socials }) {
               justifyContent={{ md: "flex-end" }}
               sx={{ height: { md: 1 } }}
             >
-              <SmallItem caseStudy={socials[1]} square />
+              <SmallItem event={socials[1]} square />
             </Stack>
           </Grid>
 
           <Grid xs={6} md={3}>
-            <SmallItem caseStudy={socials[2]} square />
+            <SmallItem event={socials[2]} square />
           </Grid>
 
           <Grid xs={6} md={9}>
             {mdUp ? (
-              <LargeItem caseStudy={events[0]} />
+              <LargeItem event={events[0]} />
             ) : (
-              <SmallItem caseStudy={socials[3]} square />
+              <SmallItem event={socials[3]} square />
             )}
           </Grid>
         </Grid>
 
         {mdUp && (
           <Grid xs={6} md={2}>
-            <SmallItem caseStudy={socials[3]} />
+            <SmallItem event={socials[3]} />
           </Grid>
         )}
       </Grid>
@@ -125,12 +125,12 @@ export default function LandingCaseStudies({ events, socials }) {
 }
 
 LandingCaseStudies.propTypes = {
-  caseStudies: PropTypes.array,
+  events: PropTypes.array,
 };
 
 // ----------------------------------------------------------------------
 
-function LargeItem({ caseStudy }) {
+function LargeItem({ event }) {
   const navigate = useNavigate();
   return (
     <Paper
@@ -147,7 +147,7 @@ function LargeItem({ caseStudy }) {
       <Box sx={{ p: 0.75 }}>
         <Image
           alt="cover"
-          src={caseStudy.coverUrl}
+          src={event.imageCover}
           ratio="3/4"
           sx={{ borderRadius: 2 }}
         />
@@ -160,21 +160,21 @@ function LargeItem({ caseStudy }) {
       >
         <div>
           <Typography variant="overline" sx={{ color: "primary.main" }}>
-            {caseStudy.category}
+            {event.tags[0]}
           </Typography>
 
           <Typography variant="h4" sx={{ mt: 1, mb: 2 }}>
-            {caseStudy.title}
+            {event.title}
           </Typography>
 
           <TextMaxLine variant="body2" sx={{ color: "text.secondary" }}>
-            {caseStudy.description}
+            {event.description}
           </TextMaxLine>
         </div>
 
         <Button
           component={RouterLink}
-          to={`/events/${caseStudy.id}`}
+          to={`/events/${event.id}`}
           size="small"
           color="inherit"
           endIcon={<Iconify icon="carbon:chevron-right" />}
@@ -187,8 +187,8 @@ function LargeItem({ caseStudy }) {
 }
 
 LargeItem.propTypes = {
-  caseStudy: PropTypes.shape({
-    category: PropTypes.string,
+  event: PropTypes.shape({
+    tags: PropTypes.array,
     coverUrl: PropTypes.string,
     description: PropTypes.string,
     title: PropTypes.string,
@@ -197,7 +197,7 @@ LargeItem.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function SmallItem({ caseStudy, square }) {
+function SmallItem({ event, square }) {
   const navigate = useNavigate();
   const theme = useTheme();
 
@@ -205,12 +205,12 @@ function SmallItem({ caseStudy, square }) {
 
   let targetValue, url;
 
-  if (caseStudy.hasOwnProperty("eventDate")) {
-    targetValue = "";
-    url = `/events/${caseStudy.id}`;
-  } else {
+  if (event.hasOwnProperty("url")) {
     targetValue = "_blank";
-    url = caseStudy.website;
+    url = event.url;
+  } else {
+    targetValue = "";
+    url = `/events/${event.id}`;
   }
 
   return (
@@ -238,16 +238,19 @@ function SmallItem({ caseStudy, square }) {
             textAlign: "center",
           }}
         >
-          <Typography variant="overline" sx={{ opacity: 0.48 }}>
-            {caseStudy.category}
-          </Typography>
-          <Typography variant="h6">{caseStudy.title}</Typography>
+          {event.tags && (
+            <Typography variant="overline" sx={{ opacity: 0.48 }}>
+              {event.tags}
+            </Typography>
+          )}
+
+          <Typography variant="h6">{event.title}</Typography>
         </Stack>
 
         <m.div variants={varHover(1.25)} transition={varTranHover()}>
           <Image
             alt="cover"
-            src={caseStudy.coverUrl}
+            src={event.imageCover}
             ratio={(square && "1/1") || (mdUp && "3/4") || "1/1"}
             overlay={alpha(theme.palette.grey[900], 0.48)}
           />
@@ -258,9 +261,9 @@ function SmallItem({ caseStudy, square }) {
 }
 
 SmallItem.propTypes = {
-  caseStudy: PropTypes.shape({
-    category: PropTypes.string,
-    coverUrl: PropTypes.string,
+  event: PropTypes.shape({
+    tags: PropTypes.array,
+    imageCover: PropTypes.string,
     title: PropTypes.string,
   }),
   square: PropTypes.bool,

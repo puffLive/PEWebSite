@@ -39,14 +39,6 @@ export default function EventsView() {
 
         <EventsList events={events} />
       </Container>
-
-      {/* <Testimonial testimonials={_testimonials} /> */}
-
-      {/* <BlogLatestPosts posts={_marketingPosts.slice(0, 4)} /> */}
-
-      {/* <LandingFreeSEO /> */}
-
-      {/* <Newsletter /> */}
     </>
   );
 }

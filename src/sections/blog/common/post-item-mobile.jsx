@@ -24,7 +24,7 @@ export default function PostItemMobile({ post, onSiderbar }) {
     >
       <Image
         alt={post.title}
-        src={post.coverUrl}
+        src={post.imageCover}
         sx={{
           width: 80,
           height: 80,
@@ -34,7 +34,7 @@ export default function PostItemMobile({ post, onSiderbar }) {
       />
 
       <Stack spacing={onSiderbar ? 0.5 : 1}>
-        <Link color="inherit" component={RouterLink} to={`${post.id}`}>
+        <Link color="inherit" component={RouterLink} to={`${post.slug}`}>
           <TextMaxLine variant={onSiderbar ? "subtitle2" : "h6"}>
             {post.title}
           </TextMaxLine>

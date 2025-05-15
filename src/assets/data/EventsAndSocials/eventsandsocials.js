@@ -41,7 +41,7 @@ const CONTENT = `
 </ul>
 `;
 
-const SOCIAL_TAGS = ["Virtual", "Virtual", "Virtual", "Virtual"];
+const SOCIAL_TAGS = [["Virtual"], ["Virtual"], ["Virtual"], ["Virtual"]];
 
 const DATE_CREATED = [
   "12APR2024",
@@ -73,12 +73,12 @@ export const Socials = SOCIAL_TITLE.map((_, index) => {
     id: new Date().valueOf(),
     content: CONTENT,
     title: SOCIAL_TITLE[index],
-    category: SOCIAL_TAGS[index],
+    tags: SOCIAL_TAGS[index],
     createdAt: DATE_CREATED[index],
-    website: SOCIAL_LINKS[index],
+    url: SOCIAL_LINKS[index],
     description: SOCIAL_DESCRIPTION[index],
     heroUrl: "/assets/images/marketing/marketing_post_hero.jpg",
-    coverUrl: `/socialImgs/social_logo_${index + 1}.png`,
+    imageCover: `/socialImgs/social_logo_${index + 1}.png`,
     how_we_work:
       "Nullam tincidunt adipiscing enim. Mauris sollicitudin fermentum libero. Pellentesque auctor neque nec urna. Sed fringi",
     results:

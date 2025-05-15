@@ -21,7 +21,7 @@ import Markdown from "../../../components/markdown";
 import CustomBreadcrumbs from "../../../components/custom-breadcrumbs";
 
 import PostTags from "../../blog/common/post-tags";
-import PostAuthor from "../../blog/common/post-author";
+import PostMember from "../../blog/common/post-member";
 import PostSocialsShare from "../../blog/common/post-socials-share";
 import LandingFreeSEO from "../landing/landing-free-seo";
 import BlogLatestPosts from "../../blog/pe/latest-posts";
@@ -59,22 +59,17 @@ export default function PostView() {
     description,
     duration,
     createdAt,
-    author,
+    member,
     favorited,
-    heroUrl,
+    imageCover,
     content,
     images,
+    tags,
   } = blogPost;
-
-  const tags = blogPost.tags.split(",");
-
-  let gallaryImgs;
-
-  if (images) gallaryImgs = images.split(",");
 
   return (
     <>
-      <Image alt="hero" src={heroUrl} ratio="21/9" />
+      <Image alt="hero" src={imageCover} ratio="21/9" />
 
       <Container>
         <CustomBreadcrumbs
@@ -118,10 +113,12 @@ export default function PostView() {
               spacing={1.5}
               sx={{ py: 3 }}
             >
-              <Avatar src={author.avatarUrl} sx={{ width: 48, height: 48 }} />
+              <Avatar src={member.avatar} sx={{ width: 48, height: 48 }} />
 
               <Stack spacing={0.5} flexGrow={1}>
-                <Typography variant="subtitle2">{author.name}</Typography>
+                <Typography variant="subtitle2">
+                  {member.first_name} {member.last_name}
+                </Typography>
                 <Typography variant="caption" sx={{ color: "text.secondary" }}>
                   {fDate(createdAt, "dd/MM/yyyy p")}
                 </Typography>
@@ -134,19 +131,19 @@ export default function PostView() {
 
             <Markdown content={content} firstLetter />
 
-            {tags.length && <PostTags tags={tags} />}
+            {tags.length > 0 && <PostTags tags={tags} />}
 
             <PostSocialsShare />
 
-            {gallaryImgs && (
+            {images.length > 0 && (
               <Grid xs={12} md={8}>
-                <CaseStudyDetailsGallery images={gallaryImgs} />
+                <CaseStudyDetailsGallery images={images} />
               </Grid>
             )}
 
             <Divider sx={{ mt: 8 }} />
 
-            <PostAuthor author={author} />
+            <PostMember member={member} />
           </Grid>
         </Grid>
       </Container>

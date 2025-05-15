@@ -73,7 +73,7 @@ export default function EventsList({ events }) {
 }
 
 EventsList.propTypes = {
-  caseStudies: PropTypes.array,
+  events: PropTypes.array,
 };
 
 // ----------------------------------------------------------------------

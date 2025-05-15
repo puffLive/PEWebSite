@@ -8,7 +8,7 @@ export default function PostPage() {
   return (
     <>
       <Helmet>
-        <title>Principle Eoluiton: Blog Post</title>
+        <title>Principle Evolution: Blog Post</title>
       </Helmet>
 
       <PostView />

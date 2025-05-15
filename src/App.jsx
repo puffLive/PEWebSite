@@ -53,7 +53,7 @@ export default function App() {
                   <Route path="events" element={<EventsPage />} />
                   <Route path="events/:eventId" element={<EventPage />} />
                   <Route path="blog" element={<PostsPage />} />
-                  <Route path="blog/:blogId" element={<PostPage />} />
+                  <Route path="blog/:slug" element={<PostPage />} />
                   <Route
                     path="ClevelandTour"
                     element={<Navigate replace to={`/events/${1}`} />}

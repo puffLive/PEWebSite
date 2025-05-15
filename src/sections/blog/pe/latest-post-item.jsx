@@ -34,7 +34,7 @@ export default function LatestPostItem({ post }) {
     >
       <m.div variants={varHover(1.25)} transition={varTranHover()}>
         <Image
-          src={post.coverUrl}
+          src={post.imageCover}
           alt={post.title}
           ratio="3/4"
           overlay={`linear-gradient(to top, ${alpha(
@@ -64,7 +64,7 @@ export default function LatestPostItem({ post }) {
 
           <Link
             component={RouterLink}
-            to={`/blog/${post.id}`}
+            to={`/blog/${post.slug}`}
             variant="h4"
             color="inherit"
             underline="none"
@@ -74,8 +74,12 @@ export default function LatestPostItem({ post }) {
         </Stack>
 
         <Stack direction="row" alignItems="center" sx={{ typography: "body2" }}>
-          <Avatar src={post.author.avatarUrl} sx={{ mr: 1 }} />
-          {post.author.name}
+          {post.member ? (
+            <>
+              <Avatar src={post.member.avatar} sx={{ mr: 1 }} />
+              {post.member.first_name}
+            </>
+          ) : null}
         </Stack>
       </Stack>
     </Stack>
