@@ -67,22 +67,36 @@ export default function MarketingTeamItem({ member, ...other }) {
             justifyContent="center"
             sx={{ width: 1, zIndex: 9, bottom: 24, position: "absolute" }}
           >
-            {_socials.map((social) => (
+            {facebook && (
               <IconButton
-                key={social.value}
+                key="facebook"
                 color="primary"
                 target="_blank"
-                href={
-                  social.value === "facebook"
-                    ? facebook
-                    : social.value === "instagram"
-                    ? instagram
-                    : linkedin
-                }
+                href={facebook}
               >
-                <Iconify icon={social.icon} />
+                <Iconify icon="carbon:logo-facebook" />
               </IconButton>
-            ))}
+            )}
+            {instagram && (
+              <IconButton
+                key="instagram"
+                color="primary"
+                target="_blank"
+                href={instagram}
+              >
+                <Iconify icon="carbon:logo-instagram" />
+              </IconButton>
+            )}
+            {linkedin && (
+              <IconButton
+                key="linkedin"
+                color="primary"
+                target="_blank"
+                href={linkedin}
+              >
+                <Iconify icon="carbon:logo-linkedin" />
+              </IconButton>
+            )}
           </Stack>
         </StyledOverlay>
 

@@ -14,8 +14,6 @@ import Iconify from "../../../components/iconify";
 export default function PostMember({ member }) {
   const { first_name, last_name, founder, quote, avatar } = member;
 
-  console.log("member", member);
-
   return (
     <Stack
       direction="row"
