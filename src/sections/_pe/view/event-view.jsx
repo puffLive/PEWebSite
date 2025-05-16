@@ -20,8 +20,6 @@ export default function EventView() {
   if (isLoading) return <SplashScreen />;
   if (error) return <NotFoundPage />;
 
-  // const gallaryImgs = event.galleryImgs.split(",");
-
   return (
     <>
       <Container

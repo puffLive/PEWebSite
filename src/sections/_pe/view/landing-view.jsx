@@ -1,12 +1,3 @@
-import {
-  _brands,
-  _members,
-  _caseStudies,
-  _testimonials,
-  _marketingPosts,
-  _pricingMarketing,
-} from "../../../_mock";
-
 import Team from "../team/team";
 import LandingHero from "../landing/landing-hero";
 import LandingFaqs from "../landing/landing-faqs";
@@ -20,6 +11,7 @@ import { Socials } from "../../../assets/data/EventsAndSocials/eventsandsocials"
 import { useEvents } from "../../../Events/useEvents";
 import LatestPosts from "../../blog/pe/latest-posts";
 import { useBlogPosts } from "../../../Blog/useBlogPosts";
+import { SplashScreen } from "../../../components/loading-screen";
 
 // ----------------------------------------------------------------------
 
@@ -28,25 +20,24 @@ export default function LandingView() {
   const { isLoading: eventsIsLoading, events } = useEvents();
   const { isLoading: blogPostsIsLoading, blogPosts } = useBlogPosts();
 
+  if (membersIsLoading || eventsIsLoading || blogPostsIsLoading)
+    return <SplashScreen />;
+
   return (
     <>
-      {!membersIsLoading & !eventsIsLoading & !blogPostsIsLoading && (
-        <>
-          <LandingHero />
+      <LandingHero />
 
-          <LandingAbout />
+      <LandingAbout />
 
-          <LandingCaseStudies events={events} socials={Socials.slice(-4)} />
+      <LandingCaseStudies events={events} socials={Socials.slice(-4)} />
 
-          <Team members={members} />
+      <Team members={members} />
 
-          <LandingFaqs />
+      <LandingFaqs />
 
-          <LatestPosts posts={blogPosts} />
+      <LatestPosts posts={blogPosts} />
 
-          <LandingFreeSEO />
-        </>
-      )}
+      <LandingFreeSEO />
     </>
   );
 }

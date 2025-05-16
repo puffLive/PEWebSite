@@ -21,10 +21,6 @@ export default function PostsView() {
 
   return (
     <>
-      {/* <PostSearchMobile /> */}
-
-      {/* <BlogFeaturedPosts posts={_marketingPosts.slice(0, 5)} /> */}
-
       <BlogFeaturedPosts posts={blogPosts.slice(0, 5)} />
 
       <Container

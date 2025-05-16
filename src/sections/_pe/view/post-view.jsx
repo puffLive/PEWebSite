@@ -13,8 +13,6 @@ import { paths } from "../../../routes/paths";
 
 import { fDate } from "../../../utils/format-time";
 
-import { _socials, _marketingPosts } from "../../../_mock";
-
 import Image from "../../../components/image";
 import Iconify from "../../../components/iconify";
 import Markdown from "../../../components/markdown";
@@ -53,6 +51,8 @@ export default function PostView() {
   }, []);
 
   if (blogIsLoading || blogsIsLoading) return <SplashScreen />;
+
+  if (!blogPost) return <NotFoundPage />;
 
   const {
     title,
