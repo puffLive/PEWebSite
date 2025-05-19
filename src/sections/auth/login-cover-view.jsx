@@ -164,13 +164,13 @@ export default function LoginCoverView() {
 
       {renderHead}
 
-      {renderSocials}
-
+      {/* {renderSocials} */}
+      {/* 
       <Divider sx={{ py: 3 }}>
         <Typography variant="body2" sx={{ color: "text.disabled" }}>
           OR
         </Typography>
-      </Divider>
+      </Divider> */}
 
       {renderForm}
     </>

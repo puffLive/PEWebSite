@@ -70,12 +70,12 @@ export default function NavMobile({ data }) {
               fullWidth
               variant="contained"
               color="inherit"
-              to="#join"
+              to="/sign-in"
               rel="noopener"
               onClick={mobileOpen.onFalse}
               smooth
             >
-              Join Community
+              Sign In
             </Button>
           </Stack>
         </Scrollbar>

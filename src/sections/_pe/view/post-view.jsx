@@ -165,18 +165,7 @@ export default function PostView() {
             sx: { width: 220 },
           },
         }}
-      >
-        {_socials.map((social) => (
-          <MenuItem key={social.value} onClick={handleClose}>
-            <Iconify
-              icon={social.icon}
-              width={24}
-              sx={{ mr: 1, color: social.color }}
-            />
-            Share via {social.label}
-          </MenuItem>
-        ))}
-      </Popover>
+      ></Popover>
     </>
   );
 }

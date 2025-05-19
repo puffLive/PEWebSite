@@ -19,6 +19,9 @@ import LandingPage from "./pages/pe/landing";
 import { lazy } from "react";
 import PostsPage from "./pages/pe/posts";
 import PostPage from "./pages/pe/post";
+import LoginCoverPage from "./pages/auth/login-cover";
+import LoginCoverView from "./sections/auth/login-cover-view";
+import LoginBackgroundPage from "./pages/auth/login-background";
 
 // ----------------------------------------------------------------------
 
@@ -54,10 +57,7 @@ export default function App() {
                   <Route path="events/:eventId" element={<EventPage />} />
                   <Route path="blog" element={<PostsPage />} />
                   <Route path="blog/:slug" element={<PostPage />} />
-                  <Route
-                    path="ClevelandTour"
-                    element={<Navigate replace to={`/events/${1}`} />}
-                  />
+                  <Route path="sign-in" element={<LoginCoverPage />} />
                 </Route>
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>

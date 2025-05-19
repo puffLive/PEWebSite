@@ -1,6 +1,7 @@
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
 
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
@@ -18,11 +19,19 @@ import { useBoolean } from "../../../src/hooks/use-boolean";
 
 import Iconify from "../../../src/components/iconify";
 import FormProvider, { RHFTextField } from "../../../src/components/hook-form";
+import { Box } from "@mui/system";
+import { use } from "react";
+import { useLogin } from "../../auth/useLogin";
+import { el } from "date-fns/locale";
 
 // ----------------------------------------------------------------------
 
 export default function LoginBackgroundView() {
   const passwordShow = useBoolean();
+  const signInError = useBoolean(false);
+  const { login } = useLogin();
+  const navigate = useNavigate();
+  let member = null;
 
   const LoginSchema = Yup.object().shape({
     email: Yup.string()
@@ -50,13 +59,26 @@ export default function LoginBackgroundView() {
   } = methods;
 
   const onSubmit = handleSubmit(async (data) => {
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      reset();
-      console.log("DATA", data);
-    } catch (error) {
-      console.error(error);
+    signInError.onFalse();
+    const response = await login({
+      email: data.email,
+      password: data.password,
+    });
+    console.log("response: ", response);
+    if (response.status === "success") {
+      member = response.data;
+      console.log("member: ", member);
+      sessionStorage.setItem("member", JSON.stringify(member));
+      // sessionStorage.setItem("token", response.token);
+      sessionStorage.setItem("isLoggedIn", true);
+      navigate(paths.pe.home);
     }
+    if (response.status === "fail") {
+      console.log("Login failed");
+      console.log("response: ", response);
+      signInError.onTrue();
+    }
+    reset();
   });
 
   const renderHead = (
@@ -69,7 +91,7 @@ export default function LoginBackgroundView() {
         {`Don’t have an account? `}
         <Link
           component={RouterLink}
-          href={paths.registerBackground}
+          href={paths.registerBackground} // *** need to link to the register page
           variant="subtitle2"
           color="primary"
         >
@@ -104,7 +126,7 @@ export default function LoginBackgroundView() {
   );
 
   const renderForm = (
-    <FormProvider methods={methods} onSubmit={onSubmit}>
+    <FormProvider methods={methods} onSubmit={onSubmit} autocomplete="off">
       <Stack spacing={2.5} alignItems="flex-end">
         <RHFTextField name="email" label="Email address" />
 
@@ -127,15 +149,27 @@ export default function LoginBackgroundView() {
           }}
         />
 
-        <Link
-          component={RouterLink}
-          href={paths.forgotPassword}
-          variant="body2"
-          underline="always"
-          color="text.secondary"
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
         >
-          Forgot password?
-        </Link>
+          <Typography variant="body2" sx={{ color: "error.main" }}>
+            {signInError.value && "Invalid email or password"}
+          </Typography>
+
+          <Link
+            component={RouterLink}
+            href={paths.forgotPassword}
+            variant="body2"
+            underline="always"
+            color="text.secondary"
+          >
+            Forgot password?
+          </Link>
+        </Box>
 
         <LoadingButton
           fullWidth
@@ -152,18 +186,32 @@ export default function LoginBackgroundView() {
   );
 
   return (
-    <>
+    <Box
+      sx={{
+        height: "auto",
+        display: "flex",
+        flexDirection: "column",
+        borderRadius: 2,
+        border: (theme) => `solid 1px ${theme.palette.divider}`,
+        boxShadow: (theme) => theme.customShadows.z24,
+        bgcolor: "background.paper",
+        p: 4,
+        maxWidth: 480,
+        mx: "auto",
+        my: { xs: 5, sm: 10 },
+      }}
+    >
       {renderHead}
 
       {renderForm}
 
-      <Divider>
+      {/* <Divider>
         <Typography variant="body2" sx={{ color: "text.disabled" }}>
           or continue with
         </Typography>
       </Divider>
 
-      {renderSocials}
-    </>
+      {renderSocials} */}
+    </Box>
   );
 }

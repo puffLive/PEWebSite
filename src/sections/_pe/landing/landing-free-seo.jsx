@@ -147,11 +147,26 @@ export default function LandingFreeSEO() {
             ) : (
               <Stack alignItems={{ xs: "center", md: "flex-start" }}>
                 <form onSubmit={handleSubmit}>
-                  <StyledInput name="name" label="Name" sx={{ mb: 2.5 }} />
+                  <StyledInput
+                    name="name"
+                    label="Name"
+                    // autocomplete
+                    sx={{ mb: 2.5 }}
+                  />
 
-                  <StyledInput name="email" label="Email" sx={{ mb: 2.5 }} />
+                  <StyledInput
+                    name="email"
+                    label="Email"
+                    // autocomplete
+                    sx={{ mb: 2.5 }}
+                  />
 
-                  <StyledInput name="phone" label="Phone" sx={{ mb: 2.5 }} />
+                  <StyledInput
+                    name="phone"
+                    label="Phone"
+                    // autocomplete
+                    sx={{ mb: 2.5 }}
+                  />
 
                   <StyledInput
                     name="skill"

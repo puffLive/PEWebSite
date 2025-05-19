@@ -1,15 +1,15 @@
 // ----------------------------------------------------------------------
 
 export const paths = {
-  // Marketing
   pe: {
     root: "/",
+    home: "/",
     services: "/services",
     events: "/events",
     posts: "/blog",
     about: "/about",
+    signIn: "/sign-in",
   },
-  // Common
   maintenance: "/maintenance",
   page404: "/404",
 };

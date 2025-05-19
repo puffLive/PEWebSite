@@ -8,6 +8,7 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import { useTheme } from "@mui/material/styles";
+import { RouterLink } from "../../routes/components";
 
 import { paths } from "../../../src/routes/paths";
 
@@ -31,10 +32,10 @@ import SettingsButton from "../common/settings-button";
 
 export default function Header({ headerOnDark }) {
   const theme = useTheme();
-
   const offset = useOffSetTop();
-
   const mdUp = useResponsive("up", "md");
+
+  const { pathname } = window.location;
 
   const renderContent = (
     <>
@@ -56,6 +57,32 @@ export default function Header({ headerOnDark }) {
 
         <Box sx={{ flexGrow: { xs: 1, md: "unset" } }} />
       </>
+
+      <Stack
+        spacing={2}
+        direction="row"
+        alignItems="center"
+        justifyContent="flex-end"
+      >
+        <Stack spacing={1} direction="row" alignItems="center">
+          <SettingsButton />
+        </Stack>
+
+        {pathname != "/sign-in" && (
+          <Button
+            component={RouterLink}
+            variant="contained"
+            color="inherit"
+            href={paths.pe.signIn}
+            rel="noopener"
+            sx={{
+              display: { xs: "none", md: "inline-flex" },
+            }}
+          >
+            Sign In
+          </Button>
+        )}
+      </Stack>
 
       {!mdUp && <NavMobile data={navConfig} />}
     </>
