@@ -27,6 +27,9 @@ import Searchbar from "../common/searchbar";
 import { navConfig } from "./config-navigation";
 import HeaderShadow from "../common/header-shadow";
 import SettingsButton from "../common/settings-button";
+import { Avatar } from "@mui/material";
+
+import { varHover } from "../../../src/components/animate";
 
 // ----------------------------------------------------------------------
 
@@ -35,7 +38,76 @@ export default function Header({ headerOnDark }) {
   const offset = useOffSetTop();
   const mdUp = useResponsive("up", "md");
 
+  const isLoggedIn = Boolean(sessionStorage.getItem("isLoggedIn"));
+  const member = JSON.parse(sessionStorage.getItem("member"));
   const { pathname } = window.location;
+
+  const signInOrAvatar = (
+    <>
+      {isLoggedIn ? (
+        <Link
+          component={RouterLink}
+          href={paths.pe.profile}
+          rel="noopener"
+          sx={{
+            display: { xs: "none", md: "inline-flex" },
+            flexDirection: "column",
+            alignItems: "center",
+            textDecoration: "none",
+            color: "text.primary",
+            "&:hover": {
+              color: "text.primary",
+              textDecoration: "none",
+            },
+          }}
+        >
+          <Avatar
+            alt={member?.member.first_name}
+            src={member?.member.avatar}
+            sx={{
+              width: 32,
+              height: 32,
+              borderRadius: "50%",
+              boxShadow: (theme) => theme.customShadows.z8,
+              mb: 0.5,
+            }}
+          />
+          <Label
+            variant="soft"
+            color="primary"
+            sx={{
+              ml: 1,
+              textTransform: "capitalize",
+              typography: "subtitle2",
+              fontSize: "0.75rem",
+              fontWeight: "bold",
+              lineHeight: 1,
+              px: 1,
+              height: 20,
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            {member?.member.first_name}
+          </Label>
+        </Link>
+      ) : (
+        <Button
+          component={RouterLink}
+          variant="contained"
+          color="inherit"
+          href={paths.pe.signIn}
+          rel="noopener"
+          variants={varHover(1.25)}
+          sx={{
+            display: { xs: "none", md: "inline-flex" },
+          }}
+        >
+          Sign In
+        </Button>
+      )}
+    </>
+  );
 
   const renderContent = (
     <>
@@ -64,24 +136,11 @@ export default function Header({ headerOnDark }) {
         alignItems="center"
         justifyContent="flex-end"
       >
-        <Stack spacing={1} direction="row" alignItems="center">
+        {/* <Stack spacing={1} direction="row" alignItems="center">
           <SettingsButton />
-        </Stack>
+        </Stack> */}
 
-        {pathname != "/sign-in" && (
-          <Button
-            component={RouterLink}
-            variant="contained"
-            color="inherit"
-            href={paths.pe.signIn}
-            rel="noopener"
-            sx={{
-              display: { xs: "none", md: "inline-flex" },
-            }}
-          >
-            Sign In
-          </Button>
-        )}
+        {pathname != "/sign-in" && signInOrAvatar}
       </Stack>
 
       {!mdUp && <NavMobile data={navConfig} />}
