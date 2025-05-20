@@ -61,9 +61,6 @@ export default function NavMobile({ data }) {
             href={paths.pe.profile}
             rel="noopener"
             sx={{
-              // display: { md: "inline-flex" },
-              // flexDirection: "column",
-              // alignItems: "center",
               textDecoration: "none",
               color: "text.primary",
             }}

@@ -26,28 +26,8 @@ import TextMaxLine from "../../../src/components/text-max-line";
 const navigations = [
   {
     title: "Personal Info",
-    path: paths.eCommerce.account.personal,
+    path: paths.pe.profile,
     icon: <Iconify icon="carbon:user" />,
-  },
-  {
-    title: "Wishlist",
-    path: paths.eCommerce.account.wishlist,
-    icon: <Iconify icon="carbon:favorite" />,
-  },
-  {
-    title: "Vouchers",
-    path: paths.eCommerce.account.vouchers,
-    icon: <Iconify icon="carbon:cut-out" />,
-  },
-  {
-    title: "Orders",
-    path: paths.eCommerce.account.orders,
-    icon: <Iconify icon="carbon:document" />,
-  },
-  {
-    title: "Payment",
-    path: paths.eCommerce.account.payment,
-    icon: <Iconify icon="carbon:purchase" />,
   },
 ];
 
@@ -55,6 +35,8 @@ const navigations = [
 
 export default function Nav({ open, onClose }) {
   const mdUp = useResponsive("up", "md");
+
+  const member = JSON.parse(sessionStorage.getItem("member"));
 
   const renderContent = (
     <Stack
@@ -71,7 +53,7 @@ export default function Nav({ open, onClose }) {
     >
       <Stack spacing={2} sx={{ p: 3, pb: 2 }}>
         <Stack spacing={2} direction="row" alignItems="center">
-          <Avatar src={_mock.image.avatar(0)} sx={{ width: 64, height: 64 }} />
+          <Avatar src={member?.member.avatar} sx={{ width: 80, height: 80 }} />
           <Stack
             direction="row"
             alignItems="center"
@@ -88,14 +70,14 @@ export default function Nav({ open, onClose }) {
 
         <Stack spacing={0.5}>
           <TextMaxLine variant="subtitle1" line={1}>
-            Jayvion Simon
+            {member?.member.first_name} {member?.member.last_name}
           </TextMaxLine>
           <TextMaxLine
             variant="body2"
             line={1}
             sx={{ color: "text.secondary" }}
           >
-            nannie_abernathy70@yahoo.com
+            {member?.member.email}
           </TextMaxLine>
         </Stack>
       </Stack>

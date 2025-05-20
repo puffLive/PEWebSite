@@ -23,10 +23,10 @@ import Label from "../../../src/components/label";
 import NavMobile from "./nav/mobile";
 import NavDesktop from "./nav/desktop";
 import { HEADER } from "../config-layout";
-import Searchbar from "../common/searchbar";
+// import Searchbar from "../common/searchbar";
 import { navConfig } from "./config-navigation";
 import HeaderShadow from "../common/header-shadow";
-import SettingsButton from "../common/settings-button";
+// import SettingsButton from "../common/settings-button";
 import { Avatar } from "@mui/material";
 
 import { varHover } from "../../../src/components/animate";

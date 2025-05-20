@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Outlet } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
@@ -15,7 +16,7 @@ import Nav from "./nav";
 
 // ----------------------------------------------------------------------
 
-export default function AccountLayout({ children }) {
+export default function AccountLayout() {
   const mdUp = useResponsive("up", "md");
 
   const menuOpen = useBoolean();
@@ -71,7 +72,7 @@ export default function AccountLayout({ children }) {
               width: { md: `calc(100% - ${280}px)` },
             }}
           >
-            {children}
+            <Outlet />
           </Box>
         </Stack>
       </Container>
