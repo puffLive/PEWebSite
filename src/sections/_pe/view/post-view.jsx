@@ -120,7 +120,7 @@ export default function PostView() {
                   {member.first_name} {member.last_name}
                 </Typography>
                 <Typography variant="caption" sx={{ color: "text.secondary" }}>
-                  {fDate(createdAt, "dd/MM/yyyy p")}
+                  {createdAt ? fDate(createdAt, "dd/MM/yyyy p") : ""}
                 </Typography>
               </Stack>
 
