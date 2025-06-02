@@ -10,6 +10,8 @@ import Grid from "@mui/material/Unstable_Grid2";
 import Typography from "@mui/material/Typography";
 
 import { paths } from "../../../routes/paths";
+import { _socials } from "../../../_mock";
+import { Page404 } from "../../../pages/404";
 
 import { fDate } from "../../../utils/format-time";
 
@@ -52,7 +54,7 @@ export default function PostView() {
 
   if (blogIsLoading || blogsIsLoading) return <SplashScreen />;
 
-  if (!blogPost) return <NotFoundPage />;
+  if (!blogPost) return <Page404 />;
 
   const {
     title,
