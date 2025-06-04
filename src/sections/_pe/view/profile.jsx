@@ -15,7 +15,7 @@ import FormProvider, {
   RHFTextField,
   RHFAutocomplete,
 } from "../../../components/hook-form";
-import { fDate } from "../../../utils/format-time";
+import { useUpdateMember } from "../../../members/useUpdateMember";
 
 // ----------------------------------------------------------------------
 
@@ -26,6 +26,7 @@ const GENDER_OPTIONS = ["Male", "Female", "Other"];
 export default function AccountProfile() {
   const navigate = useNavigate();
   const member = JSON.parse(sessionStorage.getItem("member"));
+  const { mutate } = useUpdateMember();
 
   const EcommerceAccountPersonalSchema = Yup.object().shape({
     firstName: Yup.string().required("First name is required"),
@@ -61,28 +62,34 @@ export default function AccountProfile() {
   const onSubmit = methods.handleSubmit(async (data) => {
     console.log("SUBMIT TRIGGERED", data);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      const updatedData = {
+        first_name: data.firstName,
+        last_name: data.lastName,
+        phone: data.phoneNumber,
+        dateOfBirth: data.birthday ? data.birthday.toISOString() : null,
+        gender: data.gender,
+        streetAddress: data.streetAddress,
+        postalCode: data.postalCode,
+        city: data.city,
+        country: data.country,
+      };
+
+      const response = await mutate(updatedData);
 
       // Update the session storage with new data
       const updatedMember = {
         ...member,
         member: {
           ...member.member,
-          first_name: data.firstName,
-          last_name: data.lastName,
-          phone: data.phoneNumber,
-          dateOfBirth: data.birthday ? data.birthday.toISOString() : null,
-          gender: data.gender,
-          streetAddress: data.streetAddress,
-          postalCode: data.postalCode,
-          city: data.city,
-          country: data.country,
+          ...updatedData,
         },
       };
       sessionStorage.setItem("member", JSON.stringify(updatedMember));
 
+      console.log("response: ", response);
+      console.log("updatedMember: ", updatedMember);
       // Refresh the page using navigate
-      navigate(0);
+      // navigate(0);
     } catch (error) {
       console.error(error);
     }

@@ -14,3 +14,22 @@ export async function getMembers() {
     throw new Error("Members could not be loaded");
   }
 }
+
+/// add data to the body
+export async function updateMember(data) {
+  try {
+    return await axios
+      .patch(`${PE_API_BASE_URL}api/v1/members/updateMe`, data, {
+        withCredentials: true, // This enables sending cookies with the request
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        return res.data.data.data;
+      });
+  } catch (error) {
+    console.log("updateMember error: ", error);
+    throw new Error("Member could not be updated");
+  }
+}

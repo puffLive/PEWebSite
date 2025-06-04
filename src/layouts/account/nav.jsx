@@ -1,3 +1,4 @@
+import axios from "axios";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -57,13 +58,13 @@ export default function Nav({ open, onClose }) {
       formData.append("memberId", member.member.id);
 
       // Upload to your API
-      const response = await fetch(
+      const response = await axios.post(
         `${PE_API_BASE_URL}api/v1/members/upload-photo`,
+        formData,
         {
-          method: "POST",
-          body: formData,
+          withCredentials: true,
           headers: {
-            Authorization: `Bearer ${member.token}`,
+            "Content-Type": "multipart/form-data",
           },
         }
       );
