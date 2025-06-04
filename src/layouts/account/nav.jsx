@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
@@ -9,10 +10,12 @@ import { alpha } from "@mui/material/styles";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemButton from "@mui/material/ListItemButton";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import { paths } from "../../../src/routes/paths";
 import { useActiveLink } from "../../../src/routes/hooks";
 import { RouterLink } from "../../../src/routes/components";
+import { PE_API_BASE_URL } from "../../../src/config/config";
 
 import { useResponsive } from "../../../src/hooks/use-responsive";
 
@@ -35,8 +38,56 @@ const navigations = [
 
 export default function Nav({ open, onClose }) {
   const mdUp = useResponsive("up", "md");
+  const [isUploading, setIsUploading] = useState(false);
 
   const member = JSON.parse(sessionStorage.getItem("member"));
+
+  const handleImageUpload = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    try {
+      setIsUploading(true);
+
+      // Create form data
+      const formData = new FormData();
+      formData.append("photo", file);
+      formData.append("memberId", member.member.id);
+
+      // Upload to your API
+      const response = await fetch(
+        `${PE_API_BASE_URL}api/v1/members/upload-photo`,
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization: `Bearer ${member.token}`,
+          },
+        }
+      );
+
+      if (!response.ok) throw new Error("Upload failed");
+
+      const data = await response.json();
+
+      // Update member in session storage with new photo URL
+      const updatedMember = {
+        ...member,
+        member: {
+          ...member.member,
+          photo: data.data.photo,
+        },
+      };
+      sessionStorage.setItem("member", JSON.stringify(updatedMember));
+
+      // Refresh the page to show new photo
+      window.location.reload();
+    } catch (error) {
+      console.error("Upload error:", error);
+    } finally {
+      setIsUploading(false);
+    }
+  };
 
   const renderContent = (
     <Stack
@@ -63,8 +114,28 @@ export default function Nav({ open, onClose }) {
               "&:hover": { opacity: 0.72 },
             }}
           >
-            <Iconify icon="carbon:edit" sx={{ mr: 1 }} />
-            Change photo
+            <input
+              type="file"
+              accept="image/*"
+              id="photo-upload"
+              style={{ display: "none" }}
+              onChange={handleImageUpload}
+            />
+            <label
+              htmlFor="photo-upload"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                cursor: "pointer",
+              }}
+            >
+              {isUploading ? (
+                <CircularProgress size={16} sx={{ mr: 1 }} />
+              ) : (
+                <Iconify icon="carbon:edit" sx={{ mr: 1 }} />
+              )}
+              Change photo
+            </label>
           </Stack>
         </Stack>
 

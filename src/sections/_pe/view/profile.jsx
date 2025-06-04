@@ -1,6 +1,8 @@
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, Controller } from "react-hook-form";
+import { parseISO } from "date-fns";
+import { useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
@@ -13,6 +15,7 @@ import FormProvider, {
   RHFTextField,
   RHFAutocomplete,
 } from "../../../components/hook-form";
+import { fDate } from "../../../utils/format-time";
 
 // ----------------------------------------------------------------------
 
@@ -21,6 +24,7 @@ const GENDER_OPTIONS = ["Male", "Female", "Other"];
 // ----------------------------------------------------------------------
 
 export default function AccountProfile() {
+  const navigate = useNavigate();
   const member = JSON.parse(sessionStorage.getItem("member"));
 
   const EcommerceAccountPersonalSchema = Yup.object().shape({
@@ -38,13 +42,15 @@ export default function AccountProfile() {
   const defaultValuesPer = {
     firstName: member?.member.first_name || "",
     lastName: member?.member.last_name || "",
-    phoneNumber: "365-374-4961",
-    birthday: null,
-    gender: "Other",
-    streetAddress: "",
-    postalCode: "",
-    city: "",
-    country: "Canada",
+    phoneNumber: member?.member.phone || "",
+    birthday: member?.member.dateOfBirth
+      ? parseISO(member.member.dateOfBirth)
+      : null,
+    gender: member?.member.gender || "Other",
+    streetAddress: member?.member.streetAddress || "",
+    postalCode: member?.member.postalCode || "",
+    city: member?.member.city || "",
+    country: member?.member.country || "Canada",
   };
 
   const methods = useForm({
@@ -56,8 +62,27 @@ export default function AccountProfile() {
     console.log("SUBMIT TRIGGERED", data);
     try {
       await new Promise((resolve) => setTimeout(resolve, 500));
-      methods.reset();
-      console.log("Password DATA", data);
+
+      // Update the session storage with new data
+      const updatedMember = {
+        ...member,
+        member: {
+          ...member.member,
+          first_name: data.firstName,
+          last_name: data.lastName,
+          phone: data.phoneNumber,
+          dateOfBirth: data.birthday ? data.birthday.toISOString() : null,
+          gender: data.gender,
+          streetAddress: data.streetAddress,
+          postalCode: data.postalCode,
+          city: data.city,
+          country: data.country,
+        },
+      };
+      sessionStorage.setItem("member", JSON.stringify(updatedMember));
+
+      // Refresh the page using navigate
+      navigate(0);
     } catch (error) {
       console.error(error);
     }
@@ -84,17 +109,20 @@ export default function AccountProfile() {
 
           <Controller
             name="birthday"
-            render={({ field, fieldState: { error } }) => (
+            render={({ field }) => (
               <DatePicker
                 label="Birthday"
+                value={field.value}
+                onChange={(newValue) => {
+                  field.onChange(newValue);
+                }}
                 slotProps={{
                   textField: {
-                    helperText: error?.message,
-                    error: !!error?.message,
+                    fullWidth: true,
+                    error: !!methods.formState.errors.birthday,
+                    helperText: methods.formState.errors.birthday?.message,
                   },
                 }}
-                {...field}
-                value={field.value}
               />
             )}
           />

@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
@@ -8,19 +9,10 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import InputAdornment from "@mui/material/InputAdornment";
 
 import { useBoolean } from "../../../hooks/use-boolean";
+import { PE_API_BASE_URL } from "../../../config/config";
 
 import Iconify from "../../../components/iconify";
-import FormProvider, {
-  RHFSelect,
-  RHFTextField,
-  RHFAutocomplete,
-} from "../../../components/hook-form";
-
-// ----------------------------------------------------------------------
-
-// const GENDER_OPTIONS = ["Male", "Female", "Other"];
-
-// ----------------------------------------------------------------------
+import FormProvider, { RHFTextField } from "../../../components/hook-form";
 
 export default function AccountPasswordView() {
   const passwordShow = useBoolean();
@@ -38,9 +30,18 @@ export default function AccountPasswordView() {
 
   const onSubmitPW = pwMethods.handleSubmit(async (data) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      pwMethods.reset();
       console.log("Password DATA", data);
+      const response = await axios.patch(
+        `${PE_API_BASE_URL}api/v1/members/updateMyPassword`,
+        {
+          passwordCurrent: data.oldPassword,
+          password: data.newPassword,
+          passwordConfirm: data.confirmNewPassword,
+        },
+        { withCredentials: true }
+      );
+      pwMethods.reset();
+      return response;
     } catch (error) {
       console.error(error);
     }

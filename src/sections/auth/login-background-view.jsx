@@ -69,7 +69,6 @@ export default function LoginBackgroundView() {
       member = response.data;
       console.log("member: ", member);
       sessionStorage.setItem("member", JSON.stringify(member));
-      // sessionStorage.setItem("token", response.token);
       sessionStorage.setItem("isLoggedIn", true);
       navigate(paths.pe.home);
     }
