@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
@@ -39,6 +40,7 @@ const navigations = [
 export default function Nav({ open, onClose }) {
   const mdUp = useResponsive("up", "md");
   const [isUploading, setIsUploading] = useState(false);
+  const navigate = useNavigate();
 
   const member = JSON.parse(sessionStorage.getItem("member"));
 
@@ -165,6 +167,18 @@ export default function Nav({ open, onClose }) {
 
       <Stack sx={{ my: 1, px: 2 }}>
         <ListItemButton
+          onClick={() => {
+            // Remove session data
+            sessionStorage.removeItem("isLoggedIn");
+            sessionStorage.removeItem("member");
+
+            // Clear httpOnly cookie by setting expired date
+            document.cookie =
+              "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+            // Navigate to home page
+            navigate("/");
+          }}
           sx={{
             px: 1,
             height: 44,
