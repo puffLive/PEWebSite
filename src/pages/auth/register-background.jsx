@@ -8,7 +8,7 @@ export default function RegisterBackgroundPage() {
   return (
     <>
       <Helmet>
-        <title> Register: Background</title>
+        <title> Get Started | PE</title>
       </Helmet>
 
       <RegisterBackgroundView />

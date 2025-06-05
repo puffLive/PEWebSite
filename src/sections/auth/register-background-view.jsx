@@ -10,6 +10,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import LoadingButton from "@mui/lab/LoadingButton";
 import InputAdornment from "@mui/material/InputAdornment";
+import Box from "@mui/material/Box";
 
 import { paths } from "../../../src/routes/paths";
 import { RouterLink } from "../../../src/routes/components";
@@ -37,7 +38,7 @@ export default function RegisterBackgroundView() {
       .min(6, "Password should be of minimum 6 characters length"),
     confirmPassword: Yup.string()
       .required("Confirm password is required")
-      .oneOf([Yup.ref("password")], "Password's not match"),
+      .oneOf([Yup.ref("password")], "Password's do not match"),
   });
 
   const defaultValues = {
@@ -78,7 +79,7 @@ export default function RegisterBackgroundView() {
         {`Already have an account? `}
         <Link
           component={RouterLink}
-          href={paths.loginBackground}
+          href={paths.pe.signIn}
           variant="subtitle2"
           color="primary"
         >
@@ -187,18 +188,32 @@ export default function RegisterBackgroundView() {
   );
 
   return (
-    <>
+    <Box
+      sx={{
+        height: "auto",
+        display: "flex",
+        flexDirection: "column",
+        borderRadius: 2,
+        border: (theme) => `solid 1px ${theme.palette.divider}`,
+        boxShadow: (theme) => theme.customShadows.z24,
+        bgcolor: "background.paper",
+        p: 4,
+        maxWidth: 480,
+        mx: "auto",
+        my: { xs: 5, sm: 10 },
+      }}
+    >
       {renderHead}
 
       {renderForm}
-
+      {/* 
       <Divider>
         <Typography variant="body2" sx={{ color: "text.disabled" }}>
           or continue with
         </Typography>
       </Divider>
 
-      {renderSocials}
-    </>
+      {renderSocials} */}
+    </Box>
   );
 }

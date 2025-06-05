@@ -25,6 +25,7 @@ import LoginCoverView from "./sections/auth/login-cover-view";
 import LoginBackgroundPage from "./pages/auth/login-background";
 import { LocalizationProvider } from "../src/locales";
 import AccountLayout from "../src/layouts/account";
+import RegisterBackgroundPage from "./pages/auth/register-background";
 
 // ----------------------------------------------------------------------
 
@@ -62,9 +63,11 @@ export default function App() {
                     <Route path="blog" element={<PostsPage />} />
                     <Route path="blog/:slug" element={<PostPage />} />
                     <Route path="sign-in" element={<LoginCoverPage />} />
-                    {/* <Route path="profile" element={<ProfilePage />} /> */}
+                    <Route
+                      path="register"
+                      element={<RegisterBackgroundPage />}
+                    />
                     <Route path="account" element={<AccountLayout />}>
-                      {/* <Route index element={<Navigate to="/profile" />} /> */}
                       <Route path="profile" element={<ProfilePage />} />
                     </Route>
                   </Route>

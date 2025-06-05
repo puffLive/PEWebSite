@@ -11,6 +11,7 @@ export const paths = {
     posts: "/blog",
     about: "/about",
     signIn: "/sign-in",
+    register: "/register",
     account: "/account",
     profile: "/account/profile",
   },
