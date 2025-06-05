@@ -69,22 +69,22 @@ export default function Nav({ open, onClose }) {
         }
       );
 
-      if (!response.ok) throw new Error("Upload failed");
+      if (response.status !== 200) throw new Error("Upload failed");
 
-      const data = await response.json();
-
+      const data = response.data.data;
       // Update member in session storage with new photo URL
       const updatedMember = {
         ...member,
         member: {
           ...member.member,
-          avatar: data.data.avatar,
+          avatar: data.avatar,
         },
       };
+      console.log("Updated member: ", updatedMember);
       sessionStorage.setItem("member", JSON.stringify(updatedMember));
 
       // Refresh the page to show new photo
-      window.location.reload();
+      navigate(0);
     } catch (error) {
       console.error("Upload error:", error);
     } finally {
