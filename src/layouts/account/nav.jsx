@@ -78,7 +78,7 @@ export default function Nav({ open, onClose }) {
         ...member,
         member: {
           ...member.member,
-          photo: data.data.photo,
+          avatar: data.data.avatar,
         },
       };
       sessionStorage.setItem("member", JSON.stringify(updatedMember));
