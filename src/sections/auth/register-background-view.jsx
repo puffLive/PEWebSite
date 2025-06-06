@@ -26,10 +26,14 @@ export default function RegisterBackgroundView() {
   const passwordShow = useBoolean();
 
   const RegisterSchema = Yup.object().shape({
-    fullName: Yup.string()
+    firstName: Yup.string()
       .required("Full name is required")
-      .min(6, "Mininum 6 characters")
-      .max(15, "Maximum 15 characters"),
+      .min(2, "Mininum 2 characters")
+      .max(30, "Maximum 30 characters"),
+    lastName: Yup.string()
+      .required("Last name is required")
+      .min(2, "Mininum 2 characters")
+      .max(30, "Maximum 30 characters"),
     email: Yup.string()
       .required("Email is required")
       .email("That is not an email"),
@@ -42,7 +46,8 @@ export default function RegisterBackgroundView() {
   });
 
   const defaultValues = {
-    fullName: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -116,7 +121,8 @@ export default function RegisterBackgroundView() {
   const renderForm = (
     <FormProvider methods={methods} onSubmit={onSubmit}>
       <Stack spacing={2.5}>
-        <RHFTextField name="fullName" label="Full Name" />
+        <RHFTextField name="firstName" label="First Name" />
+        <RHFTextField name="lastName" label="Last Name" />
 
         <RHFTextField name="email" label="Email address" />
 

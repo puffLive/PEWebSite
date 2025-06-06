@@ -31,7 +31,22 @@ export default function AccountProfile() {
   const EcommerceAccountPersonalSchema = Yup.object().shape({
     firstName: Yup.string().required("First name is required"),
     lastName: Yup.string().required("Last name is required"),
-    phoneNumber: Yup.string(),
+    phoneNumber: Yup.string()
+      .matches(
+        /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/,
+        "Phone number must be in format XXX-XXX-XXXX, XXXXXXXXXX, or (XXX) XXX-XXXX"
+      )
+      .transform((value) => {
+        // Remove all non-digit characters
+        const digits = value.replace(/\D/g, "");
+        // Format as XXX-XXX-XXXX
+        if (digits.length === 10) {
+          return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(
+            6
+          )}`;
+        }
+        return value;
+      }),
     birthday: Yup.mixed().nullable(),
     gender: Yup.string(),
     streetAddress: Yup.string(),
@@ -89,7 +104,7 @@ export default function AccountProfile() {
       console.log("response: ", response);
       console.log("updatedMember: ", updatedMember);
       // Refresh the page using navigate
-      // navigate(0);
+      navigate(0);
     } catch (error) {
       console.error(error);
     }
