@@ -33,3 +33,21 @@ export async function updateMember(data) {
     throw new Error("Member could not be updated");
   }
 }
+
+export async function signUpMember(data) {
+  try {
+    return await axios
+      .post(`${PE_API_BASE_URL}api/v1/members/signup`, data, {
+        withCredentials: true, // This enables sending cookies with the request
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        return res.data.data.data;
+      });
+  } catch (error) {
+    console.log("updateMember error: ", error);
+    throw new Error("Member could not be updated");
+  }
+}

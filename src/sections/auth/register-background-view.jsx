@@ -1,6 +1,7 @@
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
 
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
@@ -19,11 +20,14 @@ import { useBoolean } from "../../../src/hooks/use-boolean";
 
 import Iconify from "../../../src/components/iconify";
 import FormProvider, { RHFTextField } from "../../../src/components/hook-form";
+import { useSignUpMember } from "../../members/useSignUpMember";
 
 // ----------------------------------------------------------------------
 
 export default function RegisterBackgroundView() {
+  const navigate = useNavigate();
   const passwordShow = useBoolean();
+  const { mutate } = useSignUpMember();
 
   const RegisterSchema = Yup.object().shape({
     firstName: Yup.string()
@@ -66,11 +70,26 @@ export default function RegisterBackgroundView() {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      const memberData = {
+        first_name: data.firstName,
+        last_name: data.lastName,
+        email: data.email,
+        password: data.password,
+        passwordConfirm: data.confirmPassword,
+      };
+
+      const newMember = await mutate(memberData);
+
+      // Store member data in session storage
+      sessionStorage.setItem("member", JSON.stringify({ member: newMember }));
+
       reset();
-      console.log("DATA", data);
+      navigate("/"); // Redirect or handle successful registration
     } catch (error) {
-      console.error(error);
+      console.error(
+        "Registration error:",
+        error.response?.data?.message || error.message
+      );
     }
   });
 
