@@ -5,7 +5,7 @@ import { PE_API_BASE_URL } from "../config/config";
 export async function getMembers() {
   try {
     return await axios
-      .get(`${PE_API_BASE_URL}api/v1/members/public`)
+      .get(`${PE_API_BASE_URL}api/v1/members/public?founder=true`)
       .then((res) => {
         return res.data.data.data;
       });
