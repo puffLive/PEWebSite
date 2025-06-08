@@ -1,5 +1,8 @@
 import "../src/global.css";
 
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setMember } from "./store/memberSlice";
 // ----------------------------------------------------------------------
 
 import ThemeProvider from "../src/theme";
@@ -41,6 +44,15 @@ const queryClient = new QueryClient({
 const IndexPage = lazy(() => import("../src/pages/home"));
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const storedMember = sessionStorage.getItem("member");
+    if (storedMember) {
+      dispatch(setMember(JSON.parse(storedMember)));
+    }
+  }, [dispatch]);
+
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initalIsOpen={false} />

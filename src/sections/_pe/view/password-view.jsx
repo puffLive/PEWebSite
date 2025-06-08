@@ -13,10 +13,15 @@ import { PE_API_BASE_URL } from "../../../config/config";
 
 import Iconify from "../../../components/iconify";
 import FormProvider, { RHFTextField } from "../../../components/hook-form";
+<<<<<<< Updated upstream
+=======
+
+import { useUpdatePassword } from "../../../auth/useUpdatePassword";
+>>>>>>> Stashed changes
 
 export default function AccountPasswordView() {
   const passwordShow = useBoolean();
-  // const member = JSON.parse(sessionStorage.getItem("member"));
+  const { updatePassword } = useUpdatePassword();
 
   const defaultValuesPW = {
     oldPassword: "",
@@ -30,6 +35,7 @@ export default function AccountPasswordView() {
 
   const onSubmitPW = pwMethods.handleSubmit(async (data) => {
     try {
+<<<<<<< Updated upstream
       console.log("Password DATA", data);
       const response = await axios.patch(
         `${PE_API_BASE_URL}api/v1/members/updateMyPassword`,
@@ -42,6 +48,14 @@ export default function AccountPasswordView() {
       );
       pwMethods.reset();
       return response;
+=======
+      const response = await updatePassword({
+        passwordCurrent: data.oldPassword,
+        password: data.newPassword,
+        passwordConfirm: data.confirmNewPassword,
+      });
+      pwMethods.reset();
+>>>>>>> Stashed changes
     } catch (error) {
       console.error(error);
     }

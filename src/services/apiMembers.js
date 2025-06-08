@@ -51,3 +51,20 @@ export async function signUpMember(data) {
     throw new Error("Member could not be updated");
   }
 }
+
+export async function updateMember(memberData) {
+  try {
+    console.log("Member Data ~ updateMember2: ", memberData);
+    return await axios
+      .patch(`${PE_API_BASE_URL}api/v1/members/updateMe`, memberData, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log("updateMember res: ", res.data);
+        return res.data.data;
+      });
+  } catch (error) {
+    console.log("updateMember error: ", error);
+    throw new Error("Member could not be updated");
+  }
+}

@@ -1,6 +1,12 @@
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, Controller } from "react-hook-form";
+import { useSelector } from "react-redux";
+import { parseISO } from "date-fns";
+
+import { useEffect } from "react";
+// import { useDispatch } from "react-redux";
+// import { setMember } from "../../../store/memberSlice";
 import { parseISO } from "date-fns";
 import { useNavigate } from "react-router-dom";
 
@@ -17,6 +23,8 @@ import FormProvider, {
 } from "../../../components/hook-form";
 import { useUpdateMember } from "../../../members/useUpdateMember";
 
+import { useUpdateMember } from "../../../members/useUpdateMember";
+
 // ----------------------------------------------------------------------
 
 const GENDER_OPTIONS = ["Male", "Female", "Other"];
@@ -25,7 +33,11 @@ const GENDER_OPTIONS = ["Male", "Female", "Other"];
 
 export default function AccountProfile() {
   const navigate = useNavigate();
-  const member = JSON.parse(sessionStorage.getItem("member"));
+  // const dispatch = useDispatch();
+  const member = useSelector((state) => state.member.member);
+  const { updateMember } = useUpdateMember();
+
+  console.log("Member Data ~ AccountProfile: ", member);
   const { mutate } = useUpdateMember();
 
   const EcommerceAccountPersonalSchema = Yup.object().shape({
@@ -55,7 +67,7 @@ export default function AccountProfile() {
     postalCode: Yup.string(),
   });
 
-  const defaultValuesPer = {
+  const defaultValues = {
     firstName: member?.member.first_name || "",
     lastName: member?.member.last_name || "",
     phoneNumber: member?.member.phone || "",
@@ -71,40 +83,42 @@ export default function AccountProfile() {
 
   const methods = useForm({
     resolver: yupResolver(EcommerceAccountPersonalSchema),
-    defaultValues: defaultValuesPer,
+    defaultValues,
   });
 
+  // useEffect(() => {
+  //   if (member) {
+  //     methods.reset({
+  //       firstName: member?.member.first_name || "",
+  //       lastName: member?.member.last_name || "",
+  //       phoneNumber: member?.member?.phone || "",
+  //       birthday: member?.member?.dateOfBirth
+  //         ? parseISO(member.member.dateOfBirth)
+  //         : null,
+  //       gender: member?.member?.gender,
+  //       streetAddress: member?.member?.streetAddress || "",
+  //       postalCode: member?.member?.postalCode || "",
+  //       city: member?.member?.city || "",
+  //       country: member?.member?.country || "",
+  //     });
+  //   }
+  // }, [member, methods]);
+
   const onSubmit = methods.handleSubmit(async (data) => {
-    console.log("SUBMIT TRIGGERED", data);
     try {
-      const updatedData = {
+      await updateMember({
         first_name: data.firstName,
         last_name: data.lastName,
-        phone: data.phoneNumber,
-        dateOfBirth: data.birthday ? data.birthday.toISOString() : null,
+        phoneNumber: data.phoneNumber,
+        dateOfBirth: data.birthday,
         gender: data.gender,
+        phone: data.phoneNumber,
         streetAddress: data.streetAddress,
         postalCode: data.postalCode,
         city: data.city,
         country: data.country,
-      };
-
-      const response = await mutate(updatedData);
-
-      // Update the session storage with new data
-      const updatedMember = {
-        ...member,
-        member: {
-          ...member.member,
-          ...updatedData,
-        },
-      };
-      sessionStorage.setItem("member", JSON.stringify(updatedMember));
-
-      console.log("response: ", response);
-      console.log("updatedMember: ", updatedMember);
-      // Refresh the page using navigate
-      navigate(0);
+      });
+      methods.reset();
     } catch (error) {
       console.error(error);
     }

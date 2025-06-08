@@ -25,6 +25,11 @@ import { _mock } from "../../../src/_mock";
 
 import Iconify from "../../../src/components/iconify";
 import TextMaxLine from "../../../src/components/text-max-line";
+import { useNavigate } from "react-router";
+import { useLogout } from "../../auth/useLogout";
+
+import { useDispatch } from "react-redux";
+import { clearMember } from "../../store/memberSlice";
 
 // ----------------------------------------------------------------------
 
@@ -40,6 +45,9 @@ const navigations = [
 
 export default function Nav({ open, onClose }) {
   const mdUp = useResponsive("up", "md");
+  const navigate = useNavigate();
+  const { logout } = useLogout();
+  const dispatch = useDispatch();
   const [isUploading, setIsUploading] = useState(false);
   const navigate = useNavigate();
 
@@ -90,6 +98,18 @@ export default function Nav({ open, onClose }) {
     } finally {
       setIsUploading(false);
     }
+  };
+
+  const handleLogout = async () => {
+    // Optionally, call your backend logout endpoint here
+    await logout();
+
+    sessionStorage.removeItem("member");
+    sessionStorage.removeItem("isLoggedIn");
+
+    dispatch(clearMember()); // Clear member state in Redux store
+
+    navigate("/"); // Redirect to sign-in page
   };
 
   const renderContent = (
@@ -185,6 +205,7 @@ export default function Nav({ open, onClose }) {
             height: 44,
             borderRadius: 1,
           }}
+          onClick={handleLogout}
         >
           <ListItemIcon>
             <Iconify icon="carbon:logout" />

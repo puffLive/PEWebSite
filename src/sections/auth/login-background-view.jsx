@@ -24,6 +24,9 @@ import { use } from "react";
 import { useLogin } from "../../auth/useLogin";
 import { el } from "date-fns/locale";
 
+import { useDispatch } from "react-redux";
+import { setMember } from "../../store/memberSlice";
+
 // ----------------------------------------------------------------------
 
 export default function LoginBackgroundView() {
@@ -31,6 +34,7 @@ export default function LoginBackgroundView() {
   const signInError = useBoolean(false);
   const { login } = useLogin();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   let member = null;
 
   const LoginSchema = Yup.object().shape({
@@ -64,12 +68,14 @@ export default function LoginBackgroundView() {
       email: data.email,
       password: data.password,
     });
-    console.log("response: ", response);
+    // console.log("response: ", response);
     if (response.status === "success") {
       member = response.data;
-      console.log("member: ", member);
+      // console.log("member: ", member);
       sessionStorage.setItem("member", JSON.stringify(member));
       sessionStorage.setItem("isLoggedIn", true);
+      dispatch(setMember(response.data)); // response.data should be the member object
+
       navigate(paths.pe.home);
     }
     if (response.status === "fail") {
@@ -98,30 +104,6 @@ export default function LoginBackgroundView() {
         </Link>
       </Typography>
     </div>
-  );
-
-  const renderSocials = (
-    <Stack direction="row" spacing={2}>
-      <Button fullWidth size="large" color="inherit" variant="outlined">
-        <Iconify icon="logos:google-icon" width={24} />
-      </Button>
-
-      <Button fullWidth size="large" color="inherit" variant="outlined">
-        <Iconify
-          icon="carbon:logo-facebook"
-          width={24}
-          sx={{ color: "#1877F2" }}
-        />
-      </Button>
-
-      <Button color="inherit" fullWidth variant="outlined" size="large">
-        <Iconify
-          icon="carbon:logo-github"
-          width={24}
-          sx={{ color: "text.primary" }}
-        />
-      </Button>
-    </Stack>
   );
 
   const renderForm = (
@@ -203,14 +185,6 @@ export default function LoginBackgroundView() {
       {renderHead}
 
       {renderForm}
-
-      {/* <Divider>
-        <Typography variant="body2" sx={{ color: "text.disabled" }}>
-          or continue with
-        </Typography>
-      </Divider>
-
-      {renderSocials} */}
     </Box>
   );
 }
