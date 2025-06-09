@@ -24,7 +24,7 @@ import NavMobile from "./nav/mobile";
 import NavDesktop from "./nav/desktop";
 import { HEADER } from "../config-layout";
 // import Searchbar from "../common/searchbar";
-import { navConfig } from "./config-navigation";
+import { useNavConfig } from "./config-navigation";
 import HeaderShadow from "../common/header-shadow";
 // import SettingsButton from "../common/settings-button";
 import { Avatar } from "@mui/material";
@@ -37,7 +37,7 @@ export default function Header({ headerOnDark }) {
   const theme = useTheme();
   const offset = useOffSetTop();
   const mdUp = useResponsive("up", "md");
-
+  const navConfig = useNavConfig();
   const isLoggedIn = Boolean(sessionStorage.getItem("isLoggedIn"));
   const member = JSON.parse(sessionStorage.getItem("member"));
   const { pathname } = window.location;
@@ -50,9 +50,10 @@ export default function Header({ headerOnDark }) {
           href={paths.pe.profile}
           rel="noopener"
           sx={{
-            display: { xs: "none", md: "inline-flex" },
+            display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            justifyContent: "center",
             textDecoration: "none",
             color: "text.primary",
             "&:hover": {
@@ -73,19 +74,17 @@ export default function Header({ headerOnDark }) {
             }}
           />
           <Label
-            variant="soft"
-            color="primary"
+            variant="outlined"
+            color="default"
             sx={{
               ml: 1,
               textTransform: "capitalize",
-              typography: "subtitle2",
-              fontSize: "0.75rem",
+              typography: "body2",
+              fontSize: "0.8rem",
               fontWeight: "bold",
               lineHeight: 1,
               px: 1,
               height: 20,
-              display: "flex",
-              alignItems: "center",
             }}
           >
             {member?.member?.first_name}

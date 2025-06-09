@@ -74,7 +74,7 @@ export default function LoginBackgroundView() {
       // console.log("member: ", member);
       sessionStorage.setItem("member", JSON.stringify(member));
       sessionStorage.setItem("isLoggedIn", true);
-      dispatch(setMember(response.data)); // response.data should be the member object
+      dispatch(setMember(member)); // response.data should be the member object
 
       navigate(paths.pe.home);
     }
