@@ -25,7 +25,6 @@ import { _mock } from "../../../src/_mock";
 
 import Iconify from "../../../src/components/iconify";
 import TextMaxLine from "../../../src/components/text-max-line";
-import { useNavigate } from "react-router";
 import { useLogout } from "../../auth/useLogout";
 
 import { useDispatch } from "react-redux";
@@ -49,7 +48,6 @@ export default function Nav({ open, onClose }) {
   const { logout } = useLogout();
   const dispatch = useDispatch();
   const [isUploading, setIsUploading] = useState(false);
-  const navigate = useNavigate();
 
   const member = JSON.parse(sessionStorage.getItem("member"));
 
@@ -188,18 +186,6 @@ export default function Nav({ open, onClose }) {
 
       <Stack sx={{ my: 1, px: 2 }}>
         <ListItemButton
-          onClick={() => {
-            // Remove session data
-            sessionStorage.removeItem("isLoggedIn");
-            sessionStorage.removeItem("member");
-
-            // Clear httpOnly cookie by setting expired date
-            document.cookie =
-              "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-
-            // Navigate to home page
-            navigate("/");
-          }}
           sx={{
             px: 1,
             height: 44,

@@ -5,9 +5,8 @@ import { useSelector } from "react-redux";
 import { parseISO } from "date-fns";
 
 import { useEffect } from "react";
-// import { useDispatch } from "react-redux";
-// import { setMember } from "../../../store/memberSlice";
-import { parseISO } from "date-fns";
+import { useDispatch } from "react-redux";
+import { setMember } from "../../../store/memberSlice";
 import { useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
@@ -23,8 +22,6 @@ import FormProvider, {
 } from "../../../components/hook-form";
 import { useUpdateMember } from "../../../members/useUpdateMember";
 
-import { useUpdateMember } from "../../../members/useUpdateMember";
-
 // ----------------------------------------------------------------------
 
 const GENDER_OPTIONS = ["Male", "Female", "Other"];
@@ -33,14 +30,13 @@ const GENDER_OPTIONS = ["Male", "Female", "Other"];
 
 export default function AccountProfile() {
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const { mutate } = useUpdateMember();
   const member = useSelector((state) => state.member.member);
-  const { updateMember } = useUpdateMember();
 
   console.log("Member Data ~ AccountProfile: ", member);
-  const { mutate } = useUpdateMember();
 
-  const EcommerceAccountPersonalSchema = Yup.object().shape({
+  const AccountPersonalSchema = Yup.object().shape({
     firstName: Yup.string().required("First name is required"),
     lastName: Yup.string().required("Last name is required"),
     phoneNumber: Yup.string()
@@ -68,45 +64,45 @@ export default function AccountProfile() {
   });
 
   const defaultValues = {
-    firstName: member?.member.first_name || "",
-    lastName: member?.member.last_name || "",
-    phoneNumber: member?.member.phone || "",
-    birthday: member?.member.dateOfBirth
+    firstName: member?.member?.first_name || "",
+    lastName: member?.member?.last_name || "",
+    phoneNumber: member?.member?.phone || "",
+    birthday: member?.member?.dateOfBirth
       ? parseISO(member.member.dateOfBirth)
       : null,
-    gender: member?.member.gender || "Other",
-    streetAddress: member?.member.streetAddress || "",
-    postalCode: member?.member.postalCode || "",
-    city: member?.member.city || "",
-    country: member?.member.country || "Canada",
+    gender: member?.member?.gender || "Other",
+    streetAddress: member?.member?.streetAddress || "",
+    postalCode: member?.member?.postalCode || "",
+    city: member?.member?.city || "",
+    country: member?.member?.country || "Canada",
   };
 
   const methods = useForm({
-    resolver: yupResolver(EcommerceAccountPersonalSchema),
+    resolver: yupResolver(AccountPersonalSchema),
     defaultValues,
   });
 
-  // useEffect(() => {
-  //   if (member) {
-  //     methods.reset({
-  //       firstName: member?.member.first_name || "",
-  //       lastName: member?.member.last_name || "",
-  //       phoneNumber: member?.member?.phone || "",
-  //       birthday: member?.member?.dateOfBirth
-  //         ? parseISO(member.member.dateOfBirth)
-  //         : null,
-  //       gender: member?.member?.gender,
-  //       streetAddress: member?.member?.streetAddress || "",
-  //       postalCode: member?.member?.postalCode || "",
-  //       city: member?.member?.city || "",
-  //       country: member?.member?.country || "",
-  //     });
-  //   }
-  // }, [member, methods]);
+  useEffect(() => {
+    if (member) {
+      methods.reset({
+        firstName: member?.member?.first_name || "",
+        lastName: member?.member?.last_name || "",
+        phoneNumber: member?.member?.phone || "",
+        birthday: member?.member?.dateOfBirth
+          ? parseISO(member.member.dateOfBirth)
+          : null,
+        gender: member?.member?.gender || "Other",
+        streetAddress: member?.member?.streetAddress || "",
+        postalCode: member?.member?.postalCode || "",
+        city: member?.member?.city || "",
+        country: member?.member?.country || "Canada",
+      });
+    }
+  }, [member, methods]);
 
   const onSubmit = methods.handleSubmit(async (data) => {
     try {
-      await updateMember({
+      const memberData = {
         first_name: data.firstName,
         last_name: data.lastName,
         phoneNumber: data.phoneNumber,
@@ -117,8 +113,27 @@ export default function AccountProfile() {
         postalCode: data.postalCode,
         city: data.city,
         country: data.country,
+      };
+
+      const updatedMember = await new Promise((resolve, reject) => {
+        mutate(memberData, {
+          onSuccess: (data) => resolve(data),
+          onError: (error) => reject(error),
+        });
       });
-      methods.reset();
+
+      if (updatedMember) {
+        console.log("Updating Member Data ~ AccountProfile: ", updatedMember);
+        dispatch(setMember({ member: updatedMember }));
+        // Update session data with the new member data
+        sessionStorage.setItem(
+          "member",
+          JSON.stringify({ member: updatedMember })
+        );
+      }
+
+      // Don't reset the form after successful update
+      // methods.reset();
     } catch (error) {
       console.error(error);
     }

@@ -18,19 +18,27 @@ export async function getMembers() {
 /// add data to the body
 export async function updateMember(data) {
   try {
-    return await axios
-      .patch(`${PE_API_BASE_URL}api/v1/members/updateMe`, data, {
-        withCredentials: true, // This enables sending cookies with the request
+    const response = await axios.patch(
+      `${PE_API_BASE_URL}api/v1/members/updateMe`,
+      data,
+      {
+        withCredentials: true,
         headers: {
           "Content-Type": "application/json",
         },
-      })
-      .then((res) => {
-        return res.data.data.data;
-      });
+      }
+    );
+
+    if (!response.data || !response.data.data) {
+      throw new Error("Invalid response format from server");
+    }
+
+    return response.data.data.member;
   } catch (error) {
-    console.log("updateMember error: ", error);
-    throw new Error("Member could not be updated");
+    console.error("updateMember error:", error.response?.data || error.message);
+    throw new Error(
+      error.response?.data?.message || "Member could not be updated"
+    );
   }
 }
 
@@ -45,23 +53,6 @@ export async function signUpMember(data) {
       })
       .then((res) => {
         return res.data.data.data;
-      });
-  } catch (error) {
-    console.log("updateMember error: ", error);
-    throw new Error("Member could not be updated");
-  }
-}
-
-export async function updateMember(memberData) {
-  try {
-    console.log("Member Data ~ updateMember2: ", memberData);
-    return await axios
-      .patch(`${PE_API_BASE_URL}api/v1/members/updateMe`, memberData, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        console.log("updateMember res: ", res.data);
-        return res.data.data;
       });
   } catch (error) {
     console.log("updateMember error: ", error);

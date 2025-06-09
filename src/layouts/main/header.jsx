@@ -62,8 +62,8 @@ export default function Header({ headerOnDark }) {
           }}
         >
           <Avatar
-            alt={member?.member.first_name}
-            src={member?.member.avatar}
+            alt={member?.member?.first_name}
+            src={member?.member?.avatar}
             sx={{
               width: 32,
               height: 32,
@@ -88,7 +88,7 @@ export default function Header({ headerOnDark }) {
               alignItems: "center",
             }}
           >
-            {member?.member.first_name}
+            {member?.member?.first_name}
           </Label>
         </Link>
       ) : (
