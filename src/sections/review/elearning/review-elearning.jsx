@@ -14,7 +14,7 @@ import ReviewNewForm from '../common/review-new-form';
 
 // ----------------------------------------------------------------------
 
-export default function ReviewElearning() {
+export default function ReviewMembersOnly() {
   const [sort, setSort] = useState('latest');
 
   const formOpen = useBoolean();

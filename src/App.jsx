@@ -29,6 +29,7 @@ import LoginBackgroundPage from "./pages/auth/login-background";
 import { LocalizationProvider } from "../src/locales";
 import AccountLayout from "../src/layouts/account";
 import RegisterBackgroundPage from "./pages/auth/register-background";
+import MembersOnlyLandingPage from "./pages/member-only/landing";
 
 // ----------------------------------------------------------------------
 
@@ -75,6 +76,10 @@ export default function App() {
                     <Route path="blog" element={<PostsPage />} />
                     <Route path="blog/:slug" element={<PostPage />} />
                     <Route path="sign-in" element={<LoginCoverPage />} />
+                    <Route
+                      path="members-only"
+                      element={<MembersOnlyLandingPage />}
+                    />
                     <Route
                       path="register"
                       element={<RegisterBackgroundPage />}

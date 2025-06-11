@@ -1,18 +1,18 @@
-import { memo } from 'react';
-import { m } from 'framer-motion';
-import PropTypes from 'prop-types';
+import { memo } from "react";
+import { m } from "framer-motion";
+import PropTypes from "prop-types";
 
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import { alpha, useTheme } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import { alpha, useTheme } from "@mui/material/styles";
 
-import Image from 'src/components/image';
+import Image from "../../../components/image";
 
-import Icon from './pattern/icon';
-import Label from './pattern/label';
-import Shape from './pattern/shape';
-import Pattern01 from './pattern/pattern-01';
-import Pattern02 from './pattern/pattern-02';
+import Icon from "../illustrations/pattern/icon";
+import Label from "../illustrations/pattern/label";
+import Shape from "../illustrations/pattern/shape";
+import Pattern01 from "../illustrations/pattern/pattern-01";
+import Pattern02 from "../illustrations/pattern/pattern-02";
 
 // ----------------------------------------------------------------------
 
@@ -38,21 +38,21 @@ const varRight = {
 
 // ----------------------------------------------------------------------
 
-function ElearningHeroIllustration({ sx, ...other }) {
+function MembersOnlyHeroIllustration({ sx, ...other }) {
   const theme = useTheme();
 
   const GREEN = theme.palette.success.main;
 
   const YELLOW = theme.palette.warning.main;
 
-  const BLUE = '#355EC9';
+  const BLUE = "#355EC9";
 
-  const PURPLE = '#9B3AB1';
+  const PURPLE = "#9B3AB1";
 
   const styleIconContent = {
     fontSize: 22,
-    color: 'common.black',
-    fontWeight: 'fontWeightBold',
+    color: "common.black",
+    fontWeight: "fontWeightBold",
   };
 
   return (
@@ -60,15 +60,15 @@ function ElearningHeroIllustration({ sx, ...other }) {
       sx={{
         width: 670,
         height: 670,
-        display: 'flex',
-        alignItems: 'center',
-        position: 'relative',
-        justifyContent: 'center',
+        display: "flex",
+        alignItems: "center",
+        position: "relative",
+        justifyContent: "center",
         ...sx,
       }}
       {...other}
     >
-      <Box sx={{ position: 'absolute', right: 18, bottom: 28, zIndex: 8 }}>
+      <Box sx={{ position: "absolute", right: 18, bottom: 28, zIndex: 8 }}>
         <Image
           visibleByDefault
           disabledEffect
@@ -81,7 +81,7 @@ function ElearningHeroIllustration({ sx, ...other }) {
       <Box
         {...varDown}
         component={m.div}
-        sx={{ position: 'absolute', left: 115, bottom: 115, zIndex: 8 }}
+        sx={{ position: "absolute", left: 115, bottom: 115, zIndex: 8 }}
       >
         <Image
           visibleByDefault
@@ -95,7 +95,7 @@ function ElearningHeroIllustration({ sx, ...other }) {
       <Box
         {...varRight}
         component={m.div}
-        sx={{ position: 'absolute', left: 18, top: 220, zIndex: 8 }}
+        sx={{ position: "absolute", left: 18, top: 220, zIndex: 8 }}
       >
         <Image
           visibleByDefault
@@ -109,7 +109,7 @@ function ElearningHeroIllustration({ sx, ...other }) {
       <Box
         {...varUp}
         component={m.div}
-        sx={{ zIndex: 9, left: 120, bottom: 168, position: 'absolute' }}
+        sx={{ zIndex: 9, left: 120, bottom: 168, position: "absolute" }}
       >
         <Label
           text="Python"
@@ -124,8 +124,8 @@ function ElearningHeroIllustration({ sx, ...other }) {
           }
           sx={{
             py: 1.75,
-            typography: 'h3',
-            color: '#2994FF',
+            typography: "h3",
+            color: "#2994FF",
             boxShadow: `0px 24px 48px rgba(0, 0, 0, 0.24), inset 0px -4px 10px ${alpha(
               theme.palette.grey[600],
               0.48
@@ -139,50 +139,72 @@ function ElearningHeroIllustration({ sx, ...other }) {
       <Box
         {...varLeft}
         component={m.div}
-        sx={{ top: 88, right: 72, zIndex: 8, position: 'absolute' }}
+        sx={{ top: 88, right: 72, zIndex: 8, position: "absolute" }}
       >
         <Icon
           color={GREEN}
           content={<Typography sx={{ ...styleIconContent }}>Dw</Typography>}
-          sx={{ transform: 'scale(1.2) rotate(15deg)' }}
+          sx={{ transform: "scale(1.2) rotate(15deg)" }}
         />
       </Box>
 
-      <Box {...varRight} component={m.div} sx={{ zIndex: 8, bottom: 160, position: 'absolute' }}>
+      <Box
+        {...varRight}
+        component={m.div}
+        sx={{ zIndex: 8, bottom: 160, position: "absolute" }}
+      >
         <Icon
           color={YELLOW}
           content={<Typography sx={{ ...styleIconContent }}>Ai</Typography>}
-          sx={{ transform: 'translateX(40px) scale(1.2) rotate(-15deg)' }}
+          sx={{ transform: "translateX(40px) scale(1.2) rotate(-15deg)" }}
         />
       </Box>
 
-      <Box {...varUp} component={m.div} sx={{ zIndex: 8, right: 90, position: 'absolute' }}>
+      <Box
+        {...varUp}
+        component={m.div}
+        sx={{ zIndex: 8, right: 90, position: "absolute" }}
+      >
         <Icon
           color={PURPLE}
-          content={<Typography sx={{ ...styleIconContent, color: 'common.white' }}>Ae</Typography>}
-          sx={{ transform: 'scale(1.2) translateY(20px) rotate(15deg)' }}
+          content={
+            <Typography sx={{ ...styleIconContent, color: "common.white" }}>
+              Ae
+            </Typography>
+          }
+          sx={{ transform: "scale(1.2) translateY(20px) rotate(15deg)" }}
         />
       </Box>
 
-      <Box {...varDown} component={m.div} sx={{ zIndex: 8, position: 'absolute' }}>
+      <Box
+        {...varDown}
+        component={m.div}
+        sx={{ zIndex: 8, position: "absolute" }}
+      >
         <Icon
           color={BLUE}
-          content={<Typography sx={{ ...styleIconContent, color: 'common.white' }}>Ps</Typography>}
+          content={
+            <Typography sx={{ ...styleIconContent, color: "common.white" }}>
+              Ps
+            </Typography>
+          }
           sx={{
-            transform: 'scale(1.2) translate(-135px, -75px) rotate(15deg)',
+            transform: "scale(1.2) translate(-135px, -75px) rotate(15deg)",
           }}
         />
       </Box>
 
       <Pattern01 sx={{ left: 0, top: 0 }} />
-      <Pattern02 sx={{ top: 0, left: 0, opacity: 0.24, transform: 'scale(1.2)' }} />
-      <Shape sx={{ position: 'absolute', right: 32, bottom: 32 }} />
+      <Pattern02
+        sx={{ top: 0, left: 0, opacity: 0.24, transform: "scale(1.2)" }}
+      />
+      <Shape sx={{ position: "absolute", right: 32, bottom: 32 }} />
     </Box>
   );
 }
 
-ElearningHeroIllustration.propTypes = {
+MembersOnlyHeroIllustration.propTypes = {
   sx: PropTypes.object,
 };
 
-export default memo(ElearningHeroIllustration);
+export default memo(MembersOnlyHeroIllustration);
