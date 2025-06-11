@@ -113,12 +113,16 @@ export default function PostView() {
               spacing={1.5}
               sx={{ py: 3 }}
             >
-              <Avatar src={member.avatar} sx={{ width: 48, height: 48 }} />
+              {member && (
+                <Avatar src={member.avatar} sx={{ width: 48, height: 48 }} />
+              )}
 
               <Stack spacing={0.5} flexGrow={1}>
-                <Typography variant="subtitle2">
-                  {member.first_name} {member.last_name}
-                </Typography>
+                {member && (
+                  <Typography variant="subtitle2">
+                    {member.first_name} {member.last_name}
+                  </Typography>
+                )}
                 <Typography variant="caption" sx={{ color: "text.secondary" }}>
                   {fDate(createdAt, "dd/MM/yyyy p")}
                 </Typography>
@@ -143,7 +147,7 @@ export default function PostView() {
 
             <Divider sx={{ mt: 8 }} />
 
-            <PostMember member={member} />
+            {member && <PostMember member={member} />}
           </Grid>
         </Grid>
       </Container>
