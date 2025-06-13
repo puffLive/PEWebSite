@@ -64,22 +64,13 @@ export default function MembersOnlyLandingHero() {
                 }}
               >
                 <Typography variant="h1">
-                  Free
-                  <Box component="span" sx={{ color: "text.disabled" }}>
-                    {` Online `}
-                  </Box>
-                  <Box
-                    component="span"
-                    sx={{ color: "primary.main", textDecoration: "underline" }}
-                  >
-                    {` Courses `}
-                  </Box>
-                  From The Experts
+                  Where members learn, grow and thrive.
                 </Typography>
 
                 <Typography sx={{ color: "text.secondary", mt: 3, mb: 5 }}>
-                  Etiam sollicitudin, ipsum eu pulvinar rutrum, tellus ipsum
-                  laoreet sapien, quis venenatis ante odio sit amet eros.
+                  Welcome PE family! We are excited to have you here. This is
+                  where we share knowledge and resources to help us all grow and
+                  succeed.
                 </Typography>
 
                 <Stack
@@ -87,9 +78,9 @@ export default function MembersOnlyLandingHero() {
                   alignItems="center"
                   direction={{ xs: "column", md: "row" }}
                 >
-                  <Button color="inherit" size="large" variant="contained">
+                  {/* <Button color="inherit" size="large" variant="contained">
                     Ready Start
-                  </Button>
+                  </Button> */}
 
                   <Stack
                     direction="row"
@@ -104,46 +95,8 @@ export default function MembersOnlyLandingHero() {
                     >
                       <Iconify width={24} icon="carbon:play" />
                     </Fab>
-                    Watch Video
+                    Clip of us in the field
                   </Stack>
-                </Stack>
-
-                <Divider sx={{ borderStyle: "dashed", mt: 8, mb: 6 }} />
-
-                <Stack
-                  direction="row"
-                  spacing={{ xs: 3, sm: 10 }}
-                  justifyContent={{ xs: "center", md: "unset" }}
-                >
-                  {SUMMARY.map((item) => (
-                    <Stack
-                      key={item.value}
-                      spacing={0.5}
-                      sx={{ position: "relative" }}
-                    >
-                      <Box
-                        sx={{
-                          top: 8,
-                          left: -4,
-                          width: 24,
-                          height: 24,
-                          opacity: 0.24,
-                          borderRadius: "50%",
-                          position: "absolute",
-                          bgcolor: `${item.color}.main`,
-                        }}
-                      />
-                      <Typography variant="h3">
-                        {fShortenNumber(item.value)}+
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{ color: "text.secondary" }}
-                      >
-                        {item.label}
-                      </Typography>
-                    </Stack>
-                  ))}
                 </Stack>
               </Stack>
             </Grid>
@@ -160,7 +113,10 @@ export default function MembersOnlyLandingHero() {
       <PlayerDialog
         open={videoOpen.value}
         onClose={videoOpen.onFalse}
-        videoPath={_mock.video(0)}
+        videoPath={
+          "https://principleevolution.s3.us-east-2.amazonaws.com/videos/PE+In+The+Field.mp4"
+        }
+        controls={true} // Add video player controls
       />
     </>
   );

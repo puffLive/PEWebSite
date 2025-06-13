@@ -15,6 +15,26 @@ export async function getMembers() {
   }
 }
 
+export async function checkAuth() {
+  try {
+    const response = await axios.get(
+      `${PE_API_BASE_URL}api/v1/members/check-auth`,
+      {
+        withCredentials: true,
+      }
+    );
+
+    // Return the data in the same format as stored in sessionStorage
+    if (response.data.data) {
+      return { member: response.data.data };
+    }
+    return null;
+  } catch (error) {
+    console.log("checkAuth error: ", error);
+    return null; // Return null on error instead of undefined
+  }
+}
+
 /// add data to the body
 export async function updateMember(data) {
   try {

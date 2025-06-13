@@ -73,8 +73,10 @@ function MembersOnlyHeroIllustration({ sx, ...other }) {
           visibleByDefault
           disabledEffect
           alt="teacher"
-          src="/assets/images/course/course_teacher_hero.png"
-          sx={{ width: 546, height: 650 }}
+          // src="/assets/images/course/course_teacher_hero.png"
+          // src="https://principleevolution.s3.us-east-2.amazonaws.com/founders/RichPuffKels.png"
+          src="/assets/images/PE/RichPuffKels.png"
+          sx={{ width: 546, height: 700 }}
         />
       </Box>
 
@@ -102,7 +104,11 @@ function MembersOnlyHeroIllustration({ sx, ...other }) {
           disabledEffect
           alt="pencil icon"
           src="/assets/icons/ic_pencil.png"
-          sx={{ width: 60, height: 77 }}
+          sx={{
+            width: 60,
+            height: 77,
+            transform: "translate(80px, 0px)",
+          }}
         />
       </Box>
 
@@ -111,25 +117,15 @@ function MembersOnlyHeroIllustration({ sx, ...other }) {
         component={m.div}
         sx={{ zIndex: 9, left: 120, bottom: 168, position: "absolute" }}
       >
-        <Label
-          text="Python"
-          icon={
-            <Image
-              visibleByDefault
-              disabledEffect
-              alt="python"
-              src="/assets/icons/platforms/ic_python.svg"
-              sx={{ width: 56, height: 56 }}
-            />
-          }
+        <Image
+          visibleByDefault
+          disabledEffect
+          alt="pencil icon"
+          src="/assets/icons/ecommerce/ic_laptop.svg"
           sx={{
-            py: 1.75,
-            typography: "h3",
-            color: "#2994FF",
-            boxShadow: `0px 24px 48px rgba(0, 0, 0, 0.24), inset 0px -4px 10px ${alpha(
-              theme.palette.grey[600],
-              0.48
-            )}`,
+            width: 80,
+            height: 80,
+            transform: "translate(380px, 0px) rotate(15deg)",
           }}
         />
       </Box>
@@ -141,10 +137,16 @@ function MembersOnlyHeroIllustration({ sx, ...other }) {
         component={m.div}
         sx={{ top: 88, right: 72, zIndex: 8, position: "absolute" }}
       >
-        <Icon
-          color={GREEN}
-          content={<Typography sx={{ ...styleIconContent }}>Dw</Typography>}
-          sx={{ transform: "scale(1.2) rotate(15deg)" }}
+        <Image
+          visibleByDefault
+          disabledEffect
+          alt="pencil icon"
+          src="/assets/icons/ecommerce/ic_health.svg"
+          sx={{
+            width: 60,
+            height: 60,
+            transform: "translate(0px, 100px) rotate(15deg)",
+          }}
         />
       </Box>
 
@@ -153,10 +155,16 @@ function MembersOnlyHeroIllustration({ sx, ...other }) {
         component={m.div}
         sx={{ zIndex: 8, bottom: 160, position: "absolute" }}
       >
-        <Icon
-          color={YELLOW}
-          content={<Typography sx={{ ...styleIconContent }}>Ai</Typography>}
-          sx={{ transform: "translateX(40px) scale(1.2) rotate(-15deg)" }}
+        <Image
+          visibleByDefault
+          disabledEffect
+          alt="pencil icon"
+          src="/assets/icons/travel/ic_travel_site_visitors.svg"
+          sx={{
+            width: 60,
+            height: 60,
+            transform: "scale(1.2) translate(20px, 20px) rotate(15deg)",
+          }}
         />
       </Box>
 
@@ -165,14 +173,16 @@ function MembersOnlyHeroIllustration({ sx, ...other }) {
         component={m.div}
         sx={{ zIndex: 8, right: 90, position: "absolute" }}
       >
-        <Icon
-          color={PURPLE}
-          content={
-            <Typography sx={{ ...styleIconContent, color: "common.white" }}>
-              Ae
-            </Typography>
-          }
-          sx={{ transform: "scale(1.2) translateY(20px) rotate(15deg)" }}
+        <Image
+          visibleByDefault
+          disabledEffect
+          alt="pencil icon"
+          src="/assets/icons/service/ic_service_mail.svg"
+          sx={{
+            width: 60,
+            height: 60,
+            transform: "scale(1.2) translate(-70px, 15px) rotate(-15deg)",
+          }}
         />
       </Box>
 
@@ -181,7 +191,18 @@ function MembersOnlyHeroIllustration({ sx, ...other }) {
         component={m.div}
         sx={{ zIndex: 8, position: "absolute" }}
       >
-        <Icon
+        <Image
+          visibleByDefault
+          disabledEffect
+          alt="pencil icon"
+          src="/assets/icons/ic_agreement.svg"
+          sx={{
+            width: 60,
+            height: 60,
+            transform: "scale(1.2) translate(-150px, 75px) rotate(15deg)",
+          }}
+        />
+        {/* <Icon
           color={BLUE}
           content={
             <Typography sx={{ ...styleIconContent, color: "common.white" }}>
@@ -191,7 +212,7 @@ function MembersOnlyHeroIllustration({ sx, ...other }) {
           sx={{
             transform: "scale(1.2) translate(-135px, -75px) rotate(15deg)",
           }}
-        />
+        /> */}
       </Box>
 
       <Pattern01 sx={{ left: 0, top: 0 }} />
