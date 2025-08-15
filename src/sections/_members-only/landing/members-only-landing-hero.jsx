@@ -1,8 +1,6 @@
 import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
 import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Unstable_Grid2";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -11,22 +9,11 @@ import { alpha, useTheme } from "@mui/material/styles";
 import { useBoolean } from "../../../hooks/use-boolean";
 import { useResponsive } from "../../../hooks/use-responsive";
 
-import { fShortenNumber } from "../../../utils/format-number";
-
-import { _mock } from "../../../_mock";
 import { bgGradient } from "../../../theme/css";
 import MembersOnlyHeroIllustration from "../../../assets/data/illustrations/members-only-hero-illustration";
 
 import Iconify from "../../../components/iconify";
 import { PlayerDialog } from "../../../components/player";
-
-// ----------------------------------------------------------------------
-
-const SUMMARY = [
-  { value: 14000, label: "Learners", color: "warning" },
-  { value: 1050, label: "Courses", color: "error" },
-  { value: 59000, label: "Graduates", color: "success" },
-];
 
 // ----------------------------------------------------------------------
 
@@ -78,10 +65,6 @@ export default function MembersOnlyLandingHero() {
                   alignItems="center"
                   direction={{ xs: "column", md: "row" }}
                 >
-                  {/* <Button color="inherit" size="large" variant="contained">
-                    Ready Start
-                  </Button> */}
-
                   <Stack
                     direction="row"
                     alignItems="center"
@@ -113,9 +96,7 @@ export default function MembersOnlyLandingHero() {
       <PlayerDialog
         open={videoOpen.value}
         onClose={videoOpen.onFalse}
-        videoPath={
-          "https://principleevolution.s3.us-east-2.amazonaws.com/videos/PE+In+The+Field.mp4"
-        }
+        videoPath={"https://principleevolution.com/videos/PE+In+The+Field.mp4"}
         controls={true} // Add video player controls
       />
     </>

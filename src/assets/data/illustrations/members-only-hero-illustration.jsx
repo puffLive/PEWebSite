@@ -72,7 +72,7 @@ function MembersOnlyHeroIllustration({ sx, ...other }) {
         <Image
           visibleByDefault
           disabledEffect
-          alt="teacher"
+          alt="Principle Evolution Founders"
           // src="/assets/images/course/course_teacher_hero.png"
           // src="https://principleevolution.s3.us-east-2.amazonaws.com/founders/RichPuffKels.png"
           src="/assets/images/PE/RichPuffKels.png"
@@ -120,7 +120,7 @@ function MembersOnlyHeroIllustration({ sx, ...other }) {
         <Image
           visibleByDefault
           disabledEffect
-          alt="pencil icon"
+          alt="laptop icon"
           src="/assets/icons/ecommerce/ic_laptop.svg"
           sx={{
             width: 80,
@@ -140,7 +140,7 @@ function MembersOnlyHeroIllustration({ sx, ...other }) {
         <Image
           visibleByDefault
           disabledEffect
-          alt="pencil icon"
+          alt="heart icon"
           src="/assets/icons/ecommerce/ic_health.svg"
           sx={{
             width: 60,
@@ -158,7 +158,7 @@ function MembersOnlyHeroIllustration({ sx, ...other }) {
         <Image
           visibleByDefault
           disabledEffect
-          alt="pencil icon"
+          alt="positive return icon"
           src="/assets/icons/travel/ic_travel_site_visitors.svg"
           sx={{
             width: 60,
@@ -176,8 +176,8 @@ function MembersOnlyHeroIllustration({ sx, ...other }) {
         <Image
           visibleByDefault
           disabledEffect
-          alt="pencil icon"
-          src="/assets/icons/service/ic_service_mail.svg"
+          alt="house icon"
+          src="/assets/icons/PE/house.png"
           sx={{
             width: 60,
             height: 60,
@@ -202,17 +202,6 @@ function MembersOnlyHeroIllustration({ sx, ...other }) {
             transform: "scale(1.2) translate(-150px, 75px) rotate(15deg)",
           }}
         />
-        {/* <Icon
-          color={BLUE}
-          content={
-            <Typography sx={{ ...styleIconContent, color: "common.white" }}>
-              Ps
-            </Typography>
-          }
-          sx={{
-            transform: "scale(1.2) translate(-135px, -75px) rotate(15deg)",
-          }}
-        /> */}
       </Box>
 
       <Pattern01 sx={{ left: 0, top: 0 }} />
