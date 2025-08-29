@@ -23,56 +23,89 @@ const LESSONS = [...Array(9)].map((_, index) => ({
   unLocked: [0, 1, 2].includes(index),
 }));
 
-export const _courses = [...Array(12)].map((_, index) => {
-  const languages = ['Russian', 'Spanish', 'English'];
-
-  const skills = _tags.slice(0, 5);
-
-  const level =
-    (index % 2 && 'Intermediate') ||
-    (index % 4 && 'Expert') ||
-    (index % 5 && 'All Levels') ||
-    'Beginner';
-
-  const learnList = [
-    'A fermentum in morbi pretium aliquam adipiscing donec tempus.',
-    'Vulputate placerat amet pulvinar lorem nisl.',
-    'Consequat feugiat habitant gravida quisque elit bibendum id adipiscing sed.',
-    'Etiam duis lobortis in fames ultrices commodo nibh.',
-    'Fusce neque. Nulla neque dolor, sagittis eget, iaculis quis, molestie non, velit.',
-    'Curabitur a felis in nunc fringilla tristique. Praesent congue erat at massa.',
-  ];
-
-  return {
-    id: _mock.id(index),
-    level,
-    skills,
-    languages,
-    learnList,
+export const _courses = [
+  {
+    title: 'Options Trading 101',
+    languages: ['English'],
+    skills: ['Trading', 'Investing'],
+    level: 'Beginner',
+    learnList: [
+      'Options trading',
+      'How to set up your trading account using Interactive Brokers',
+      'What is a margin account and how to use it',
+      'What options trading is.',
+      'How to buy and sell options.',
+      'How to use the options chain to find the best options to trade.',
+    ],
     resources: 12,
     totalHours: 100,
     lessons: LESSONS,
-    totalQuizzes: 100,
-    totalReviews: 3458,
+    totalQuizzes: 0,
+    totalReviews: 0,
     teachers: TEACHERS,
-    totalStudents: 180000,
+    totalStudents: 0,
     createdAt: new Date(),
-    category: _tags[index],
-    slug: _mock.courseTitle(index),
-    bestSeller: index === 2 || false,
-    coverUrl: _mock.image.course(index),
-    ratingNumber: _mock.number.rating(index),
-    description: _mock.description(index),
-    price: (index % 2 && 159.99) || 269.99,
-    priceSale: (index === 2 && 89.99) || (index === 5 && 69.99) || 0,
-    shareLinks: {
-      facebook: `facebook/user-name`,
-      instagram: `instagram/user-name`,
-      linkedin: `linkedin/user-name`,
-      twitter: `twitter/user-name`,
-    },
-  };
-});
+    category: 'Trading',
+    slug: 'options-trading',
+    bestSeller: false,
+    coverUrl: 'https://picsum.photos/200/300', // TODO: replace with actual image
+    ratingNumber: 0,
+    description: 'Learn how to trade options with this comprehensive course.',
+    price: 0,
+    priceSale: 0,
+  },
+];
+
+// export const _courses = [...Array(12)].map((_, index) => {
+//   const languages = ['Russian', 'Spanish', 'English'];
+
+//   const skills = _tags.slice(0, 5);
+
+//   const level =
+//     (index % 2 && 'Intermediate') ||
+//     (index % 4 && 'Expert') ||
+//     (index % 5 && 'All Levels') ||
+//     'Beginner';
+
+//   const learnList = [
+//     'A fermentum in morbi pretium aliquam adipiscing donec tempus.',
+//     'Vulputate placerat amet pulvinar lorem nisl.',
+//     'Consequat feugiat habitant gravida quisque elit bibendum id adipiscing sed.',
+//     'Etiam duis lobortis in fames ultrices commodo nibh.',
+//     'Fusce neque. Nulla neque dolor, sagittis eget, iaculis quis, molestie non, velit.',
+//     'Curabitur a felis in nunc fringilla tristique. Praesent congue erat at massa.',
+//   ];
+
+//   return {
+//     id: _mock.id(index),
+//     level,
+//     skills,
+//     languages,
+//     learnList,
+//     resources: 12,
+//     totalHours: 100,
+//     lessons: LESSONS,
+//     totalQuizzes: 100,
+//     totalReviews: 3458,
+//     teachers: TEACHERS,
+//     totalStudents: 180000,
+//     createdAt: new Date(),
+//     category: _tags[index],
+//     slug: _mock.courseTitle(index),
+//     bestSeller: index === 2 || false,
+//     coverUrl: _mock.image.course(index),
+//     ratingNumber: _mock.number.rating(index),
+//     description: _mock.description(index),
+//     price: (index % 2 && 159.99) || 269.99,
+//     priceSale: (index === 2 && 89.99) || (index === 5 && 69.99) || 0,
+//     shareLinks: {
+//       facebook: `facebook/user-name`,
+//       instagram: `instagram/user-name`,
+//       linkedin: `linkedin/user-name`,
+//       twitter: `twitter/user-name`,
+//     },
+//   };
+// });
 
 export const _coursesByCategories = [...Array(9)].map((_, index) => ({
   id: _mock.id(index),

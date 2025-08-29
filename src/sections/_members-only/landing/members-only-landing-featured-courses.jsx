@@ -1,19 +1,19 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import Container from "@mui/material/Container";
-import { useTheme } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Container from '@mui/material/Container';
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
 
-import { useResponsive } from "../../../hooks/use-responsive";
+import { useResponsive } from '../../../hooks/use-responsive';
 
 import Carousel, {
   useCarousel,
   CarouselArrows,
-} from "../../../components/carousel";
+} from '../../../components/carousel';
 
-import MembersOnlyCourseItem from "../list/members-only-course-item";
+import MembersOnlyCourseItem from '../list/members-only-course-item';
 
 // ----------------------------------------------------------------------
 
@@ -23,19 +23,26 @@ export default function MembersOnlyLandingFeaturedCourses({ courses }) {
   const carousel = useCarousel({
     slidesToShow: 3,
     slidesToScroll: 1,
+    infinite: (courses && courses.length) > 3,
     responsive: [
       {
         breakpoint: theme.breakpoints.values.lg,
-        settings: { slidesToShow: 2 },
+        settings: {
+          slidesToShow: 2,
+          infinite: (courses && courses.length) > 2,
+        },
       },
       {
         breakpoint: theme.breakpoints.values.md,
-        settings: { slidesToShow: 1 },
+        settings: {
+          slidesToShow: 1,
+          infinite: (courses && courses.length) > 1,
+        },
       },
     ],
   });
 
-  const mdUp = useResponsive("up", "md");
+  const mdUp = useResponsive('up', 'md');
 
   return (
     <Container
@@ -44,17 +51,17 @@ export default function MembersOnlyLandingFeaturedCourses({ courses }) {
       }}
     >
       <Stack
-        direction={{ xs: "column", md: "row" }}
-        alignItems={{ md: "flex-end" }}
+        direction={{ xs: 'column', md: 'row' }}
+        alignItems={{ md: 'flex-end' }}
         sx={{
-          textAlign: { xs: "center", md: "unset" },
+          textAlign: { xs: 'center', md: 'unset' },
         }}
       >
         <Stack spacing={3} flexGrow={1}>
           <Typography variant="h2">Featured Courses</Typography>
-          <Typography sx={{ color: "text.secondary" }}>
-            Nullam accumsan lorem in dui. Praesent ac massa at ligula laoreet
-            iaculis.
+          <Typography sx={{ color: 'text.secondary' }}>
+            This is where members drop their gems 💎—sharing stories, tips, and
+            lessons so we can all learn and level up together.
           </Typography>
         </Stack>
 
@@ -69,9 +76,9 @@ export default function MembersOnlyLandingFeaturedCourses({ courses }) {
 
       <Box
         sx={{
-          position: "relative",
+          position: 'relative',
           ml: { md: -2 },
-          width: { md: "calc(100% + 32px)" },
+          width: { md: 'calc(100% + 32px)' },
         }}
       >
         <CarouselArrows
@@ -81,27 +88,27 @@ export default function MembersOnlyLandingFeaturedCourses({ courses }) {
             sx: {
               left: -16,
               opacity: 1,
-              color: "common.white",
-              bgcolor: "primary.main",
-              "&:hover": { bgcolor: "primary.dark" },
-              ...(mdUp && { display: "none" }),
+              color: 'common.white',
+              bgcolor: 'primary.main',
+              '&:hover': { bgcolor: 'primary.dark' },
+              ...(mdUp && { display: 'none' }),
             },
           }}
           rightButtonProps={{
             sx: {
               right: -16,
               opacity: 1,
-              color: "common.white",
-              bgcolor: "primary.main",
-              "&:hover": { bgcolor: "primary.dark" },
-              ...(mdUp && { display: "none" }),
+              color: 'common.white',
+              bgcolor: 'primary.main',
+              '&:hover': { bgcolor: 'primary.dark' },
+              ...(mdUp && { display: 'none' }),
             },
           }}
         >
           <Carousel ref={carousel.carouselRef} {...carousel.carouselSettings}>
-            {courses.map((course) => (
+            {courses.map((course, index) => (
               <Box
-                key={course.id}
+                key={course.slug || index}
                 sx={{
                   px: 2,
                   pt: { xs: 8, md: 10 },

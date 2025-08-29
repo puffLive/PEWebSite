@@ -1,27 +1,28 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-import Box from "@mui/material/Box";
-import Link from "@mui/material/Link";
-import Card from "@mui/material/Card";
-import Stack from "@mui/material/Stack";
-import Avatar from "@mui/material/Avatar";
-import Divider from "@mui/material/Divider";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
+import Card from '@mui/material/Card';
+import Stack from '@mui/material/Stack';
+import Avatar from '@mui/material/Avatar';
+import Divider from '@mui/material/Divider';
+import Typography from '@mui/material/Typography';
 
-import { paths } from "../../../routes/paths";
-import { RouterLink } from "../../../routes/components";
+import { paths } from '../../../routes/paths';
+import { RouterLink } from '../../../routes/components';
 
-import { fCurrency, fShortenNumber } from "../../../utils/format-number";
+import { fCurrency, fShortenNumber } from '../../../utils/format-number';
 
-import Image from "../../../components/image";
-import Label from "../../../components/label";
-import Iconify from "../../../components/iconify";
-import TextMaxLine from "../../../components/text-max-line";
+import Image from '../../../components/image';
+import Label from '../../../components/label';
+import Iconify from '../../../components/iconify';
+import TextMaxLine from '../../../components/text-max-line';
 
 // ----------------------------------------------------------------------
 
 export default function MembersOnlyCourseItem({ course, vertical }) {
   const {
+    title,
     slug,
     level,
     price,
@@ -40,12 +41,12 @@ export default function MembersOnlyCourseItem({ course, vertical }) {
   return (
     <Card
       sx={{
-        display: { sm: "flex" },
-        "&:hover": {
+        display: { sm: 'flex' },
+        '&:hover': {
           boxShadow: (theme) => theme.customShadows.z24,
         },
         ...(vertical && {
-          flexDirection: "column",
+          flexDirection: 'column',
         }),
       }}
     >
@@ -53,9 +54,10 @@ export default function MembersOnlyCourseItem({ course, vertical }) {
         <Image
           alt={slug}
           src={coverUrl}
+          ratio={vertical ? '16/9' : undefined}
           sx={{
             height: 1,
-            objectFit: "cover",
+            objectFit: 'cover',
             width: { sm: 240 },
             ...(vertical && {
               width: { sm: 1 },
@@ -71,8 +73,8 @@ export default function MembersOnlyCourseItem({ course, vertical }) {
           sx={{
             top: 12,
             left: 12,
-            position: "absolute",
-            textTransform: "uppercase",
+            position: 'absolute',
+            textTransform: 'uppercase',
           }}
         >
           Best Seller
@@ -91,7 +93,7 @@ export default function MembersOnlyCourseItem({ course, vertical }) {
             alignItems="center"
             justifyContent="space-between"
           >
-            <Typography variant="overline" sx={{ color: "primary.main" }}>
+            <Typography variant="overline" sx={{ color: 'primary.main' }}>
               {category}
             </Typography>
 
@@ -101,8 +103,8 @@ export default function MembersOnlyCourseItem({ course, vertical }) {
                   component="span"
                   sx={{
                     mr: 0.5,
-                    color: "text.disabled",
-                    textDecoration: "line-through",
+                    color: 'text.disabled',
+                    textDecoration: 'line-through',
                   }}
                 >
                   {fCurrency(priceSale)}
@@ -119,7 +121,7 @@ export default function MembersOnlyCourseItem({ course, vertical }) {
               color="inherit"
             >
               <TextMaxLine variant="h6" line={1}>
-                {slug}
+                {title}
               </TextMaxLine>
             </Link>
 
@@ -128,7 +130,7 @@ export default function MembersOnlyCourseItem({ course, vertical }) {
               color="text.secondary"
               sx={{
                 ...(vertical && {
-                  display: { sm: "none" },
+                  display: { sm: 'none' },
                 }),
               }}
             >
@@ -137,58 +139,12 @@ export default function MembersOnlyCourseItem({ course, vertical }) {
           </Stack>
         </Stack>
 
-        <Stack
-          spacing={1.5}
-          direction="row"
-          alignItems="center"
-          flexWrap="wrap"
-          divider={
-            <Divider orientation="vertical" sx={{ height: 20, my: "auto" }} />
-          }
-        >
-          <Stack spacing={0.5} direction="row" alignItems="center">
-            <Iconify icon="carbon:star-filled" sx={{ color: "warning.main" }} />
-            <Box sx={{ typography: "h6" }}>
-              {Number.isInteger(ratingNumber)
-                ? `${ratingNumber}.0`
-                : ratingNumber}
-            </Box>
-
-            {totalReviews && (
-              <Link variant="body2" sx={{ color: "text.secondary" }}>
-                ({fShortenNumber(totalReviews)} reviews)
-              </Link>
-            )}
-          </Stack>
-
-          <Stack direction="row" sx={{ typography: "subtitle2" }}>
-            {fShortenNumber(totalStudents)}
-            <Box component="span" typography="body2" sx={{ ml: 0.5 }}>
-              students
-            </Box>
-          </Stack>
-        </Stack>
-
-        <Stack direction="row" alignItems="center">
-          <Avatar src={teachers[0]?.avatarUrl} />
-
-          <Typography variant="body2" sx={{ ml: 1, mr: 0.5 }}>
-            {teachers[0]?.name}
-          </Typography>
-
-          {teachers?.length > 0 && (
-            <Link underline="always" color="text.secondary" variant="body2">
-              + {teachers?.length} teachers
-            </Link>
-          )}
-        </Stack>
-
         <Divider
           sx={{
-            borderStyle: "dashed",
-            display: { sm: "none" },
+            borderStyle: 'line',
+            display: { sm: 'none' },
             ...(vertical && {
-              display: "block",
+              display: 'block',
             }),
           }}
         />
@@ -197,28 +153,28 @@ export default function MembersOnlyCourseItem({ course, vertical }) {
           direction="row"
           flexWrap="wrap"
           alignItems="center"
-          sx={{ color: "text.disabled", "& > *:not(:last-child)": { mr: 2.5 } }}
+          sx={{ color: 'text.disabled', '& > *:not(:last-child)': { mr: 2.5 } }}
         >
           <Stack
             direction="row"
             alignItems="center"
-            sx={{ typography: "body2" }}
+            sx={{ typography: 'body2' }}
           >
-            <Iconify icon="carbon:time" sx={{ mr: 1 }} />{" "}
+            <Iconify icon="carbon:time" sx={{ mr: 1 }} />{' '}
             {`${totalHours} hours`}
           </Stack>
 
           <Stack
             direction="row"
             alignItems="center"
-            sx={{ typography: "body2" }}
+            sx={{ typography: 'body2' }}
           >
             <Iconify
               icon={
-                (level === "Beginner" && "carbon:skill-level-basic") ||
-                (level === "Intermediate" &&
-                  "carbon:skill-level-intermediate") ||
-                "carbon:skill-level-advanced"
+                (level === 'Beginner' && 'carbon:skill-level-basic') ||
+                (level === 'Intermediate' &&
+                  'carbon:skill-level-intermediate') ||
+                'carbon:skill-level-advanced'
               }
               sx={{ mr: 1 }}
             />
